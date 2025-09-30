@@ -1,0 +1,266 @@
+%This file contains the paper.
+\documentclass[11pt]{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage[pagebackref]{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=[rgb]{0,0,0.6},
+    filecolor=[rgb]{0,0,0.6},      
+    urlcolor=[rgb]{0,0,0.6},
+    citecolor=[rgb]{0,0,0.6},
+    pdftitle={BCGKNZ_Inequity}
+    }
+%% Language and font encodings
+\renewcommand{\rmdefault}{ppl}
+\renewcommand{\sfdefault}{lmss}
+\renewcommand{\ttdefault}{lmtt}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[authoryear]{natbib}
+\usepackage{setspace}
+\usepackage{bbm}
+%\onehalfspacing
+%% Sets page size and margins
+\usepackage[top=2.54cm,bottom=2.54cm,left=2.7cm,right=2.7cm,marginparwidth=1.75cm]{geometry}
+\usepackage{multirow}
+\usepackage{booktabs}
+\usepackage[dvipsnames]{xcolor}
+\definecolor{mygray}{gray}{0.45}
+\usepackage{float}
+\usepackage{subcaption}
+\captionsetup[subfigure]{labelformat=simple} % default is 'parens'
+\renewcommand\thesubfigure{\alph{subfigure}:}
+\usepackage[font={bf,sc}]{caption}
+\usepackage{pdflscape}
+\usepackage{url}
+\usepackage{pifont}
+\usepackage{tikz}
+
+\usepackage{mathtools}
+\usepackage{amsbsy}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\newtheorem{thm}{Theorem}
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{assn}{Assumption}
+
+\newcommand{\tabitem}{~~\llap{\textbullet}~~}
+\usepackage{lipsum}
+
+
+\begin{document}
+
+%\title{UN3902: Economics of Public Policy Seminar}
+%\author{\href{http://www.columbia.edu/~mcb2270/}{Michael Carlos Best}\footnote{\href{mailto:michael.best@columbia.edu}{\nolinkurl{michael.best@columbia.edu}}. Columbia University, BREAD, CEPR, IFS \& NBER.} \and \href{http://www.luigicaloi.com}{Luigi Caloi}\footnote{\href{mailto:luigi.caloi@columbia.edu}{\nolinkurl{luigi.caloi@columbia.edu}}. Columbia University.} \and \href{https://sites.google.com/site/fransgerard/home/}{Fran\c{c}ois Gerard}\footnote{\href{mailto:f.gerard@ucl.ac.uk}{\nolinkurl{f.gerard@ucl.ac.uk}}. University College London, BREAD, CEPR, \& IFS.} \and \href{http://www.evankresch.com}{Evan Plous Kresch}\footnote{\href{mailto:ekresch@oberlin.edu}{\nolinkurl{ekresch@oberlin.edu}}. Oberlin College.} \and \href{http://www.joananaritomi.com}{Joana Naritomi}\footnote{\href{mailto:J.Naritomi@lse.ac.uk}{\nolinkurl{J.Naritomi@lse.ac.uk}}. London School of Economics, BREAD, CEPR, \& IFS.} \and \href{https://blogs.worldbank.org/team/laura-de-castro-zoratto}{Laura Zoratto}\footnote{\href{mailto:lzoratto@worldbank.org}{\nolinkurl{lzoratto@worldbank.org}}. World Bank.}}
+%\date{This version: October 2025}
+
+%\maketitle
+
+\noindent {\LARGE{\textbf{UN3902: Economics of Public Policy Seminar}}} \\
+\textsc{Department of Economics, Columbia University} \\
+\textsc{Spring 2026}
+
+\subsection*{Instructor:}
+\href{http://www.columbia.edu/~mcb2270/}{Michael Carlos Best} \\
+Associate Professor of Economics \\
+\href{mailto:michael.best@columbia.edu}{\nolinkurl{michael.best@columbia.edu}} \\
+Office: 1112 IAB \\
+Office Hours: Tuesdays 2:15--3pm \& Thursdays 1:15--2pm
+
+\subsection*{Meeting Times:}
+Tuesdays 12:10--2pm, Location TBD
+
+\subsection*{Course Objectives:}
+This course has two objectives:
+
+\begin{enumerate}
+    \item To develop students' skills in research and writing. Specifically, participants will work on:
+    \begin{enumerate}
+        \item Formulating a research question;
+        \item Placing their research question in the context of the existing literature and/or the relevant policy area;
+        \item Using economic and econometric tools to provide answers to their research question;
+        \item Writing up their research in a clear and concise manner.
+    \end{enumerate}
+    \item To provide an introduction to the key issues in the economics of public policy. In Public Economics we study the role of the government in the economy. Broadly, we want to know the answers to four core questions:
+    \begin{enumerate}
+        \item When should the government intervene in the economy?
+        \item How should the government intervene in the economy?
+        \item What are the effects of government intervention in the economy?
+        \item Why do governments choose to intervene in the way that they do?
+    \end{enumerate}
+    We will explore these questions through the lens of a number of key policy areas, including taxation, redistribution and social insurance, and the provision of public goods and services.
+\end{enumerate}
+
+\subsection*{Prerequisites:}
+The prerequisites are UN3211, UN3213, and UN3412, all with grades of B+ or higher.
+
+\subsection*{Class Materials:}
+
+PDFs of all materials (lecture slides, problem sets, solutions, etc.) will be made available on the course's Courseworks page. I will also send weekly emails with announcements. In addition, the source code for the syllabus and lecture slides will be made available on GitHub at \href{https://github.com/michaelcbest/un3902-economics-of-public-policy-seminar}{\nolinkurl{https://github.com/michaelcbest/un3902-economics-of-public-policy-seminar}}. If you find typos or have questions/comments on the materials, please open an issue on GitHub or email me.
+
+\subsection*{In-class Activities:}
+Our meetings will be a combination of lecture and discussion. During the lecture portion, I will use slides and I will write notes on the board. I will post the slides in advance of the lecture. Note that the slides alone do not summarize the lecture. Attendance is required, as is arriving prepared to discuss the assigned readings or the problem sets that are due.
+
+\subsection*{Text and Readings:}
+We will read selected chapters from \textit{Public Finance and Public Policy
+} by Jonathan Gruber (7th edition, 2022, although earlier editions are fine). This book is available for purchase online and in bookstores. It is also available as an \href{https://ebookcentral.proquest.com/lib/columbia/detail.action?docID=6925765}{e-book through Columbia University Libraries}. In addition, some weeks we will cover academic papers that I will post on courseworks.
+
+\subsection*{Grading:}
+\begin{itemize}
+    \setlength{\itemsep}{0em}
+    \item Class participation/attendance [10\%]
+    \item Problem sets [20\%]
+    \item Midterm exam [30\%]
+    \item Research proposal/paper [40\%]
+\end{itemize}
+
+\subsection*{Academic Integrity:}
+You are expected to adhere to Columbia University's Academic Integrity Policy, which can be found at \href{https://www.college.columbia.edu/academics/academicintegrity}{\nolinkurl{https://www.college.columbia.edu/academics/academicintegrity}}. The exam will be closed book. You are not allowed to communicate with others during the exam, nor consult with any books, notes or devices. Students suspected of academic dishonesty will be reported to the University's Center for Student Success and Intervention.
+
+This does not mean that you cannot discuss the course material with your classmates. In fact, I encourage you to do so. However, all work that you submit must be your own. This also does not mean that you cannot use generative AI tools to help you in your work. In fact, I encourage you to do so, particularly for writing code when working with data. However, you remain solely responsible for the work that you submit and so if I ask you questions about your work, you must be able to answer them. This means checking all generative AI outputs carefully to make sure you understand them and that they are correct. 
+
+If you have any questions about what constitutes academic dishonesty, please ask me. 
+
+\section*{Course Outline:}
+\textit{(subject to revision depending partially on enrollment size)}
+
+\subsection*{Week 1 -- January 21: Introduction}
+\begin{itemize}
+    \setlength{\itemsep}{0em}
+    \item Course overview
+    \item What is public economics?
+    \item Readings:
+    \begin{itemize}
+        \item Gruber (2022), Chapter 1
+    \end{itemize}
+\end{itemize}
+
+\subsection*{Week 2 -- January 28: Empirical Tools in Public Economics}
+\begin{itemize}
+    \setlength{\itemsep}{0em}
+    \item Introduction to empirical methods
+    \item Readings:
+    \begin{itemize}
+        \item Gruber (2022), Chapter 3
+        \item Angrist and Pischke, 2009, \textit{Mostly Harmless Econometrics: An Empiricist's Companion}, Chapter 1
+        \item Angrist and Pischke (2009), Chapter 2
+        \item John Cochrane, 2005, \href{https://static1.squarespace.com/static/5e6033a4ea02d801f37e15bb/t/5eda74919c44fa5f87452697/1591374993570/phd_paper_writing.pdf}{Writing Tips for Ph.D Students}, especially section 2 on writing.
+    \end{itemize}
+    \item Problem set 1 assigned
+\end{itemize}
+
+\subsection*{Week 3 -- February 4: Externalities and Public Goods I}
+\begin{itemize}
+    \setlength{\itemsep}{0em}
+    \item Externalities and public policy
+    \item Readings:
+    \begin{itemize}
+        \item Gruber (2022), Chapter 5
+        \item Gruber (2022), Chapter 6
+        \item \href{https://www.nber.org/papers/w33584}{Cody Cook, Aboudy Kreidieh, Shoshana Vasserman, Hunt Allcott, Neha Arora, Freek van Sambeek, Andrew Tomkins \& Eray Turkel, \textit{The Short-Run Effects of Congestion Pricing in New York City}} NBER Working Paper \#33584, 2025.
+    \end{itemize}
+    \item Data resources:
+    \begin{itemize}
+    \setlength{\itemsep}{0em}
+        \item \href{https://www.congestion-pricing-tracker.com/}{\nolinkurl{https://www.congestion-pricing-tracker.com/}} Congestion Pricing Tracker.
+        \item \href{https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page}{\nolinkurl{https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page}} NYC Taxi and Limousine Commission Trip Record Data.
+        \item \href{https://c2smart.engineering.nyu.edu/manhattan-congestion-tracker/}{\nolinkurl{https://c2smart.engineering.nyu.edu/manhattan-congestion-tracker/}} Manhattan Congestion Tracker.
+        \item \href{https://data.cityofnewyork.us/Transportation/Automated-Traffic-Volume-Counts/7ym2-wayt/about_data}{\nolinkurl{https://data.cityofnewyork.us/Transportation/Automated-Traffic-Volume-Counts/7ym2-wayt/about_data}} NYC Automated Traffic Volume Counts.
+    \end{itemize} 
+\end{itemize}
+
+\subsection*{Week 4 -- February 11: Externalities and Public Goods II}
+\begin{itemize}
+    \setlength{\itemsep}{0em}
+    \item Public goods provision and fiscal federalism.
+    \item Readings:
+    \begin{itemize}
+        \item Gruber (2022), Chapter 7
+        \item Gruber (2022), Chapter 10
+    \end{itemize}
+    \item Problem set 1 due
+    \item Problem set 2 assigned
+\end{itemize}
+
+\subsection*{Week 5 -- February 18: Social Insurance and Redistribution I}
+\begin{itemize}
+    \setlength{\itemsep}{0em}
+    \item Social insurance and redistribution: health
+    \item Readings:
+    \begin{itemize}
+        \item Gruber (2022), Chapter 15
+        \item Gruber (2022), Chapter 16
+    \end{itemize}
+\end{itemize}
+
+\subsection*{Week 6 -- February 25: Social Insurance and Redistribution II}
+\begin{itemize}
+    \setlength{\itemsep}{0em}
+    \item Social insurance and redistribution: income/wealth inequality and equality of opportunity
+    \item Readings:
+    \begin{itemize}
+        \item Gruber (2022), Chapter 17
+        \item Chetty et al Atlas paper
+    \end{itemize}
+        \item Problem set 2 due
+    \item Problem set 3 assigned
+\end{itemize}
+
+\subsection*{Week 7 -- March 3: Taxation I}
+\begin{itemize}
+    \setlength{\itemsep}{0em}
+    \item Taxation: theory and practice
+    \item Readings:
+    \begin{itemize}
+        \item Gruber (2022), Chapter 18
+        \item Gruber (2022), Chapter 19
+        \item Gruber (2022), Chapter 20
+    \end{itemize}
+\end{itemize}
+
+\subsection*{Week 8 -- March 10: Midterm Exam}
+\begin{itemize}
+    \item Problem set 3 due
+\end{itemize}
+
+\subsection*{Week 9 -- March 24: Taxation II}
+\begin{itemize}
+    \setlength{\itemsep}{0em}
+    \item Taxation: tax evasion and taxation in low- and middle-income countries
+    \item Readings:
+    \begin{itemize}
+        \item Gruber (2022), Chapter 21
+        \item Gruber (2022), Chapter 22
+    \end{itemize}
+\end{itemize}
+
+\subsection*{Week 10 -- March 31: Student Presentations and Discussants I}
+
+\begin{itemize}
+    \setlength{\itemsep}{0em}
+    \item Students will present their research proposal ideas.
+    \item Each student will be assigned a discussant who will provide feedback on the presentation and the written proposal/paper.
+\end{itemize}
+
+\subsection*{Week 11 -- April 7: Student Presentations and Discussants II}
+\begin{itemize}
+    \setlength{\itemsep}{0em}
+    \item Students will present their research proposal ideas.
+    \item Each student will be assigned a discussant who will provide feedback on the presentation and the written proposal/paper.
+\end{itemize}
+
+\subsection*{Week 12 -- April 14: Student Presentations and Discussants III}
+\begin{itemize}
+    \setlength{\itemsep}{0em}
+    \item Students will present their research proposal ideas.
+    \item Each student will be assigned a discussant who will provide feedback on the presentation and the written proposal/paper.
+\end{itemize}
+
+\subsection*{Week 13 -- April 21: Student Final Presentations I}
+
+\subsection*{Week 14 -- April 28: Student Final Presentations II}
+
+\end{document}
