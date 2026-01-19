@@ -1,0 +1,10 @@
+\babel@toc {english}{}\relax 
+\beamer@sectionintoc {1}{Introduction}{2}{0}{1}
+\beamer@sectionintoc {2}{Four Questions in Public Finance}{22}{0}{2}
+\beamer@subsectionintoc {2}{1}{1. When should the government intervene?}{22}{0}{2}
+\beamer@subsectionintoc {2}{2}{2. How the Government Might Intervene}{31}{0}{2}
+\beamer@subsectionintoc {2}{3}{3. Effects of Interventions}{36}{0}{2}
+\beamer@subsectionintoc {2}{4}{4. Why Do Governments Intervene the Way They Do?}{40}{0}{2}
+\beamer@sectionintoc {3}{The Size and Role of Government}{43}{0}{3}
+\beamer@sectionintoc {4}{Distribution of Revenue Sources}{68}{0}{4}
+\beamer@sectionintoc {5}{Regulatory Role}{77}{0}{5}

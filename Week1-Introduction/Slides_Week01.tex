@@ -1,0 +1,707 @@
+\documentclass[notes=show,aspectratio=169]{beamer}
+\renewcommand{\rmdefault}{cmr}
+\usepackage{helvet}
+\renewcommand{\ttdefault}{cmtt}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+\usepackage{amsbsy}
+\usepackage{amstext}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage[english]{babel}
+\hypersetup{unicode=true,breaklinks=false,pdfborder={0 0 0},pdfborderstyle={},colorlinks=true,linkcolor=blue, citecolor=blue, urlcolor=blue}
+\usepackage{comment}
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
+% this default might be overridden by plain title style
+\newcommand\makebeamertitle{\frame{\maketitle}}%
+% (ERT) argument for the TOC
+\AtBeginDocument{%
+  \let\origtableofcontents=\tableofcontents
+  \def\tableofcontents{\@ifnextchar[{\origtableofcontents}{\gobbletableofcontents}}
+  \def\gobbletableofcontents#1{\origtableofcontents}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\usepackage{ifthen}
+\usepackage{multirow,bigstrut}
+\usepackage{tikz}
+\usetikzlibrary{patterns,decorations.pathreplacing,shapes}
+\usetikzlibrary{arrows}
+\usepackage{rotating}
+\usepackage{pdflscape}
+\usepackage{makecell}
+\usepackage{graphicx}
+\usepackage{animate}
+\usepackage{pifont}
+\usepackage{booktabs}
+\usepackage{relsize}
+\usepackage{tcolorbox}
+\usepackage{mathtools}
+\usepackage{amsbsy}
+\usepackage{amsmath}
+%\usepackage{adjustbox}
+%\usepackage{txfonts}
+%\usepackage{handoutWithNotes}
+%\pgfpagesuselayout{3 on 1 with notes}[a4paper,border shrink=5mm]
+
+% FOOTLINE - PAGE NUMBER RIGHT
+\defbeamertemplate*{footline}{guildford foot theme}
+{
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.7\paperwidth,ht=1cm,dp=0ex,left]{}%
+    {
+    \insertsectionnavigationhorizontal{.5\paperwidth}{}{}
+    }
+ \end{beamercolorbox}
+ \begin{beamercolorbox}[wd=0.31\paperwidth,ht=1cm,dp=0ex,right]{}%
+{\tiny
+\insertframenumber{} / \inserttotalframenumber\hspace*{5ex}
+}
+ \end{beamercolorbox}}%
+  \vskip5pt%
+}
+
+\beamertemplatenavigationsymbolsempty
+\usefonttheme{professionalfonts}
+\usecolortheme[RGB={0,0,125}]{structure}
+\setbeamersize{ text margin left=10px}
+\definecolor{newblue}{rgb}{0,0,0.6}
+\setbeamercolor{alerted text}{fg=newblue}
+\setbeamertemplate{frametitle}[default][center]
+
+%{\bfseries\insertframetitle\par}
+
+\RequirePackage{ifthen}
+
+\newboolean{sectiontoc}
+\setboolean{sectiontoc}{true} % default to true
+
+\AtBeginSubsection[]
+{
+  \ifthenelse{\boolean{sectiontoc}}{
+  \begin{frame}[plain]
+    \frametitle{Outline}
+    \tableofcontents[sectionstyle=show/hide,subsectionstyle=show/shaded/hide]
+  \end{frame}
+}
+}
+
+\AtBeginSection[]
+{
+  \ifthenelse{\boolean{sectiontoc}}{
+  \begin{frame}[noframenumbering,plain]
+    \frametitle{Outline}
+    \tableofcontents[sectionstyle=show/shaded,subsectionstyle=show/hide/hide]
+  \end{frame}
+}
+}
+
+\newcommand{\toclesssection}[1]{
+   \setboolean{sectiontoc}{false}
+   \section{#1}
+   \setboolean{sectiontoc}{true}
+}
+
+\newcommand{\toclesssubsection}[1]{
+   \setboolean{sectiontoc}{false}
+   \subsection{#1}
+   \setboolean{sectiontoc}{true}
+}
+
+\setbeameroption{hide notes}
+
+\newcommand{\ShortNameSection}[2][]{
+   \setboolean{sectiontoc}{false}
+   \section[#1]{#2}
+   \setboolean{sectiontoc}{true}
+}
+
+\newcommand{\light}[1]{\textcolor{gray}{#1}}
+
+\makeatother
+
+\begin{document}
+
+\title{\setcounter{framenumber}{0}
+\thispagestyle{empty} \textit{UN3902: Economics of Public Policy Seminar} \\ Week 1: Introduction}
+\author{Michael Carlos Best}
+\date{January 21, 2026}
+
+\makebeamertitle
+
+\section{Introduction}
+
+\begin{frame}
+\frametitle{Welcome to UN3902: Economics of Public Policy Seminar}
+\begin{itemize}
+    \setlength{\itemsep}{2em}
+    \item<1-> Instructor: Michael Carlos Best
+    \item<2-> Email: \href{mailto:michael.best@columbia.edu}{michael.best@columbia.edu}
+    \item<3-> Office Hours: Tuesdays 5:00--5:30 PM, \& Thursdays 1:15--2 PM; 1112 IAB
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Why are We Here?}
+\begin{enumerate}
+    \setlength{\itemsep}{1em}
+    \item<1-> To learn how to do \textit{research} in public economics.
+    \begin{itemize}
+        \setlength{\itemsep}{1em}
+        \item<2-> Formulate research questions.
+        \item<3-> Design empirical strategies to answer those questions.
+        \item<4-> Implement empirical strategies using real-world data.
+        \item<5-> Write up the research clearly and concisely.
+    \end{itemize}
+    \item<6-> To learn about some key issues in the economics of public policy.
+    \begin{itemize}
+        \setlength{\itemsep}{1em}
+        \item<7-> NB this is \textit{not} a lecture-style class. Reading and regurgitating the textbook won't help you.
+        \item<8-> The textbook and the lectures are resources to inspire you to do your own research.
+    \end{itemize}
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle{Course Overview: Schedule}
+\begin{enumerate}
+    \setlength{\itemsep}{1em}
+    \item 1/21: Introduction to Public Economics
+    \item 1/28: Empirical Tools
+    \item 2/4: Externalities \& Public Goods II: Externalities
+    \item 2/11: Externalities \& Public Goods II: Fiscal Federalism
+    \item 2/18: Social Insurance \& Redistribution I: Health
+    \item 2/25: Social Insurance \& Redistribution II: Inequality
+    \item 3/3: Taxation I: Theory \& Taxes in High-income Countries
+    \item 3/10: Midterm Exam
+\end{enumerate}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Course Overview: Schedule (cont.)}
+\begin{enumerate}
+    \setlength{\itemsep}{1em}
+    \item[*] 3/17: Spring Break (No Class)
+    \item[9] 3/24: Taxation II: Taxation II: Tax Evasion and Taxes in Low- and Middle-income Countries
+    \item[10] 3/31: Student preliminary presentations and Discussants I
+    \item[11] 4/7: Student preliminary presentations and Discussants II
+    \item[12] 4/14: Student preliminary presentations and Discussants III
+    \item[13] 4/21: Student final presentations I
+    \item[14] 4/28: Student final presentations II
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle{Course Overview: Grading}
+\begin{itemize}
+\item<1-> Your grades will have 3 elements:
+\end{itemize}
+\vspace{1.5em}
+\begin{enumerate}
+    \setlength{\itemsep}{1em}
+    \item<1-> Problem sets: Average grade on your 3 problem sets.
+    \item<1-> Midterm Exam grade.
+    \item<1-> Research Paper grade.
+\end{enumerate}
+\vspace{1.5em}
+\begin{itemize}
+\item<2-> Final Grade = 0.20 $\times$ PS + 0.20 $\times$ Midterm + 0.60 $\times$ Research Paper
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Course Overview: Textbook and Readings}
+\begin{itemize}
+\setlength{\itemsep}{1em}
+\item<1-> Textbook: Gruber, Jonathan. 2022. \textit{Public Finance and Public Policy}, 7th edition. It is also available as an \href{https://ebookcentral.proquest.com/lib/columbia/detail.action?docID=6925765}{e-book through Columbia University Libraries}.
+\item<2-> Academic papers I'll post on courseworks.
+\item<2-> Each week we'll also look at some datasets you might use for your research project.
+\item<3-> I'll post slides/problem sets on Courseworks.
+\item<4-> I'll post source code for syllabus/lecture slides at \href{https://github.com/michaelcbest/un3902-economics-of-public-policy-seminar}{\nolinkurl{https://github.com/michaelcbest/un3902-economics-of-public-policy-seminar}}
+\end{itemize}
+\end{frame}
+
+\toclesssection{Four Questions in Public Finance}
+
+\subsection{1. When should the government intervene?}
+
+\begin{frame}
+\frametitle{The Four Questions of Public Finance}
+Public Finance is the study of the role of the \textit{government} in the \textit{economy}. 
+
+It focuses on four key questions:
+\begin{enumerate}
+    \setlength{\itemsep}{1em}
+    \item When should the government intervene in the economy?
+    \item How might the government intervene in the economy?
+    \item What are the effects of government interventions on economic outcomes?
+    \item Why do governments choose to intervene in the way that they do?
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle{When the Government Should Intervene in the Economy? 1}
+\begin{itemize}
+    \setlength{\itemsep}{1em}
+    \item The fundamental lesson of basic microeconomics is that, in most cases, the competitive market equilibrium is the most efficient outcome for society.
+    \item Economics generally presumes that markets deliver efficient outcomes, so why should government do anything?
+    \item There are two reasons governments may want to intervene in market economies:
+\begin{enumerate}
+    \setlength{\itemsep}{1em}
+    \item Market failures
+    \item Redistribution
+\end{enumerate}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{When the Government Should Intervene in the Economy? 2}
+\begin{itemize}
+\setlength{\itemsep}{1em}
+\item \textbf{Market failure}: A problem that causes the market economy to deliver an outcome that does not maximize efficiency.
+\item An example of a market failure occurs in the health insurance market.
+\begin{itemize}
+    \setlength{\itemsep}{1em}
+    \item An uninsured man may choose not to get a flu shot, which increases the risk of both himself and others getting the flu.
+    \item When deciding whether to get a flu shot, the man considers the cost only to himself, not to others.
+\end{itemize}
+\item This is an example of a \textbf{negative externality}, whereby the man's decision imposes on others costs that he does not bear.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{APPLICATION 1: Modern Measles Epidemic}
+\begin{itemize}
+\setlength{\itemsep}{1em}
+\item Measles vaccine was introduced in 1963, and measles cases had become relatively rare in the United States by the 1980s.
+\item \textbf{1989--1991}: Huge resurgence in measles.
+\item One-third of all of the new cases were in Los Angeles, Chicago, and Houston, and one-half of those children who contracted measles had not been immunized, even though many had regular contact with a physician.
+\item This is a negative externality because the unimmunized children raised the risk that these other children would become sick, without bearing any of the costs of raising this risk.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{APPLICATION 2: Modern Measles Epidemic}
+\setlength{\itemsep}{1em}
+\begin{itemize}
+\item The federal government responded to this health crisis in the early 1990s:
+\begin{enumerate}
+    \setlength{\itemsep}{1em}
+\item Encouraged parents to immunize their children.
+\item Paid for the vaccines for low-income families.
+\end{enumerate}
+\item Impressive results:
+\begin{enumerate}
+    \setlength{\itemsep}{1em}
+\item Immunization rates never higher than 70\% prior to outbreak.
+\item Rose to 90\% by 1995.
+\end{enumerate}
+\item Government intervention clearly reduced this negative externality.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{APPLICATION 3: Modern Measles Epidemic}
+\begin{itemize}
+    \setlength{\itemsep}{1em}
+\item In 2014, there were 644 cases in 27 states.
+\item Largest outbreak in Disneyland.
+\item The reason was the refusal of a large number of parents to immunize their children due to the now discredited ``link'' between vaccinations and autism.
+\item The ``anti-vaccine'' movement has taken root, resulting in large pockets of nonimmunized children in some areas.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{APPLICATION 4: Modern Measles Epidemic}
+\includegraphics[width = 0.92\textwidth]{Measles1.png}
+\includegraphics[width = 0.92\textwidth]{Measles2.png}
+\begin{itemize}
+\item Does government policy need to go further and require children to be vaccinated?
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{When Should the Government Intervene in the Economy?}
+\begin{itemize}
+\setlength{\itemsep}{1em}
+\item Even if the market is well functioning, an efficient outcome is not necessarily socially desirable.
+\item \textbf{Redistribution} is a second reason for government intervention.
+\item \textbf{Redistribution}: The shifting of resources from some groups in society to others.
+\item Redistribution usually entails efficiency loss.
+\item This leads to the \textbf{equity-efficiency trade-off}.
+\begin{itemize}
+    \item Societies typically have to choose between pies that are larger and pies that are more equally distributed.
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\subsection{2. How the Government Might Intervene}
+
+\begin{frame}
+\frametitle{How the Government Might Intervene 1}
+\begin{itemize}
+\setlength{\itemsep}{1em}
+\item \textbf{Tax or Subsidize Private Sale or Purchase}
+\begin{itemize}
+\item Use the price mechanism, changing the price of a good to encourage or discourage use.
+\end{itemize}
+\item Taxes raise the price for private sales or purchases of goods that are overproduced.
+\item Subsidies lower the price for private sales or purchases of goods that are underproduced.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{How the Government Might Intervene 2}
+\begin{itemize}
+\setlength{\itemsep}{1em}
+\item<1-> \textbf{Restrict or Mandate Private Sale or Purchase}
+\begin{itemize}
+\setlength{\itemsep}{1em}
+\item<1-> Restrict private sale or purchase of goods that are overproduced or 
+\item<1-> require private purchase of goods that are underproduced.
+\end{itemize}
+\item<2-> \textbf{Public Provision}
+\begin{itemize}
+\item<2-> The government can provide the good directly.
+\end{itemize}
+\item<3-> \textbf{Public Financing of Private Provision}
+\begin{itemize}
+\item<3-> Governments pay; private companies produce.
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\subsection{3. Effects of Interventions}
+
+\begin{frame}
+\frametitle{What Are the Effects of Interventions on Economic Outcomes?}
+Interventions have \textbf{direct} and \textbf{indirect} effects.
+\vspace{1em}
+\begin{itemize}
+\setlength{\itemsep}{1em}
+\item<1-> \textbf{Direct effects}: The effects of government interventions that would be predicted if individuals did not change their behavior in response to their interventions.
+\vspace{1em}
+\begin{itemize}
+\item<1-> With 49 million uninsured, providing universal health insurance covers 49 million people.
+\end{itemize}
+\item<2-> \textbf{Indirect effects}: The effects of government intervention that arise only because individuals change their behavior in response to the interventions.
+\vspace{1em}
+\begin{itemize}
+\item<2-> Providing free insurance creates an incentive to drop private plans and enroll in the government plan, adding significant numbers of people.
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{APPLICATION: The CBO: Government Scorekeepers}
+\begin{itemize}
+\setlength{\itemsep}{1.5em}
+\item The methods and results derived from empirical economics are central to the development of public policy at all levels of government.
+\item The Congressional Budget Office (CBO) has the mission to provide Congress with objective, timely, nonpartisan analyses needed for economic and budget decisions.
+\item CBO ``scores'' policy proposals by estimating their budget implications.
+\item CBO scores can determine the fate of legislation.
+\end{itemize}
+\end{frame}
+
+\subsection{4. Why Do Governments Intervene the Way They Do?}
+
+\begin{frame}
+\frametitle{Why Do Governments Intervene in the Way That They Do?}
+\begin{itemize}
+\setlength{\itemsep}{1.5em}
+\item Governments do not always choose efficient or socially desirable outcomes.
+\item Governments face enormous challenges in figuring out what the public wants and how to choose policies that match those wants.
+\item \textbf{Political economy}: The theory of how the political process produces decisions that affect individuals and the economy.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Lean by Doing: Practice Question 1}
+Which of the following is \textbf{not} one of the four key questions of public finance?
+\begin{enumerate}
+\setlength{\itemsep}{1.25em}
+    \item How might the government intervene in the economy?
+    \item When should the government intervene in the economy?
+    \item Who should the government intervene for?
+    \item What are the effects of government interventions on economic outcomes?
+\end{enumerate}
+\end{frame}
+
+\section{The Size and Role of Government}
+
+\begin{frame}
+\frametitle{Government as Part of the Economy}
+\begin{itemize}
+\setlength{\itemsep}{1.25em}
+\item<1-> The government is a huge part of the economy.
+\item<2-> Government spending represents a large sector of the economy in the United States and around the world.
+\item<3-> This spending is financed with taxes or with debt, and these affect every facet of the economy.
+\item<4-> Many sectors of the economy are also directly affected by regulation.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{The Size and Growth of Government: Federal Spending as a Percent of GDP, 1930--2019}
+\begin{columns}
+\begin{column}{0.3\textwidth}
+\begin{itemize}
+\item<1-> In 1930, the federal government's activity accounted for only about 3.4\% of GDP.
+\item<2-> From the 1950s through the present, the size of government has averaged around 20\% of GDP, although it grows during recessions.
+\end{itemize}
+\end{column}
+\begin{column}{0.7\textwidth}
+\centering
+\includegraphics[width=\textwidth]{fig1-1.png}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\frametitle{The Size and Growth of Government: Total Government Spending Across Developed Nations, 1960--2019}
+\begin{columns}
+\begin{column}{0.3\textwidth}
+\begin{itemize}
+\item<1-> In 1960, the US was in line with the average of the OECD in terms of government spending / GDP.
+\item<2-> Government growth was much faster in other OECD nations in the 60s and 70s.
+\item<3-> All have now surpassed the United States.
+\end{itemize}
+\end{column}
+\begin{column}{0.7\textwidth}
+\centering
+\includegraphics[width=\textwidth]{fig1-2.png}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\frametitle{Decentralization}
+\begin{itemize}
+\setlength{\itemsep}{1.25em}
+\item<1-> A key feature of governments is the degree of centralization across local and national government units.
+\item<1-> \textbf{Centralization}: The extent to which spending is concentrated at higher (federal) levels or lower (state and local) levels.
+\item<2-> In the United States, state and local spending is about one-third of total government spending.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Federal Versus State/Local Government Spending, 2019}
+\begin{columns}
+\begin{column}{0.45\textwidth}
+\begin{itemize}
+\item The federal government provides the majority of government spending in the United States, but state and local spending amounts to roughly 40\% of total government spending and more than 17\% of GDP.
+\end{itemize}
+\end{column}
+\begin{column}{0.55\textwidth}
+\centering
+\includegraphics[width=\textwidth]{fig1-3.png}
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}
+\frametitle{Spending, Taxes, Deficits, and Debts}
+Governments have a budget just like households do.
+\vspace{1em}
+\begin{itemize}
+\setlength{\itemsep}{1.4em}
+\item<1-> If revenues exceed spending, there is a budget surplus.
+\item<1-> If revenues fall short of spending, there is a budget deficit.
+\vspace{1em}
+\begin{itemize}
+\item<1-> Each dollar of government deficit adds to the stock of government debt. That is, the deficit measures the year-to-year shortfall of revenues relative to spending.
+\end{itemize}
+\item<2-> The debt measures the accumulation of past deficits over time.
+\vspace{1em}
+\begin{itemize}
+\setlength{\itemsep}{1.25em}
+    \item<2-> This government debt must be financed by borrowing.
+    \item<2-> Governments can borrow from their own citizens, from citizens of other municipalities, or from other nations.
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Spending, Taxes, Deficits, and Debts: Federal Revenues and Expenditures, 1930--2019}
+\begin{itemize}
+\item Except for an enormous increase in spending without increased taxation in World War II (1941--45), the federal budget was close to balanced until the late 1960s.
+\end{itemize}
+\centering
+\includegraphics[height=0.75\textheight]{fig1-4a.png}
+\end{frame}
+
+\begin{frame}
+\frametitle{Spending, Taxes, Deficits, and Debts: Federal Surplus/Deficit, 1930--2019}
+\begin{itemize}
+\item From the mid-1970s through the mid-1990s, there was a relatively large deficit, which shrank dramatically in the 1990s.
+\item The United States was back in deficit by the early twenty-first century, with the deficit becoming very large in the late 2000s.
+\end{itemize}
+\centering
+\includegraphics[height=0.65\textheight]{fig1-4b.png}
+\end{frame}
+
+\begin{frame}
+\frametitle{Spending, Taxes, Deficits, and Debts: Federal Debt, 1930-2019}
+\begin{itemize}
+\item The stock of debt rose sharply during World War II, then fell steadily until large deficits caused it to rise in the 1980s.
+\item The debt has risen considerably since, with a brief pause in the mid- to late 1990s, and now is over 103\% of GDP.
+\end{itemize}
+\centering
+\includegraphics[height=0.75\textheight]{fig1-4c.png}
+\end{frame}
+
+\begin{frame}
+\frametitle{Spending, Taxes, Deficits, \& Debts: Debt in OECD in 2019}
+\begin{itemize}
+\item The United States has higher debt levels than most other comparable nations, but its load remains well below that of others.
+\end{itemize}
+\centering
+\includegraphics[height=0.9\textheight]{fig1-5.png}
+\end{frame}
+
+\begin{frame}
+\frametitle{Spending, Taxes, Deficits, and Debts: State and Local Government Receipts, Expenditures, and Surplus, 1947--2019}
+\begin{itemize}
+\item Unlike the federal government, state and local governments' budgets are typically in surplus: there is very little deficit overall across the state and local governments in any year.
+\end{itemize}
+\centering
+\includegraphics[height=0.74\textheight]{fig1-6.png}
+\end{frame}
+
+\begin{frame}
+\frametitle{Distribution of Spending}
+\begin{itemize}
+\setlength{\itemsep}{1.25em}
+\item<1-> \textbf{Public goods}: Goods for which the investment of any one individual benefits everyone in a larger group.
+\vspace{1em}
+\begin{itemize}
+\setlength{\itemsep}{1.25em}
+\item<1-> Example: Defense spending
+\end{itemize}
+\item<2-> \textbf{Social insurance programs}: Government provision of insurance against adverse events to address failures in the private insurance market.
+\vspace{1em}
+\begin{itemize}
+\setlength{\itemsep}{1.25em}
+\item<2-> Example: Health insurance
+\end{itemize}
+\setlength{\itemsep}{1.25em}
+\item<3-> Over time, spending has shifted dramatically toward social insurance, especially health insurance.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Distribution of Federal Spending, 1960 and 2019}
+\begin{itemize}
+\item In 1960, nearly half of federal government spending was on national defense.
+\item Today, however, defense has fallen to less than 1/5 of the federal budget.
+\item The Social Security program is the single largest government program in the United States today.
+\end{itemize}
+\centering
+\includegraphics[height=0.7\textheight]{fig1-7a.png}
+\end{frame}
+
+\begin{frame}
+\frametitle{Distribution of State/Local Spending, 1960 and 2019}
+\begin{itemize}
+\item Education, welfare, and public safety account for almost 40\% of state and local government spending.
+\item The major development has been the parallel growth in health care spending and the reduction in education spending.
+\end{itemize}
+\centering
+\includegraphics[height=0.75\textheight]{fig1-7b.png}
+\end{frame}
+
+\section{Distribution of Revenue Sources}
+
+\begin{frame}
+\frametitle{Distribution of Revenue Sources}
+\begin{itemize}
+\setlength{\itemsep}{1.25em}
+\item<1-> \textbf{Individual income tax}: A tax levied on the income of U.S. residents.
+\item<2-> \textbf{Corporate tax revenues}: The funds raised by taxing the incomes of businesses in the United States.
+\item<3-> \textbf{Excise taxes}: Taxes levied on the consumption of certain goods such as tobacco, alcohol, or gasoline.
+\item<4-> \textbf{Payroll taxes}: The taxes on worker earnings that fund social insurance programs.
+\item<5-> The major shift over time at the federal level has been the rapid shrinking of corporate tax revenues which has been largely replaced by the growth of revenue from payroll taxes.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Distribution of Federal Revenue Sources, 1960 and 2019}
+\begin{itemize}
+\item<1-> Corporate tax revenues once provided almost 25\% of federal government revenue; they now provide only about 12\%.
+\item<2-> Payroll taxes have grown from one-sixth of federal revenues to well over one-third.
+\end{itemize}
+\centering
+\includegraphics[height=0.8\textheight]{fig1-8a.png}
+\end{frame}
+
+\begin{frame}
+\frametitle{Distribution of State/Local Revenue Sources, 1960 and 2019}
+\begin{itemize}
+\item Over the past 40 years, the substantial drop in revenue from property taxes has been made up for by rising federal grants and income taxes.
+\end{itemize}
+\centering
+\includegraphics[height=0.9\textheight]{fig1-8b.png}
+\end{frame}
+
+\section{Regulatory Role}
+
+\begin{frame}
+\frametitle{Regulatory Role of the Government}
+\begin{itemize}
+\setlength{\itemsep}{1.25em}
+\item The government regulates a wide range of economic and social activities.
+\item \textbf{Food and Drug Administration (FDA)}: food, cosmetics, drugs, and medical devices.
+\item \textbf{Occupational Safety and Health Administration (OSHA)}: workplace safety.
+\item \textbf{Federal Communications Commission (FCC)}: radio, television, wire, satellite, and cable.
+\item \textbf{Environmental Protection Agency (EPA)}: pollution of air, water, and food supplies.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Learn by Doing: Practice Question 2}
+\textbf{In 2019, which of these types of taxes was a major component of BOTH federal revenue and state/local revenue?}
+\vspace{1em}
+\begin{enumerate}
+\setlength{\itemsep}{1em}
+\item Excise taxes
+\item Income taxes
+\item Property taxes
+\item Sales taxes
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle{Practice Question 2 Answer}
+\textbf{In 2019, which of these types of taxes was a major component of BOTH federal revenue and state/local revenue?}
+\vspace{1em}
+\\
+\textbf{Answer: Income taxes}
+\vspace{1em}
+\begin{itemize}
+\setlength{\itemsep}{1em}
+\item Excise taxes are not a major revenue source for either level
+\item Income taxes are a major component of both federal and state/local revenue
+\item Property taxes are primarily state/local
+\item Sales taxes are primarily state/local
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Conclusion}
+\begin{itemize}
+\setlength{\itemsep}{1.5em}
+    \item Government plays a central role in the lives of all Americans.
+    \item There is ongoing disagreement about whether that role should expand, stay the same, or contract.
+    \item The facts and arguments we just looked at will provide a backdrop as you begin your research into public finance issues!
+\end{itemize}
+\end{frame}
+
+
+\end{document}
