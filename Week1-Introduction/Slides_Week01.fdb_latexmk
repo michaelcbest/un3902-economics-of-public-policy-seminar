@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1768855855.0602 "/Users/michaelbest/Documents/GitHub/un3902-economics-of-public-policy-seminar/Week1-Introduction/Slides_Week01.tex" "Slides_Week01.pdf" "Slides_Week01" 1768855858.27536 0
-  "/Users/michaelbest/Documents/GitHub/un3902-economics-of-public-policy-seminar/Week1-Introduction/Slides_Week01.tex" 1768855854.85177 26784 afd998a0dbd3cb600cd8e58544d1777f ""
+["pdflatex"] 1769285155.60106 "/Users/michaelbest/Documents/GitHub/un3902-economics-of-public-policy-seminar/Week1-Introduction/Slides_Week01.tex" "Slides_Week01.pdf" "Slides_Week01" 1769285158.29969 0
+  "/Users/michaelbest/Documents/GitHub/un3902-economics-of-public-policy-seminar/Week1-Introduction/Slides_Week01.tex" 1769285155.38002 26771 190596bfa8428cfdfc365f797d978f4f ""
   "/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1136849721 2971 def0b6c1f0b107b3b936def894055589 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -279,11 +279,11 @@
   "/usr/local/texlive/2024/texmf.cnf" 1710266656 577 e590dabc9e28c5b61546e15f63eebcdf ""
   "Measles1.png" 1768442392.82322 186597 0f753759b6759862151508509377fc5b ""
   "Measles2.png" 1768442437.73423 995845 e1c1b5657a58d2ea922924beb4254c4e ""
-  "Slides_Week01.aux" 1768855858.17397 10474 cd8c6ccca6cbe140c694bc9cde1b6c93 "pdflatex"
-  "Slides_Week01.nav" 1768855858.17583 6998 111b66fe03c90be3738584f671fdc7dd "pdflatex"
-  "Slides_Week01.out" 1768855858.17553 1914 d9e7b06e7d722a9e2dcb42e638161008 "pdflatex"
-  "Slides_Week01.tex" 1768855854.85177 26784 afd998a0dbd3cb600cd8e58544d1777f ""
-  "Slides_Week01.toc" 1768855858.17591 659 02bcd23ed56ee1381a6bab13c4016ead "pdflatex"
+  "Slides_Week01.aux" 1769285158.20283 10474 cd8c6ccca6cbe140c694bc9cde1b6c93 "pdflatex"
+  "Slides_Week01.nav" 1769285158.2043 6998 111b66fe03c90be3738584f671fdc7dd "pdflatex"
+  "Slides_Week01.out" 1769285158.20408 1914 d9e7b06e7d722a9e2dcb42e638161008 "pdflatex"
+  "Slides_Week01.tex" 1769285155.38002 26771 190596bfa8428cfdfc365f797d978f4f ""
+  "Slides_Week01.toc" 1769285158.20435 659 02bcd23ed56ee1381a6bab13c4016ead "pdflatex"
   "fig1-1.png" 1768443144.2663 76626 9099ee209c0d2c4e7db1085faf1c11f0 ""
   "fig1-2.png" 1768443192.19142 135538 70abbe3097e924c88b7102f64433d546 ""
   "fig1-3.png" 1768443221.03001 41396 ee70cc7ef66b8ca520e68cddc99d4d4e ""
