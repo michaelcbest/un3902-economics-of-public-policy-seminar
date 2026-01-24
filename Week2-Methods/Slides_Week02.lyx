@@ -1,0 +1,8223 @@
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass beamer
+\begin_preamble
+\usepackage{ifthen}
+\usepackage{multirow,bigstrut}
+\usepackage{tikz}
+\usetikzlibrary{patterns,decorations.pathreplacing,shapes,snakes}
+\usetikzlibrary{arrows}
+\usepackage{rotating}
+\usepackage{pdflscape}
+\usepackage{makecell}
+\usepackage{graphicx}
+\usepackage{animate}
+\usepackage{pifont}
+\usepackage{booktabs}
+\usepackage{relsize}
+%\usepackage{adjustbox}
+%\usepackage{txfonts}
+%\usepackage{handoutWithNotes}
+%\pgfpagesuselayout{3 on 1 with notes}[a4paper,border shrink=5mm]
+
+% FOOTLINE - PAGE NUMBER RIGHT
+\defbeamertemplate*{footline}{guildford foot theme}
+{
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.7\paperwidth,ht=1cm,dp=0ex,left]{}%
+    {
+    \insertsectionnavigationhorizontal{.5\paperwidth}{}{}
+    }
+ \end{beamercolorbox}
+ \begin{beamercolorbox}[wd=0.31\paperwidth,ht=1cm,dp=0ex,right]{}%
+{\tiny
+\insertframenumber{} / \inserttotalframenumber\hspace*{5ex}
+}
+ \end{beamercolorbox}}%
+  \vskip5pt%
+}
+
+\beamertemplatenavigationsymbolsempty
+\usefonttheme{professionalfonts}
+\usecolortheme[RGB={0,0,125}]{structure} 
+\setbeamersize{ text margin left=10px}
+%\definecolor{newblue}{rgb}{0,0,0.6}
+%\setbeamercolor{alerted text}{fg=newblue}
+\setbeamertemplate{frametitle}[default][center]
+
+%{\bfseries\insertframetitle\par}
+
+\RequirePackage{ifthen}
+
+\newboolean{sectiontoc}
+\setboolean{sectiontoc}{true} % default to true
+
+\AtBeginSubsection[] 
+{ 
+  \ifthenelse{\boolean{sectiontoc}}{
+  \begin{frame}[plain]
+    \frametitle{Outline} 
+    \tableofcontents[currentsubsection] 
+  \end{frame} 
+} 
+}
+
+\AtBeginSection[] 
+{ 
+  \ifthenelse{\boolean{sectiontoc}}{
+  \begin{frame}[plain]
+    \frametitle{Outline} 
+    \tableofcontents[currentsection] 
+  \end{frame} 
+} 
+}
+
+\newcommand{\toclesssection}[1]{
+   \setboolean{sectiontoc}{false}
+   \section{#1}
+   \setboolean{sectiontoc}{true}
+}
+
+\newcommand{\toclesssubsection}[1]{
+   \setboolean{sectiontoc}{false}
+   \subsection{#1}
+   \setboolean{sectiontoc}{true}
+}
+
+\setbeameroption{hide notes}
+
+\newcommand{\ShortNameSection}[2][]{
+   \setboolean{sectiontoc}{false}
+   \section[#1]{#2}
+   \setboolean{sectiontoc}{true}
+}
+
+\newcommand{\light}[1]{\textcolor{gray}{#1}}
+\end_preamble
+\options notes=show
+\use_default_options false
+\begin_modules
+theorems-ams-bytype
+theorems-ams-extended-bytype
+\end_modules
+\maintain_unincluded_children no
+\language english
+\language_package none
+\inputencoding auto-legacy
+\fontencoding T1
+\font_roman "cmr" "default"
+\font_sans "helvet" "default"
+\font_typewriter "cmtt" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures false
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref true
+\pdf_bookmarks false
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks true
+\pdf_backref section
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=blue, citecolor=blue, urlcolor=blue"
+\papersize default
+\use_geometry true
+\use_package amsmath 2
+\use_package amssymb 2
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_formatted_ref 0
+\use_minted 0
+\use_lineno 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tablestyle default
+\tracking_changes false
+\output_changes false
+\change_bars false
+\postpone_fragile_content false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
+\end_header
+
+\begin_body
+
+\begin_layout Title
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+setcounter{framenumber}{0}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+thispagestyle{empty}
+\end_layout
+
+\end_inset
+
+UN 3902:
+ 
+\begin_inset Newline newline
+\end_inset
+
+Economics of Public Policy Seminar 
+\begin_inset Newline newline
+\end_inset
+
+Week 2:
+ Methods
+\end_layout
+
+\begin_layout Author
+Michael Carlos Best
+\end_layout
+
+\begin_layout Date
+January 27 2026
+\end_layout
+
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+The Four Questions of Public Finance
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Public Finance is the study of the role of the government in the economy.
+ It focuses on four key questions:
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+When should the government intervene in the economy?
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+How might the government intervene in the economy?
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+What are the effects of government interventions on economic outcomes?
+\series default
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Why do governments choose to intervene in the way that they do?
+\end_layout
+
+\end_deeper
+\begin_layout Section
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Potential Outcomes
+\end_layout
+
+\end_inset
+
+The Evaluation Problem and Potential Outcomes
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+The Evaluation Problem
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Microeconometrics = statistical tools to establish
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+causality
+\end_layout
+
+\begin_layout Itemize
+prediction
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Answer 
+\emph on
+economic policy
+\emph default
+ questions such as:
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Do job training programs help participants find jobs and earn higher wages?
+\end_layout
+
+\begin_layout Itemize
+How much more do people earn as a result of going to college?
+\end_layout
+
+\begin_layout Itemize
+Do higher minimum wages increase unemployment?
+\end_layout
+
+\begin_layout Itemize
+Do higher taxes make people work less?
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Using data,
+ but informed by theory
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+The Selection Problem:
+ Why This Isn't Trivial
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Example 1:
+ Do hospitals make people healthier?
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+Would you say your health in general is excellent (5),
+ very good (4),
+ good (3),
+ fair (2),
+ poor (1)?
+\begin_inset Quotes erd
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="4">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Group
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Sample Size
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Mean Health Status
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Std.
+ Error
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Hospital
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+7,774
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3.21
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.014
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+No Hospital
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+90,049
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3.93
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.003
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Source:
+ National Health Interview Survey (NHIS) 2005,
+ via Mostly Harmless Econometrics
+\end_layout
+
+\begin_layout Itemize
+Difference in means is 0.72 (t=58.9)
+\end_layout
+
+\begin_layout Itemize
+So people who go to hospital feel 
+\emph on
+worse
+\emph default
+?
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+The Selection Problem:
+ Why This Isn't Trivial
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Example 2:
+ Do higher tax rates make people work less?
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Graphics
+	filename Feldstein1995Table.png
+	scale 50
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Source:
+ Feldstein (1995)
+\end_layout
+
+\begin_layout Itemize
+So higher taxes make people 
+\emph on
+richer
+\emph default
+?
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+The Selection Problem:
+ Why This Isn't Trivial
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Example 3:
+ Do more police officers reduce crime rates?
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Graphics
+	filename LevittFig1.png
+	scale 45
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Source:
+ Levitt (1997)
+\end_layout
+
+\begin_layout Itemize
+So more police 
+\emph on
+increase 
+\emph default
+crime rates?
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Potential Outcomes:
+ A Framework for Thinking About This In
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Define a binary random variable,
+ 
+\begin_inset Formula $D_{i}=\left\{ 0,1\right\} $
+\end_inset
+
+:
+ The 
+\series bold
+treatment
+\series default
+ variable.
+\end_layout
+
+\begin_layout Itemize
+Outcome of interest 
+\begin_inset Formula $y_{i}$
+\end_inset
+
+ (health status)
+\end_layout
+
+\begin_layout Itemize
+Does 
+\begin_inset Formula $D_{i}$
+\end_inset
+
+ affect 
+\begin_inset Formula $y_{i}$
+\end_inset
+
+?
+\end_layout
+
+\begin_layout Itemize
+Potential outcome
+\begin_inset Formula 
+\[
+\text{Potential outcome}=\begin{cases}
+y_{1i} & \text{if }D_{i}=1\\
+y_{0i} & \text{if }D_{i}=0
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Hospitals example:
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $y_{1i}$
+\end_inset
+
+ is the health status 
+\begin_inset Formula $i$
+\end_inset
+
+ would report if they go to hospital,
+ 
+\emph on
+irrespective 
+\emph default
+of whether they actually go
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $y_{0i}$
+\end_inset
+
+ is the health status 
+\begin_inset Formula $i$
+\end_inset
+
+ would report if they don't go to hospital,
+ 
+\emph on
+irrespective
+\emph default
+ of whether they actually go
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Potential Outcomes:
+ Causal Effects and Observed Outcomes
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Causal effect of going to hospital on person 
+\begin_inset Formula $i$
+\end_inset
+
+ is 
+\begin_inset Formula $y_{1i}-y_{0i}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Unfortunately,
+ we never observe both 
+\begin_inset Formula $y_{1i}$
+\end_inset
+
+ 
+\emph on
+and 
+\emph default
+
+\begin_inset Formula $y_{0i}$
+\end_inset
+
+.
+ Instead we observe
+\begin_inset Formula 
+\begin{align*}
+y_{i} & =\begin{cases}
+y_{1i} & \text{if }D_{i}=1\\
+y_{0i} & \text{if }D_{i}=0
+\end{cases}\\
+ & =y_{0i}+\left(y_{1i}-y_{0i}\right)D_{i}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+We need to estimate a 
+\series bold
+counterfactual:
+
+\series default
+ What would 
+\begin_inset Formula $y_{i}$
+\end_inset
+
+ have been if I observed individual 
+\begin_inset Formula $i$
+\end_inset
+
+ in the treatment condition she did not in fact experience.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $y_{1i}-y_{0i}$
+\end_inset
+
+ can be very different for different people.
+ But we can learn about averages
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Detour:
+ Expectations
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Recall the 
+\series bold
+\emph on
+expectation
+\series default
+\emph default
+ operator
+\begin_inset Formula 
+\[
+\textsf{E}\left[y\right]=\int_{-\infty}^{\infty}Yf_{y}\left(Y\right)dY
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+and the 
+\series bold
+\emph on
+conditional expectation
+\series default
+\emph default
+ operator
+\begin_inset Formula 
+\begin{align*}
+\textsf{E}\left[y|x=X\right] & =\int_{-\infty}^{\infty}Yf_{y}\left(Y|x=X\right)dY\\
+ & =\int_{-\infty}^{\infty}Y\frac{f_{x,y}\left(Y,X\right)}{f_{x}\left(X\right)}dY
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Potential Outcomes:
+ Average Treatment Effects
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Return to table 1,
+ we observe:
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\textsf{E}\left[y_{i}\vert D_{i}=1\right]=3.21$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\textsf{E}$
+\end_inset
+
+
+\begin_inset Formula $\left[y_{i}\vert D_{i}=0\right]=3.93$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\textsf{E}\left[y_{i}\vert D_{i}=1\right]-\textsf{E}\left[y_{i}\vert D_{i}=0\right]=-0.72=\textsf{E}\left[y_{1i}\vert D_{i}=1\right]-\textsf{E}\left[y_{0i}\vert D_{i}=1\right]??$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Decompose the observed difference:
+\begin_inset Formula 
+\begin{align*}
+\underbrace{\textsf{E}\left[y_{i}\vert D_{i}=1\right]-\textsf{E}\left[y_{i}\vert D_{i}=0\right]}_{\text{Observed difference in average health}}= & \underbrace{\textsf{E}\left[y_{1i}\vert D_{i}=1\right]-\textsf{E}\left[y_{0i}\vert D_{i}=1\right]}_{\text{Average treatment effect on the treated}}\\
+ & +\underbrace{\textsf{E}\left[y_{0i}\vert D_{i}=1\right]-\textsf{E}\left[y_{0i}\vert D_{i}=0\right]}_{\text{Selection bias}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+We want to estimate ATT = 
+\begin_inset Formula $\textsf{E}\left[y_{1i}-y_{0i}\vert D_{i}=1\right]$
+\end_inset
+
+ but need to deal with selection bias:
+ Enter microeconometrics
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Randomization and The Selection Problem
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Randomized Control Trials (RCTs) are becoming increasingly prevalent in applied economics:
+ [
+\begin_inset CommandInset href
+LatexCommand href
+name "AEA RCT Registry"
+target "https://www.socialscienceregistry.org/"
+literal "false"
+
+\end_inset
+
+]
+\end_layout
+
+\begin_layout Itemize
+Randomly assign some units to treatment 
+\begin_inset Formula $\left(D_{i}=1\right)$
+\end_inset
+
+ and others to 
+\begin_inset Quotes eld
+\end_inset
+
+control
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\begin_inset Formula $\left(D_{i}=0\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Implies that 
+\begin_inset Formula $D_{i}$
+\end_inset
+
+ is 
+\emph on
+independent
+\emph default
+ of 
+\begin_inset Formula $y_{1i}$
+\end_inset
+
+ and 
+\begin_inset Formula $y_{0i}$
+\end_inset
+
+
+\begin_inset Formula 
+\begin{align*}
+\textsf{E}\left[y_{i}\vert D_{i}=1\right]-\textsf{E}\left[y_{i}\vert D_{i}=0\right] & =\textsf{E}\left[y_{1i}\vert D_{i}=1\right]-\textsf{E}\left[y_{0i}\vert D_{i}=0\right]\\
+ & =\textsf{E}\left[y_{1i}\vert D_{i}=1\right]-\textsf{E}\left[y_{0i}\vert D_{i}=1\right]\\
+ & \quad\text{ independence of \ensuremath{D_{i},y_{1i}\&y_{0i}}}\\
+ & =\textsf{E}\left[y_{1i}-y_{0i}\vert D_{i}=1\right]=ATT
+\end{align*}
+
+\end_inset
+
+the Average Treatment Effect on the Treated (ATT)
+\end_layout
+
+\begin_layout Itemize
+Moreover,
+ we can simplify further
+\begin_inset Formula 
+\[
+\textsf{E}\left[y_{1i}-y_{0i}\vert D_{i}=1\right]=\textsf{E}\left[y_{1i}-y_{0i}\right]=ATE
+\]
+
+\end_inset
+
+the Average Treatment Effect (ATE)
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Instrumental Variables
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Endogeneity in the potential outcomes framework
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Return to our potential outcomes framework and generalize it a bit.
+ 
+\end_layout
+
+\begin_layout Itemize
+Assume 
+\begin_inset Formula $y_{si}=f_{i}\left(s\right)$
+\end_inset
+
+ where 
+\begin_inset Formula $y_{si}$
+\end_inset
+
+ is wages,
+ 
+\begin_inset Formula $s$
+\end_inset
+
+ is schooling and 
+\begin_inset Formula $f_{i}\left(\cdot\right)$
+\end_inset
+
+ is an individual-specific function that links the two,
+ which we are trying to estimate.
+\end_layout
+
+\begin_layout Itemize
+A bit more specifically,
+ we would like to estimate 
+\begin_inset Formula $\textsf{E}\left[y_{si}\vert s=X\right]-\textsf{E}\left[y_{si}\vert s=X-1\right]$
+\end_inset
+
+.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+We could think of 
+\begin_inset Formula $X=1$
+\end_inset
+
+ being 
+\begin_inset Quotes eld
+\end_inset
+
+go to college
+\begin_inset Quotes erd
+\end_inset
+
+ and 
+\begin_inset Formula $X=0$
+\end_inset
+
+ being 
+\begin_inset Quotes eld
+\end_inset
+
+do not go to college
+\begin_inset Quotes erd
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Or,
+ 
+\begin_inset Formula $s$
+\end_inset
+
+ could be the number of years of completed schooling,
+ taking on multiple values.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Endogeneity:
+ Omitted Ability
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A simple example:
+ Let's assume that 
+\begin_inset Formula 
+\[
+f_{i}\left(s\right)=\alpha+\rho s+\eta_{i}
+\]
+
+\end_inset
+
+and note that 
+\begin_inset Formula $\rho$
+\end_inset
+
+ is the same for everybody (i.e.
+ it's not 
+\begin_inset Formula $\rho_{i}$
+\end_inset
+
+,
+ we'll relax this later)
+\end_layout
+
+\begin_layout Itemize
+Let 
+\begin_inset Formula $\eta_{i}=\gamma A_{i}+\nu_{i}$
+\end_inset
+
+ where 
+\begin_inset Formula $A_{i}$
+\end_inset
+
+ is (unobserved) ability.
+\end_layout
+
+\begin_layout Itemize
+Finally,
+ let's assume that 
+\begin_inset Formula $A_{i}$
+\end_inset
+
+ is the only reason 
+\begin_inset Formula $\eta_{i}$
+\end_inset
+
+ and 
+\begin_inset Formula $s_{i}$
+\end_inset
+
+ are correlated:
+ 
+\begin_inset Formula $\textsf{E}\left[s_{i}\nu_{i}\right]=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+That makes the true model
+\begin_inset Formula 
+\[
+y_{i}=\alpha+\rho s_{i}+\gamma A_{i}+\nu_{i}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Endogeneity:
+ Omitted Ability
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Imagine we just compare people with 
+\begin_inset Formula $s_{i}=X$
+\end_inset
+
+ to people with 
+\begin_inset Formula $s_{i}=X-1$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+\textsf{E}\left[y_{i}\vert s_{i}=X\right]-\textsf{E}\left[y_{i}\vert s_{i}=X-1\right]\\
+=\textsf{E}\left[\alpha+\rho s_{i}+\gamma A_{i}+\nu_{i}\vert s_{i}=X\right]\\
+-\textsf{E}\left[\alpha+\rho s_{i}+\gamma A_{i}+\nu_{i}\vert s_{i}=X-1\right]\\
+=\rho+\gamma\left(\underbrace{\textsf{E}\left[A_{i}\vert s_{i}=X\right]-\textsf{E}\left[A_{i}\vert s_{i}=X-1\right]}_{\text{probably }\neq0}\right)\\
++\underbrace{\textsf{E}\left[v_{i}\vert s_{i}=X\right]-\textsf{E}\left[v_{i}\vert s_{i}=X-1\right]}_{=0\text{ by assumption}} & \neq\rho!
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Endogeneity in the potential outcomes framework
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+If we could observe 
+\begin_inset Formula $A_{i}$
+\end_inset
+
+ we'd be fine.
+ We'd regress 
+\begin_inset Formula $y_{i}$
+\end_inset
+
+ on 
+\begin_inset Formula $s_{i}$
+\end_inset
+
+ and 
+\begin_inset Formula $A_{i}$
+\end_inset
+
+ and calculate 
+\begin_inset Formula $\hat{\rho}$
+\end_inset
+
+ which has 
+\begin_inset Formula $\text{plim }\hat{\rho}=\rho$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+A good instrumental variable(s) allows us to estimate 
+\begin_inset Formula $\rho$
+\end_inset
+
+ even without observing 
+\begin_inset Formula $A_{i}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+A good instrumental variable 
+\begin_inset Formula $z_{i}$
+\end_inset
+
+ requires:
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Relevance:
+
+\series default
+ 
+\begin_inset Formula $\textsf{Cov}\left(s_{i},z_{i}\right)\neq0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Exclusion Restriction:
+ 
+\series default
+
+\begin_inset Formula $\textsf{Cov}\left(\eta_{i},z_{i}\right)=0$
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+No direct effect:
+ 
+\begin_inset Formula $z_{i}$
+\end_inset
+
+ doesn't belong on the RHS directly
+\end_layout
+
+\begin_layout Enumerate
+No indirect effect:
+ 
+\begin_inset Formula $z_{i}$
+\end_inset
+
+ is not correlated with relevant omitted variables
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Endogeneity in the potential outcomes framework
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+With these two assumptions we can write:
+\begin_inset Formula 
+\begin{align*}
+\textsf{Cov}\left(y_{i},z_{i}\right) & =\textsf{Cov}\left(\alpha+\rho s_{i}+\eta_{i},z_{i}\right)\\
+ & =\rho\underbrace{\textsf{Cov}\left(s_{i},z_{i}\right)}_{\neq0\text{ (relevance)}}+\underbrace{\textsf{Cov}\left(\eta_{i},z_{i}\right)}_{=0\text{ (exclusion)}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+So we have identified 
+\begin_inset Formula $\rho$
+\end_inset
+
+!
+\begin_inset Formula 
+\[
+\rho=\frac{\textsf{Cov}\left(y_{i},z_{i}\right)}{\textsf{Cov}\left(s_{i},z_{i}\right)}=\frac{\textsf{Cov}\left(y_{i},z_{i}\right)/\textsf{Var}\left(z_{i}\right)}{\textsf{Cov}\left(s_{i},z_{i}\right)/\textsf{Var}\left(z_{i}\right)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The coefficient 
+\begin_inset Formula $\rho$
+\end_inset
+
+ is the ratio of the population coefficient in a regression of 
+\begin_inset Formula $y_{i}$
+\end_inset
+
+ on 
+\begin_inset Formula $z_{i}$
+\end_inset
+
+ (we call this the 
+\emph on
+reduced form
+\emph default
+) to the population coefficient in a regression of 
+\begin_inset Formula $s_{i}$
+\end_inset
+
+ on 
+\begin_inset Formula $z_{i}$
+\end_inset
+
+ (we call this the 
+\emph on
+first stage
+\emph default
+)
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+IV In The Wild
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+IV In The Wild
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Let's go through some examples of prominent papers that have used an Instrumental Variables strategy to identify relationships of economic interest.
+\end_layout
+
+\begin_layout Itemize
+We'll look at:
+\end_layout
+
+\begin_layout Enumerate
+Steven D.
+ Levitt - 
+\begin_inset Quotes eld
+\end_inset
+
+Using Electoral Cycles in Police Hiring to Estimate the Effect of Police on Crime
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\emph on
+American Economic Review
+\emph default
+ (1997)
+\end_layout
+
+\begin_layout Enumerate
+Daron Acemoglu,
+ Simon Johnson & James A.
+ Robinson - 
+\begin_inset Quotes eld
+\end_inset
+
+The Colonial Origins of Comparative Development:
+ An Empirical Investigation
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\emph on
+American Economic Review
+\emph default
+ (2001)
+\end_layout
+
+\begin_layout Enumerate
+Caroline M.
+ Hoxby - 
+\begin_inset Quotes eld
+\end_inset
+
+Does Competition among Public Schools Bebnefit Students and Taxpayers?
+\begin_inset Quotes erd
+\end_inset
+
+ 
+\emph on
+American Economic Review 
+\emph default
+(2000)
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+IV example 1:
+ Do more police reduce crime?
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename LevittFig1.png
+	scale 45
+
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Source:
+ Levitt (1997)
+\end_layout
+
+\begin_layout Itemize
+So more police 
+\emph on
+increase 
+\emph default
+crime rates?
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+IV example 1:
+ Do more police reduce crime?
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Levitt (1997) studies this.
+\end_layout
+
+\begin_layout Itemize
+Why might we have an endogeneity problem?
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Levitt argues he can use the timing of mayoral and gubernatorial elections as an instrument for police hiring.
+\end_layout
+
+\begin_layout Itemize
+Specifically,
+ his 
+\begin_inset Formula $z_{i}$
+\end_inset
+
+ if a dummy = 1if a year is an election year in that city.
+\end_layout
+
+\begin_layout Itemize
+What are the requirements for this to be a valid instrument?
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+IV example 1:
+ Do more police reduce crime?
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename Levitt First Stage.png
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+IV example 1:
+ Do more police reduce crime?
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The first stage looks good in a picture.
+ In an equation:
+\begin_inset Formula 
+\[
+\Delta\ln\left(P_{it}\right)=\theta_{1}M_{it}+\theta_{2}G_{it}+\mathbf{X}_{it}\delta+\gamma_{t}+\lambda_{i}+\nu_{it}
+\]
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $P_{it}$
+\end_inset
+
+ = # of sworn police officers;
+ 
+\begin_inset Formula $M_{it}$
+\end_inset
+
+ is a dummy for a mayoral election;
+ 
+\begin_inset Formula $G_{it}$
+\end_inset
+
+ is a dummy for a gubernatorial election;
+ 
+\begin_inset Formula $\mathbf{X}_{it}$
+\end_inset
+
+ are covariates.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+The reduced form is then:
+\begin_inset Formula 
+\[
+\Delta\ln\left(C_{ijt}\right)=\Psi_{1}M_{it}+\Psi_{2}G_{it}+\mathbf{X}_{it}\kappa_{j}+\gamma_{tj}+\lambda_{i}+\nu_{ijt}
+\]
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+where 
+\begin_inset Formula $j$
+\end_inset
+
+ indexes different crimes
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+IV example 1:
+ Do more police reduce crime?
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename Levitt First Stage Table.png
+	scale 90
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+IV example 1:
+ Do more police reduce crime?
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+So,
+ Levitt will use 
+\begin_inset Formula $M_{it}$
+\end_inset
+
+ and 
+\begin_inset Formula $G_{it}$
+\end_inset
+
+ as instruments in the estimating equation
+\begin_inset Formula 
+\[
+\Delta\ln\left(C_{ijt}\right)=\beta_{1j}\Delta\ln\left(P_{ijt}\right)+\beta_{2j}\Delta\ln\left(P_{ijt-1}\right)+\mathbf{X}_{it}\eta_{j}+\gamma_{tj}+\lambda_{i}+\varepsilon_{ijt}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Let's look at the results
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+IV example 1:
+ Do more police reduce crime?
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename Levitt 2SLS results.png
+	scale 110
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+IV example 1:
+ Do more police reduce crime?
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename Levitt 2SLS results by crime.png
+	scale 120
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+IV example 2:
+ Do better institutions cause growth?
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+One of the biggest questions in economics:
+ Why are some countries rich while others are poor?
+\end_layout
+
+\begin_layout Itemize
+Can better 
+\begin_inset Quotes eld
+\end_inset
+
+institutions
+\begin_inset Quotes erd
+\end_inset
+
+ (property rights,
+ less distortionary govt policy) explain these differences?
+\end_layout
+
+\begin_layout Itemize
+Tons of endogeneity problems!
+\end_layout
+
+\begin_layout Itemize
+A clever instrument from history:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename AJR instrument.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+IV example 2:
+ Do better institutions cause growth?
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Not even clear the reduced form relationship will be there (in which case very unlikely 2sls will work)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename AJR reduced form.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+IV example 2:
+ Do better institutions cause growth?
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The benchmark:
+ OLS
+\begin_inset Formula 
+\[
+\log\left(y_{i}\right)=\mu+\alpha R_{i}+\mathbf{X}_{i}\gamma+\varepsilon_{i}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename AJR OLS.png
+	scale 43
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+IV example 2:
+ Do better institutions cause growth?
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+In a picture:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename AJR 1st stage picture.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+IV example 2:
+ Do better institutions cause growth?
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The first stage:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename AJR first stage correct.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+IV example 2:
+ Do better institutions cause growth?
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename AJR 2SLS.png
+	scale 55
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+IV example 3:
+ Does more school choice improve education?
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Hoxby (2000) studies the effect of school choice on school productivity (both achievment and spending)
+\end_layout
+
+\begin_layout Itemize
+We want to look at the effect of the number of school districts households can choose from on schools' productivity
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Competition among schools improves outcomes
+\end_layout
+
+\begin_layout Itemize
+Tiebout sorting of households can reduce achievment
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Available school choice is endogenous.
+ Why?
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+IV example 3:
+ Does more school choice improve education?
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+How do we measure choice?
+ 
+\end_layout
+
+\begin_layout Itemize
+number of districts per student
+\end_layout
+
+\begin_layout Itemize
+concentration of amount of land taken up by school districts:
+ 
+\size footnotesize
+
+\begin_inset Formula 
+\[
+1-H_{m}=1-\sum_{k=1}^{K}\left(\frac{\text{land area}_{km}}{\text{land area}_{m}}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+concentration of student enrollments:
+ 
+\begin_inset Formula $1-\sum_{k=1}^{K}\left(\text{enrollment}_{km}/\text{enrollment}_{m}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename Hoxby Sum Stats.png
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+IV example 3:
+ Does more school choice improve education?
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Hoxby proposes an instrument for the available school choice:
+\end_layout
+
+\begin_layout Itemize
+Historically,
+ boundaries of school districts were determined by closeness to schools.
+ 
+\end_layout
+
+\begin_layout Itemize
+It's no use being 10 miles from a school if there's a river in between and no bridge.
+\end_layout
+
+\begin_layout Itemize
+So,
+ she uses the number of rivers in the metropolitan area as an instrument.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename Hoxby First Stage.png
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+IV example 3:
+ Does more school choice improve education?
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+2SLS results
+\end_layout
+
+\begin_layout Standard
+\begin_inset Graphics
+	filename Hoxby 2SLS.png
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+IV example 3:
+ Does more school choice improve education?
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename Hoxby 2SLS spending.png
+	scale 60
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+IV Pitfalls
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Pitfalls
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+IV sounds like a panacea:
+ With a suitable set of instruments,
+ we can wash away endogeneity of our regressors.
+\end_layout
+
+\begin_layout Itemize
+That's true,
+ but there are some hitches.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Precision:
+
+\series default
+ Standard errors can get large 
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Bias:
+ 
+\series default
+If instruments are many and 
+\begin_inset Quotes eld
+\end_inset
+
+weak
+\begin_inset Quotes erd
+\end_inset
+
+,
+ 
+\begin_inset Formula $\hat{\beta}_{2SLS}$
+\end_inset
+
+ is biased in finite samples,
+ often severely.
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Interpretation:
+ 
+\series default
+If effects are different for different people,
+ IV picks up the average effect 
+\emph on
+for the people for whom the instrument is relevant
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Weak Instruments
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Weak Instruments
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\hat{\beta}_{2SLS}$
+\end_inset
+
+ is consistent...
+\end_layout
+
+\begin_layout Itemize
+...but it is biased in finite samples 
+\begin_inset Formula $\textsf{E}\left[\hat{\beta}_{2SLS}-\beta\right]\neq0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+How does this happen?
+ It comes from the estimation of the first stage
+\end_layout
+
+\begin_layout Itemize
+In the first stage we regress the endogenous variables on the instruments,
+ with some error.
+ 
+\end_layout
+
+\begin_layout Itemize
+That error comes from the endogenous variables,
+ and is correlated with the errors in the second stage.
+\end_layout
+
+\begin_layout Itemize
+If the first stage is weak (low F stat,
+ all coefficients nearly 0),
+ then all of the error in the endogenous variables contaminates the fitted values.
+ 
+\end_layout
+
+\begin_layout Itemize
+This error is correlated with the second-stage errors.
+ In fact,
+ it's exactly the correlation that we're trying to get rid of (endogeneity)
+\end_layout
+
+\begin_layout Itemize
+This correlation causes 2SLS to be biased towards OLS
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Weak Instruments
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The Limited Information Maximum Likelihood (LIML) estimator is approximately unbiased (
+\family typewriter
+ivregress liml y x...
+
+\family default
+ in stata).
+\end_layout
+
+\begin_layout Itemize
+Reconsider the QOB instruments:
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename QOBWeak.png
+	scale 45
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Weak Instruments:
+ Potential Solutions
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+So what should you do in practice?
+ Always be worried about weak instruments!
+ and:
+\end_layout
+
+\begin_layout Enumerate
+Report your first stage regression.
+ Does it make sense?
+ Are the magnitudes and signs of the coefficients what you expected?
+ If not,
+ the mechanism you're putting forward for the first-stage may not really exist.
+\end_layout
+
+\begin_layout Enumerate
+Look at the F-stat in the 1st stage.
+ Rule of thumb:
+ >10 good
+\end_layout
+
+\begin_layout Enumerate
+Use only your best instrument by itself.
+ Remember,
+ adding bad instruments makes F smaller.
+\end_layout
+
+\begin_layout Enumerate
+Compare your 2SLS estimates to LIML.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Look at your reduced form regressions.
+ The reduced form is proportional to the causal effect you're trying to estimate,
+ so if you can't see the causal relationship in the reduced form,
+ it's probably not there in 2SLS...
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Heterogeneity:
+ LATE
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Assuming Constant Effects:
+ Heterogeneity and Non-Linearity
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+So far,
+ we have been assuming that the effect we are trying to estimate is constant:
+\begin_inset Formula 
+\[
+y_{i}=\alpha+\rho s_{i}+A_{i}^{\prime}\gamma+\nu_{i}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+For a binary treatment we assume 
+\begin_inset Formula $y_{1i}-y_{0i}=\rho$
+\end_inset
+
+.
+ 
+\begin_inset Formula $\rho$
+\end_inset
+
+ is the same for all individuals:
+ homogeneity
+\end_layout
+
+\begin_layout Itemize
+For multivalued treatments we assume 
+\begin_inset Formula $y_{si}-y_{s-1i}=\rho$
+\end_inset
+
+.
+ 
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\rho$
+\end_inset
+
+ is the same for all individuals:
+ homogeneity
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $\rho$
+\end_inset
+
+ is the same for all levels of 
+\begin_inset Formula $s$
+\end_inset
+
+:
+ linearity
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Heterogeneity:
+ Internal and External Validity
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Let's start with heterogeneity (allowing 
+\begin_inset Formula $\rho$
+\end_inset
+
+ to be different for different individuals:
+ 
+\begin_inset Formula $\rho_{i}$
+\end_inset
+
+)
+\end_layout
+
+\begin_layout Itemize
+Why do we care?
+ It depends what we're after:
+\end_layout
+
+\begin_layout Itemize
+Our estimates are 
+\series bold
+internally valid
+\series default
+ if we believe the assumptions we need to make for our estimates to be consistent.
+ In this case our estimates uncover the true relationship of interest for the population being studied (at least asymptotically)
+\end_layout
+
+\begin_layout Itemize
+Our estimates are 
+\series bold
+externally valid
+\series default
+ if we believe that our estimates have strong predictive power in other populations.
+ Do IV estimates using QOB and people born in the 1930s tell us what would happen if we raised the school leaving age in California in 2017?
+\end_layout
+
+\begin_layout Itemize
+With heterogeneity in 
+\begin_inset Formula $\rho$
+\end_inset
+
+ we might worry that we have 
+\emph on
+internally valid 
+\emph default
+estimates but that they might lack 
+\emph on
+external validity
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Local Average Treatment Effects
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+To think about this issue,
+ let's extend our potential outcomes framework.
+\end_layout
+
+\begin_layout Itemize
+Take a concrete examples,
+ How does serving in the military affect earnings.
+ 
+\begin_inset Formula 
+\[
+y_{i}=f_{i}\left(D_{i}\right)+\varepsilon_{i}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+OLS is biased (why?)
+\end_layout
+
+\begin_layout Itemize
+Treatment:
+ 
+\begin_inset Formula 
+\[
+D_{i}=\begin{cases}
+0 & \text{non-veteran}\\
+1 & \text{veteran}
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Instrument:
+ 
+\begin_inset Formula 
+\[
+Z_{i}=\begin{cases}
+0 & \text{eligible for draft during Vietnam (based on SSN)}\\
+1 & \text{ineligible for draft}
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Local Average Treatment Effects
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Before we had two potential outcomes 
+\begin_inset Formula $y_{i}\left(D_{i}=0\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $y_{i}\left(D_{i}=1\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Now generalize this to 
+\begin_inset Formula $y_{i}\left(d,z\right)$
+\end_inset
+
+,
+ the potential outcome when 
+\begin_inset Formula $D_{i}=d$
+\end_inset
+
+ and 
+\begin_inset Formula $Z_{i}=z$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+So causal effect of being a veteran,
+ given draft status is 
+\begin_inset Formula $y_{i}\left(1,Z_{i}\right)-y_{i}\left(0,Z_{i}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Causal effect of draft eligibility,
+ given veteran status is 
+\begin_inset Formula $y_{i}\left(D_{i},1\right)-y_{i}\left(D_{i},0\right)$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Local Average Treatment Effects
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Our instrumental variables strategy relies on the instrument 
+\begin_inset Formula $Z_{i}$
+\end_inset
+
+ setting off a causal chain
+\begin_inset Formula 
+\[
+\underbrace{Z_{i}\Rightarrow D_{i}}_{\text{first stage}}\Rightarrow y_{i}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+So we can think of 
+\begin_inset Quotes eld
+\end_inset
+
+potential outcomes
+\begin_inset Quotes erd
+\end_inset
+
+ for the treatment 
+\begin_inset Formula $D_{i}$
+\end_inset
+
+ too:
+\begin_inset Formula 
+\begin{align*}
+D_{i} & =D_{0i}+\left(D_{1i}-D_{0i}\right)Z_{i}\\
+ & =\pi_{0}+\pi_{1i}Z_{i}+\xi_{i}
+\end{align*}
+
+\end_inset
+
+where 
+\begin_inset Formula $\pi_{0}=\textsf{E}\left[D_{0i}\right]$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\pi_{1i}=D_{1i}-D_{0i}$
+\end_inset
+
+ and 
+\begin_inset Formula $\xi_{i}=D_{0i}-\textsf{E}\left[D_{0i}\right]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $D_{0i}$
+\end_inset
+
+:
+ whether someone with a draft ineligible number would serve in the army
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $D_{1i}$
+\end_inset
+
+:
+ whether someone with a draft eligible number would serve in the army
+\end_layout
+
+\begin_layout Itemize
+We only observe 
+\begin_inset Formula $D_{i}$
+\end_inset
+
+,
+ which one we see depends on 
+\begin_inset Formula $Z_{i}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Local Average Treatment Effects
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Assumption
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+A.1.
+ Independence
+\end_layout
+
+\end_inset
+
+The instrument is as good as randomly assigned:
+ 
+\begin_inset Formula 
+\[
+\left[\left\{ y_{i}\left(d,z\right);\forall d,z\right\} ,D_{1i},D_{0i}\right]\perp Z_{i}
+\]
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\shape up
+The instrument is independent of the potential outcomes and potential treatments.
+\shape default
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\shape up
+e.g.
+ people with large 
+\begin_inset Formula $y_{i}\left(D_{i},1\right)$
+\end_inset
+
+ aren't disproportionately likely to have 
+\begin_inset Formula $Z_{i}=1$
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\shape up
+SSNs are randomly assigned,
+ so likely to satisfy this.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+
+\shape up
+Implies the reduced form regression of 
+\begin_inset Formula $y$
+\end_inset
+
+ on 
+\begin_inset Formula $Z$
+\end_inset
+
+ is causal:
+\begin_inset Formula 
+\begin{align*}
+ & \textsf{E}\left[y_{i}\vert Z_{i}=1\right]-\textsf{E}\left[y_{i}\vert Z_{i}=0\right]\\
+ & \quad=\textsf{E}\left[y_{i}\left(D_{1i},1\right)\vert Z_{i}=1\right]-\textsf{E}\left[y_{i}\left(D_{0i},0\right)\vert Z_{i}\right]\\
+ & \quad=\textsf{E}\left[y_{i}\left(D_{1i},1\right)-y_{i}\left(D_{0i},0\right)\right]
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Local Average Treatment Effects
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Also implies that the first stage regression of 
+\begin_inset Formula $D$
+\end_inset
+
+ on 
+\begin_inset Formula $Z$
+\end_inset
+
+ is causal:
+\begin_inset Formula 
+\begin{align*}
+ & \textsf{E}\left[D_{i}\vert Z_{i}=1\right]-\textsf{E}\left[D_{i}\vert Z_{i}=0\right]\\
+ & \quad=\textsf{E}\left[D_{1i}\vert Z_{i}=1\right]-\textsf{E}\left[D_{0i}\vert Z_{i}=0\right]\\
+ & \quad=\textsf{E}\left[D_{1i}-D_{0i}\right]
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+And we'll assume that this first stage regression works:
+ 
+\end_layout
+
+\begin_layout Assumption
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+A.2.
+ First Stage
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\textsf{E}\left[D_{1i}-D_{0i}\right]\neq0$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Local Average Treatment Effects
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Assumption
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+A.2.
+ Exclusion
+\end_layout
+
+\end_inset
+
+Potential outcomes 
+\begin_inset Formula $y_{i}\left(d,z\right)$
+\end_inset
+
+ are functions only of 
+\begin_inset Formula $d$
+\end_inset
+
+:
+\begin_inset Formula 
+\[
+y_{i}\left(d,1\right)=y_{i}\left(d,0\right)\quad\text{for }d=0,1
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Of course draft eligibility affects earnings,
+ but 
+\emph on
+only
+\emph default
+ through thanges in veteran status.
+ 
+\end_layout
+
+\begin_layout Itemize
+In the linear model with constant effects we have been studying,
+ the exclusion and independence assumptions are bundled together in 
+\begin_inset Formula $\textsf{E}\left[\varepsilon\vert\mathbf{Z}\right]=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+NB exclusion can fail while independence is satisfied:
+ 
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+e.g.
+ if people know they could be drafted,
+ and stay in school longer to avoid the draft,
+ then 
+\begin_inset Formula $y_{i}\left(d,1\right)>y_{i}\left(d,0\right)$
+\end_inset
+
+ whether or not they eventually serve.
+ 
+\end_layout
+
+\begin_layout Itemize
+This is despite SSNs being random.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Local Average Treatment Effects
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+With the exclusion restriction,
+ we can justify the single index potential outcomes we were using before:
+\begin_inset Formula 
+\begin{align*}
+y_{1i} & \equiv y_{i}\left(1,1\right)=y_{i}\left(1,0\right)\\
+y_{0i} & \equiv y_{i}\left(0,1\right)=y_{i}\left(0,0\right)
+\end{align*}
+
+\end_inset
+
+so that
+\begin_inset Formula 
+\begin{align*}
+y_{i} & =y_{i}\left(0,Z_{i}\right)+\left[y_{i}\left(1,Z_{i}\right)-y_{i}\left(0,Z_{i}\right)\right]D_{i}\\
+ & =y_{0i}+\left(y_{1i}-y_{0i}\right)D_{i}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Or,
+ as before,
+ we can write this as
+\begin_inset Formula 
+\[
+y_{i}=\alpha_{0}+\rho_{i}D_{i}+\eta_{i}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\alpha_{0}=\textsf{E}\left[y_{0i}\right]$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\rho_{i}=y_{1i}-y_{0i}$
+\end_inset
+
+ and 
+\begin_inset Formula $\eta_{i}=y_{0i}-\textsf{E}\left[y_{0i}\right]$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Local Average Treatment Effects
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+We need one more thing,
+ and then we're ready to go.
+\end_layout
+
+\begin_layout Assumption
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+A.4.
+ Monotonicity
+\end_layout
+
+\end_inset
+
+All those affected by the instrument are affected in the same way:
+\begin_inset Formula 
+\[
+\text{Either }\pi_{1i}\geq0\;\forall i\text{ Or }\pi_{1i}\leq0\;\forall i
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+So that either 
+\begin_inset Formula $D_{1i}\geq D_{0i}$
+\end_inset
+
+ or 
+\begin_inset Formula $D_{1i}\leq D_{0i}$
+\end_inset
+
+ for everyone.
+\end_layout
+
+\begin_layout Itemize
+E.g.
+ nobody who would have joined if they were ineligible stayed out of the army 
+\emph on
+because
+\emph default
+ they were draft eligible 
+\end_layout
+
+\begin_layout Itemize
+Combining these 4 things,
+ we can be precise about what the Wald estimator (IV) estimates in a setting with heterogeneity
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Local Average Treatment Effects
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Theorem
+\begin_inset Argument 1
+status open
+
+\begin_layout Plain Layout
+LATE Theorem
+\end_layout
+
+\end_inset
+
+Suppose that
+\begin_inset Newline newline
+\end_inset
+
+(A.1.
+ Independence) 
+\begin_inset Formula $\left\{ y_{i}\left(D_{1i},1\right),y_{i}\left(D_{0i},0\right),D_{1i},D_{0i}\right\} \perp Z_{i}$
+\end_inset
+
+;
+\begin_inset Newline newline
+\end_inset
+
+(A.2.
+ First Stage) 
+\begin_inset Formula $\textsf{E}\left[D_{1i}-D_{0i}\right]\neq0$
+\end_inset
+
+;
+\begin_inset Newline newline
+\end_inset
+
+(A.3.
+ Exclusion) 
+\begin_inset Formula $y_{i}\left(d,0\right)=y_{i}\left(d,1\right)\equiv y_{di}$
+\end_inset
+
+ for 
+\begin_inset Formula $d=0,1$
+\end_inset
+
+;
+\begin_inset Newline newline
+\end_inset
+
+(A.4.
+ Monotonicity) 
+\begin_inset Formula $D_{1i}-D_{0i}\geq0\;\forall i$
+\end_inset
+
+ or vice versa;
+ Then
+\begin_inset Formula 
+\begin{align*}
+\hat{\beta}^{\text{Wald}}=\frac{\textsf{E}\left[y_{i}\vert Z_{i}=1\right]-\textsf{E}\left[y_{i}\vert Z_{i}=0\right]}{\textsf{E}\left[D_{i}\vert Z_{i}=1\right]-\textsf{E}\left[D_{i}\vert Z_{i}=0\right]} & =\textsf{E}\left[y_{1i}-y_{0i}\vert D_{1i}>D_{0i}\right]\\
+ & =\textsf{E}\left[\rho_{i}\vert D_{1i}>D_{0i}\right]
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Local Average Treatment Effects
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+In light of the LATE theorem,
+ how should we interpret IV estimates?
+\end_layout
+
+\begin_layout Itemize
+They are the estimates of the effect of the endogenous variable for the subgroup of people whose endogenous variable was affected by the instrument:
+ the 
+\series bold
+compliant subpopulation
+\end_layout
+
+\begin_layout Itemize
+In the veterans case:
+ It is the effect of being a veteran 
+\emph on
+for those who are veterans because of their draft eligibility
+\emph default
+ i.e.
+ not for those who would have served anyway
+\end_layout
+
+\begin_layout Itemize
+So the estimates are 
+\emph on
+internally valid
+\emph default
+ for these compliers.
+\end_layout
+
+\begin_layout Itemize
+What about 
+\emph on
+external validity
+\emph default
+?
+ Well,
+ it depends what you want to use the estiamtes for.
+ Probably useful for future draft policies,
+ probably less so for effects on volunteers (Iraq vets?)
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Local Average Treatment Effects
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename WaldVeterans.png
+	scale 37
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+The Compliant Subpopulation
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+We can partition people in the data into 3 groups:
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Compliers:
+ 
+\begin_inset Formula $D_{0i}=0$
+\end_inset
+
+,
+ 
+\begin_inset Formula $D_{1i}=1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Always-Takers:
+
+\series default
+ 
+\begin_inset Formula $D_{0i}=D_{1i}=1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Never-Takers:
+
+\series default
+ 
+\begin_inset Formula $D_{0i}=D_{1i}=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="4" columns="4">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $D_{0i}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="3" alignment="center" valignment="middle" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $D_{1i}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Never-Takers
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Defiers (ruled out by monotonicity)
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\series bold
+Compliers:
+ LATE
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Always-Takers
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+The Compliant Subpopulation
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+This lets us think about the effect on the treated 
+\begin_inset Formula $D_{i}=1$
+\end_inset
+
+ and the untreated 
+\begin_inset Formula $D_{i}=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+If 
+\begin_inset Formula $D_{i}=1$
+\end_inset
+
+ then by monotonicity it must be the case that 
+\emph on
+either
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $D_{0i}=1$
+\end_inset
+
+ (Always Taker)
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $D_{1i}-D_{0i}=1$
+\end_inset
+
+ and 
+\begin_inset Formula $Z_{i}=1$
+\end_inset
+
+ (Complier with 
+\begin_inset Formula $Z_{i}=1$
+\end_inset
+
+)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+With this we can decompose:
+\size small
+
+\begin_inset Formula 
+\begin{align*}
+\underbrace{\textsf{E}\left[y_{1i}-y_{0i}\vert D_{i}=1\right]}_{\text{Effect on Treated}} & =\underbrace{\textsf{E}\left[y_{1i}-y_{0i}\vert D_{0i}=1\right]}_{\text{always takers' effect}}\textsf{Pr}\left(D_{0i}=1\vert D_{i}=1\right)\\
+ & \quad+\underbrace{\textsf{E}\left[y_{1i}-y_{0i}\vert D_{1i}>D_{0i}\right]}_{\text{compliers' effect}}\textsf{Pr}\left(D_{1i}>D_{0i},Z_{i}=1\vert D_{i}=1\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+So Average Treatment Effect on the Treated (ATT) is a weighted average of LATE and effect on always-takers
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+The Compliant Subpopulation
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+What about the effect on the untreated?
+\end_layout
+
+\begin_layout Itemize
+If 
+\begin_inset Formula $D_{i}=0$
+\end_inset
+
+ then by monotonicity either
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $D_{1i}=0$
+\end_inset
+
+ (never taker)
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Formula $D_{1i}-D_{0i}=1$
+\end_inset
+
+ and 
+\begin_inset Formula $Z_{i}=0$
+\end_inset
+
+ (Complier with 0)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+With this we can decompose:
+\size small
+
+\begin_inset Formula 
+\begin{align*}
+\underbrace{\textsf{E}\left[y_{1i}-y_{0i}\vert D_{i}=0\right]}_{\text{Effect on Untreated}} & =\underbrace{\textsf{E}\left[y_{1i}-y_{0i}\vert D_{1i}=0\right]}_{\text{never takers' effect}}\textsf{Pr}\left(D_{1i}=0\vert D_{i}=0\right)\\
+ & \quad+\underbrace{\textsf{E}\left[y_{1i}-y_{0i}\vert D_{1i}>D_{0i}\right]}_{\text{compliers' effect}}\textsf{Pr}\left(D_{1i}>D_{0i},Z_{i}=0\vert D_{i}=0\right)
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+So Average Treatment Effect on the Untreated (ATU) is a weighted average of LATE and effect on never-takers
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+The Compliant Subpopulation
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+These things are important for how we think about external validity
+\end_layout
+
+\begin_layout Itemize
+An instrument can get us a direct estimate of LATE,
+ but never the always-takers or the never-takers
+\end_layout
+
+\begin_layout Itemize
+Therefore,
+ we don't usually get the effect on all of the treated or on all of the untreated
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Except
+\emph default
+ in 2 special cases:
+ Instruments that don't allow any always-takers or never-takers
+\end_layout
+
+\begin_layout Itemize
+E.g.1 twins instrument:
+ 
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+If second birth is twins,
+ then it is impossible to have only 2 children 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ there are no never-takers.
+\end_layout
+
+\begin_layout Itemize
+Since no never-takers,
+ LATE also estimates effect on untreated
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Who are the Compliers?
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+We're worried now that IV estimates of LATE lack external validity.
+\end_layout
+
+\begin_layout Itemize
+We can't ever be 100% sure that LATE estimates are externally valid,
+ but we can,
+ at least,
+ say something about who the compliers are.
+\end_layout
+
+\begin_layout Itemize
+In particular,
+ we can say
+\end_layout
+
+\begin_layout Enumerate
+How many compliers are there?
+ What is 
+\begin_inset Formula $\textsf{Pr}\left(D_{1i}>D_{0i}\right)$
+\end_inset
+
+?
+\end_layout
+
+\begin_layout Enumerate
+How many of the treated are compliers?
+ What is 
+\begin_inset Formula $\textsf{Pr}\left(D_{1i}>D_{0i}\vert D_{i}=1\right)$
+\end_inset
+
+?
+\end_layout
+
+\begin_layout Enumerate
+What are the characteristics of compliers?
+ Are they more likely to be older?
+ Have higher education?
+ etc.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Who are the Compliers?
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Let's start with how many compliers there are:
+\end_layout
+
+\begin_layout Enumerate
+What is 
+\begin_inset Formula $\textsf{Pr}\left(D_{1i}>D_{0i}\right)$
+\end_inset
+
+?
+\end_layout
+
+\begin_layout Itemize
+By monotonicity 
+\begin_inset Formula $D_{1i}-D_{0i}$
+\end_inset
+
+ is either 0 or 1,
+ so 
+\begin_inset Formula 
+\begin{align*}
+\textsf{Pr}\left(D_{1i}>D_{0i}\right) & =\textsf{E}\left[D_{1i}-D_{0i}\right]\\
+ & =\textsf{E}\left[D_{1i}\right]-\textsf{E}\left[D_{0i}\right]\\
+ & =\textsf{E}\left[D_{i}\vert Z_{i}=1\right]-\textsf{E}\left[D_{i}\vert Z_{i}=0\right]
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Who are the Compliers?
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Argument item:1
+status open
+
+\begin_layout Plain Layout
+2.
+\end_layout
+
+\end_inset
+
+ How many of the treated are compliers?
+ And by implication,
+ how many are always-takers?
+\end_layout
+
+\begin_layout Itemize
+Start by using the definition of conditional probability:
+\begin_inset Formula 
+\[
+\textsf{Pr}\left(D_{1i}>D_{0i}\vert D_{i}=1\right)=\frac{\textsf{Pr}\left(D_{i}=1\vert D_{1i}>D_{0i}\right)\textsf{Pr}\left(D_{1i}>D_{0i}\right)}{\textsf{Pr}\left(D_{i}=1\right)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Amongst the compliers,
+ the only ones who are treated are those who have the instrument switched on.
+\begin_inset Formula 
+\begin{align*}
+\textsf{Pr}\left(D_{i}=1\vert D_{1i}>D_{0i}\right) & =\textsf{Pr}\left(Z_{i}=1\vert D_{1i}>D_{0i}\right)\\
+ & =\textsf{Pr}\left(Z_{i}=1\right)
+\end{align*}
+
+\end_inset
+
+where the second equality follows by independence.
+ So,
+\begin_inset Formula 
+\[
+\textsf{Pr}\left(D_{1i}>D_{0i}\vert D_{i}=1\right)=\frac{\textsf{Pr}\left(Z_{i}=1\right)\left(\textsf{E}\left[D_{i}\vert Z_{i}=1\right]-\textsf{E}\left[D_{i}\vert Z_{i}=0\right]\right)}{\textsf{Pr}\left(D_{i}=1\right)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Who are the Compliers?
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename CompliersNumber.png
+	scale 52
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Difference in Differences
+\end_layout
+
+\begin_layout Subsection
+DiD and Endogeneity
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Difference in Differences
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Let's consider a concrete example of a policy we might evaluate:
+\end_layout
+
+\begin_layout Itemize
+On April 1 1992 New Jersey raised the state minimum wage from $4.25 to $5.05
+\end_layout
+
+\begin_layout Itemize
+Card & Krueger (1994) collected data on wages and employment from fast food chains in 2/92 and 11/92.
+\end_layout
+
+\begin_layout Itemize
+They collect the same data for Pennsylvania,
+ a bordering state that did not change the minimum wage.
+\end_layout
+
+\begin_layout Itemize
+The idea is to compare how wages changed in NJ between Feb and Nov,
+ to how wages changed in PA between Feb and Nov.
+\end_layout
+
+\begin_layout Itemize
+i.e.
+ calculate the 
+\emph on
+difference
+\emph default
+ between the difference between Feb and Nov wages in NJ and the difference between Feb and Nov wages in PA:
+ The 
+\emph on
+difference in the differences
+\emph default
+.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Difference in Differences
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Denote employment at restaurant 
+\begin_inset Formula $i$
+\end_inset
+
+ in state 
+\begin_inset Formula $s$
+\end_inset
+
+ at time 
+\begin_inset Formula $t$
+\end_inset
+
+ by 
+\begin_inset Formula $y_{ist}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+In the potential outcomes notation we have been using,
+ 
+\begin_inset Formula $y_{0ist}$
+\end_inset
+
+ is the employment at restaurant 
+\begin_inset Formula $i$
+\end_inset
+
+ when there is a low minimum wage,
+ and 
+\begin_inset Formula $y_{1ist}$
+\end_inset
+
+ is employment when there is a high minimum wage.
+\end_layout
+
+\begin_layout Itemize
+i.e.
+ in New Jersey we see 
+\begin_inset Formula $y_{1ist}$
+\end_inset
+
+ in November,
+ but 
+\begin_inset Formula $y_{0ist}$
+\end_inset
+
+ in February.
+\end_layout
+
+\begin_layout Itemize
+We assume that 
+\begin_inset Formula 
+\[
+\textsf{E}\left[y_{0ist}\vert s,t\right]=\gamma_{s}+\lambda_{t}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $s\in\left\{ NJ,PA\right\} $
+\end_inset
+
+ and 
+\begin_inset Formula $t\in\left\{ Feb,Nov\right\} $
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+And,
+ we assume that 
+\begin_inset Formula 
+\[
+\textsf{E}\left[y_{1ist}-y_{0ist}\vert s,t\right]=\delta
+\]
+
+\end_inset
+
+(which,
+ note,
+ doesn't depend on 
+\begin_inset Formula $s$
+\end_inset
+
+ or 
+\begin_inset Formula $t$
+\end_inset
+
+)
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Difference in Differences
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Then we can write the model as 
+\begin_inset Formula 
+\[
+y_{ist}=\gamma_{s}+\lambda_{t}+\delta D_{st}+\varepsilon_{ist}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $D_{st}$
+\end_inset
+
+ is a dummy variable for high minimum-wage states and time periods (in this example,
+ 
+\begin_inset Formula $D_{st}=1$
+\end_inset
+
+ in NJ in November,
+ and 0 otherwise),
+ and 
+\begin_inset Formula $\textsf{E}\left[\varepsilon_{ist}\vert s,t\right]=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+In this case,
+ the Pennsylvania time-difference is
+\begin_inset Formula 
+\begin{align*}
+ & \textsf{E}\left[y_{ist}\vert s=PA,t=Nov\right]-\textsf{E}\left[y_{ist}\vert s=PA,t=Feb\right]\\
+ & =\left(\gamma_{PA}+\lambda_{Nov}\right)-\left(\gamma_{PA}-\lambda_{Feb}\right)=\lambda_{Nov}-\lambda_{Feb}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+And the New Jersey time-difference is
+\begin_inset Formula 
+\begin{align*}
+ & \textsf{E}\left[y_{ist}\vert s=NJ,t=Nov\right]-\textsf{E}\left[y_{ist}\vert s=NJ,t=Feb\right]\\
+ & =\left(\gamma_{NJ}+\lambda_{Nov}+\delta\right)-\left(\gamma_{NJ}+\lambda_{Feb}\right)=\lambda_{Nov}-\lambda_{Feb}+\delta
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Difference in Differences
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Combining these 
+\begin_inset Formula 
+\begin{align*}
+ & \left\{ \textsf{E}\left[y_{ist}\vert s=NJ,t=Nov\right]-\textsf{E}\left[y_{ist}\vert s=NJ,t=Feb\right]\right\} \\
+ & \quad-\left\{ \textsf{E}\left[y_{ist}\vert s=PA,t=Nov\right]-\textsf{E}\left[y_{ist}\vert s=PA,t=Feb\right]\right\} \\
+ & =\left(\lambda_{Nov}-\lambda_{Feb}+\delta\right)-\left(\lambda_{Nov}-\lambda_{Feb}\right)=\delta
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+We can easily estimate this by using sample averages::
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename Card-Krueger DiD.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Difference in Differences
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+We assume the change in the control state (PA) is what the change in the treatment state (NJ) 
+\emph on
+would have been
+\emph default
+ if there had been no treatment.
+ The 
+\series bold
+Parallel Trends
+\series default
+ assumption
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename Card-Krueger DiDAssn.png
+	scale 38
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Difference in Differences
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+We can also implement the difference in differences design using a regression:
+\end_layout
+
+\begin_layout Itemize
+Let 
+\begin_inset Formula $NJ_{s}$
+\end_inset
+
+ be a dummy for restaurants in New Jersy,
+ and 
+\begin_inset Formula $d_{t}$
+\end_inset
+
+ be a dummy for observations from November
+\end_layout
+
+\begin_layout Itemize
+Then we can write the model as
+\begin_inset Formula 
+\[
+y_{ist}=\alpha+\gamma NJ_{s}+\lambda d_{t}+\delta\left(NJ_{s}\times d_{t}\right)+\varepsilon_{ist}
+\]
+
+\end_inset
+
+where note that 
+\begin_inset Formula $NJ_{s}\times d_{t}=D_{st}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Difference in Differences
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+So in terms of the potential outcomes,
+ and the regression coefficients,
+ the 4 groups have
+\begin_inset Formula 
+\begin{align*}
+\textsf{E}\left[y_{ist}\vert s=PA,t=Feb\right] & =\gamma_{PA}+\lambda_{Feb}=\alpha\\
+\textsf{E}\left[y_{ist}\vert s=PA,t=Nov\right] & =\gamma_{PA}+\lambda_{Nov}=\alpha+\lambda\\
+\textsf{E}\left[y_{ist}\vert s=NJ,t=Feb\right] & =\gamma_{NJ}+\lambda_{Feb}=\alpha+\gamma\\
+\textsf{E}\left[y_{ist}\vert s=NJ,t=Nov\right] & =\gamma_{NJ}+\lambda_{Nov}+\delta=\alpha+\gamma+\lambda+\delta
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+And so we can see that
+\begin_inset Formula 
+\begin{align*}
+\alpha & =\textsf{E}\left[y_{ist}\vert s=PA,t=Feb\right]=\gamma_{PA}+\lambda_{Feb}\\
+\gamma & =\textsf{E}\left[y_{ist}\vert s=NJ,t=Feb\right]-\textsf{E}\left[y_{ist}\vert s=PA,t=Feb\right]\\
+ & =\gamma_{NJ}-\gamma_{PA}\\
+\lambda & =\textsf{E}\left[y_{ist}\vert s=PA,t=Nov\right]-\textsf{E}\left[y_{ist}\vert s=PA,t=Feb\right]\\
+ & =\lambda_{Nov}-\lambda_{Feb}\\
+\delta & =\left\{ \textsf{E}\left[y_{ist}\vert s=NJ,t=Nov\right]-\textsf{E}\left[y_{ist}\vert s=NJ,t=Feb\right]\right\} \\
+ & \quad-\left\{ \textsf{E}\left[y_{ist}\vert s=PA,t=Nov\right]-\textsf{E}\left[y_{ist}\vert s=PA,t=Feb\right]\right\} 
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Difference in Differences
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+We can also extend the model to include individual-level controls and time-varying state level variables:
+\begin_inset Formula 
+\[
+y_{ist}=\gamma_{s}+\lambda_{t}+\delta D_{st}+\mathbf{x}_{it}^{\prime}\beta+\varepsilon_{ist}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Note that time-varying state level variables could be a source of OVB:
+ If some other characteristics of the state changed at the same time as the policy in the treatment state but not in the control state,
+ then 
+\begin_inset Formula $\hat{\delta}$
+\end_inset
+
+ will conflate the effects of this characteristic with the effects of the policy.
+\end_layout
+
+\begin_layout Itemize
+On the other hand,
+ individual level controls are there only to increase precision.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+DiD in the Wild
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+DiD example 1:
+ Mobile Phones in Kerala
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Jensen (2007) 
+\emph on
+natural experiment:
+ 
+\emph default
+Starting in 1997,
+ mobile phone service was rolled out in the state of Kerala,
+ India.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename Jensen1.png
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+DiD example 1:
+ Jensen (2007)
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename Jensen2.png
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+DiD example 1:
+ Jensen (2007)
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename Jensen3.png
+	scale 30
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+DiD example 1:
+ Jensen (2007)
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename Jensen4.png
+	scale 35
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+DiD Example 1:
+ Jensen (2007)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename Jensen5.png
+	scale 32
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+DiD Example 2:
+ Property Transaction Taxes and Housing Market Activity
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+In September 2008,
+ the UK government cut the property transaction tax 
+\begin_inset Quotes eld
+\end_inset
+
+Stamp Duty
+\begin_inset Quotes erd
+\end_inset
+
+ from 1% to 0 on houses worth 
+\begin_inset Formula $£125,000-£175,000$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Surprise-announcement:
+ No anticipation possible
+\end_layout
+
+\begin_layout Itemize
+Pre-announced end-date:
+ December 31st 2009.
+ Fully anticipated.
+\end_layout
+
+\begin_layout Itemize
+Does this increase property transactions?
+\end_layout
+
+\begin_layout Itemize
+How many of these are transactions that would have happened anyway?
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+DiD Example 2:
+ Best & Kleven (2018)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Correct for selection:
+ Use bunching estimates to reallocate transactions from treatment to control.
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Estimate DiD
+\begin_inset Formula 
+\begin{align*}
+n_{it} & =\alpha_{0}Pre_{t}+\alpha_{H}Hol_{t}+\alpha_{R}Rev_{t}+\alpha_{P}Post_{t}+\alpha_{T}Treated_{i}\\
+ & \quad+\beta_{H}Hol_{t}\times Treated_{i}+\beta_{R}Rev_{t}\times Treated_{i}\\
+ & \quad+\beta_{P}Post_{t}\times Treated_{i}+\nu_{it}
+\end{align*}
+
+\end_inset
+
+
+\begin_inset Formula $i$
+\end_inset
+
+ is a 5K bin,
+ 
+\begin_inset Formula $n$
+\end_inset
+
+ is log # of transactions,
+ 
+\begin_inset Formula $Pre$
+\end_inset
+
+ denotes 09/06–08/08,
+ 
+\begin_inset Formula $Hol$
+\end_inset
+
+ denotes 09/08–12/09,
+ 
+\begin_inset Formula $Rev$
+\end_inset
+
+ denotes 01/10–12/10,
+ 
+\begin_inset Formula $Post$
+\end_inset
+
+ denotes 01/11–10/12
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+DiD Example 2:
+ Best & Kleven (2018)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename BestKleven_5.png
+	scale 44
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+DiD Example 2:
+ Best & Kleven (2018)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Parallel trends
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+before the tax cut
+\end_layout
+
+\begin_layout Itemize
+after 1/2011
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+No anticipation of the cut
+\end_layout
+
+\begin_layout Itemize
+Anticipation of the end of the stimulus 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+ Spike in transactions
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Best & Kleven (2018):
+ Results
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename BestKleven_6.png
+	scale 44
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Best & Kleven (2018):
+ Reversal Date
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Lull in activity for about a year.
+\end_layout
+
+\begin_layout Itemize
+Lull doesn't completely offset the gains during the tax holiday.
+ Easy to see in cumulative graphs
+\end_layout
+
+\begin_layout Itemize
+Choice of control group 
+\begin_inset Formula $£175K-£225K$
+\end_inset
+
+ is a bit ad-hoc.
+ What about other price ranges
+\end_layout
+
+\begin_layout Itemize
+Use other price ranges as a 
+\series bold
+placebo test
+\series default
+.
+ 
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Pretend that the treatment was in a different price range.
+\end_layout
+
+\begin_layout Enumerate
+Estimate effect of this pretend treatment 
+\begin_inset Formula $\rightarrow$
+\end_inset
+
+should give zero
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Best & Kleven (2018):
+ Placebo
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename BestKleven_8.png
+	scale 50
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+DiD Example 3:
+ Synthetic Control
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+What happens when you have many possible control groups?
+\end_layout
+
+\begin_layout Itemize
+E.g.
+ Abadie,
+ Diamond & Hainmueller (2010) want to study the effect of California's 1988 tobacco control progam,
+ Proposition 99.
+\end_layout
+
+\begin_layout Itemize
+As controls,
+ they want to use other states,
+ but which one(s) should they use?
+\end_layout
+
+\begin_layout Itemize
+A model:
+ Suppose we observe 
+\begin_inset Formula $J+1$
+\end_inset
+
+ regions,
+ and that only region 
+\begin_inset Formula $1$
+\end_inset
+
+ receives the treatment.
+\end_layout
+
+\begin_layout Itemize
+We observe each region in time periods 
+\begin_inset Formula $t=1,\ldots,T$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Region 1 receives the treatment from period 
+\begin_inset Formula $T_{0}+1$
+\end_inset
+
+ until 
+\begin_inset Formula $T$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Synthetic Control
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Let 
+\begin_inset Formula $y_{it}^{N}$
+\end_inset
+
+ be the potential outcome we 
+\emph on
+would
+\emph default
+ observe for region 
+\begin_inset Formula $i$
+\end_inset
+
+ at time 
+\begin_inset Formula $t$
+\end_inset
+
+ if region 
+\begin_inset Formula $i$
+\end_inset
+
+ never receives the treatment
+\end_layout
+
+\begin_layout Itemize
+Let 
+\begin_inset Formula $y_{it}^{I}$
+\end_inset
+
+ be the optential outcome we 
+\emph on
+would
+\emph default
+ observe for region 
+\begin_inset Formula $i$
+\end_inset
+
+ at time 
+\begin_inset Formula $t$
+\end_inset
+
+ if region 
+\begin_inset Formula $i$
+\end_inset
+
+ receives the treatment from periods 
+\begin_inset Formula $T_{0}+1$
+\end_inset
+
+ until 
+\begin_inset Formula $T$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Assume the treatment has no impact before period 
+\begin_inset Formula $T_{0}+1$
+\end_inset
+
+:
+ 
+\begin_inset Formula $y_{it}^{N}=y_{it}^{I}$
+\end_inset
+
+ for all 
+\begin_inset Formula $t=1,\ldots,T_{0}$
+\end_inset
+
+ and all 
+\begin_inset Formula $i=1,\ldots,J+1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Then 
+\begin_inset Formula $\alpha_{it}=y_{it}^{I}-y_{it}^{N}$
+\end_inset
+
+ is the effect of the intervention on region 
+\begin_inset Formula $i$
+\end_inset
+
+ at time 
+\begin_inset Formula $t$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+We only observe
+\begin_inset Formula 
+\[
+y_{it}=y_{it}^{N}+\alpha_{it}D_{it}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $D_{it}$
+\end_inset
+
+ is a dummy for treatment.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Synthetic Control
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+So,
+ for each 
+\begin_inset Formula $t>T_{0}$
+\end_inset
+
+ we'd like to estimate 
+\begin_inset Formula 
+\[
+\alpha_{1t}=y_{1t}^{I}-y_{1t}^{N}
+\]
+
+\end_inset
+
+but we only observe 
+\begin_inset Formula $y_{1t}^{I}$
+\end_inset
+
+ so we need to estimate 
+\begin_inset Formula $y_{1t}^{N}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+Let's assume the difference in differences model for 
+\begin_inset Formula $y_{it}^{N}$
+\end_inset
+
+ 
+\begin_inset Formula 
+\[
+y_{it}^{N}=\delta_{t}+\boldsymbol{\theta}_{t}\mathbf{Z}_{i}+\mu_{i}+\varepsilon_{it}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Then,
+ we can use any of the other 
+\begin_inset Formula $J$
+\end_inset
+
+ regions as a control and construct a series of Diff in Diff estimators.
+ e.g.
+ if we use region 
+\begin_inset Formula $i=2$
+\end_inset
+
+,
+ 
+\begin_inset Formula 
+\[
+\hat{\alpha}_{1t}=y_{1t}-y_{2t}\:t=T_{0}+1,\ldots,T
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Synthetic Control
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+But,
+ we can do better,
+ we can use a weighted average of all the other regions.
+\end_layout
+
+\begin_layout Itemize
+Let 
+\begin_inset Formula $\mathbf{W}=\left(w_{2},\ldots,w_{J+1}\right)^{\prime}$
+\end_inset
+
+ be a 
+\begin_inset Formula $J\times1$
+\end_inset
+
+ vector of weights satisfying 
+\begin_inset Formula $w_{j}\leq0\;\forall j=2,\ldots,J+1$
+\end_inset
+
+ and 
+\begin_inset Formula $\sum_{j=1}^{J+1}w_{j}=1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Then any such 
+\begin_inset Formula $\mathbf{W}$
+\end_inset
+
+ represents a potential 
+\emph on
+synthetic control
+\emph default
+.
+ For a given 
+\begin_inset Formula $\mathbf{W}$
+\end_inset
+
+,
+ the calue of the outcome at time 
+\begin_inset Formula $t$
+\end_inset
+
+ is
+\begin_inset Formula 
+\[
+\sum_{j=2}^{J+1}w_{j}y_{jt}=\delta_{t}+\boldsymbol{\theta}_{t}\sum_{j=1}^{J+1}w_{j}\mathbf{Z}_{i}+\sum_{j=2}^{J+1}w_{j}\mu_{j}+\sum_{j=2}^{J+1}w_{j}\varepsilon_{jt}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The optimal weights make the sunthetic control look as much as possible like the treatment group in the pre-reform period
+\end_layout
+
+\begin_layout Itemize
+The authors provide the 
+\family typewriter
+synth 
+\family default
+package in stata to implement this
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+DiD Example 3:
+ Effect of CA Prop 99
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="1" columns="2">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename AbadieCAvsUS.png
+	scale 27
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename AbadieCAvsSynth.png
+	scale 27
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Regression Discontinuity Designs
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Regression Discontinuity Designs
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The world is full of rules containing (arbitrary) thresholds,
+ which often determine whether people receive treatments:
+\end_layout
+
+\begin_layout Itemize
+Eligibility for Medicare starts at age 65 in USA (Card,
+ Dobkin & Maestas,
+ 2008)
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+Insurance = f(Age)
+\end_layout
+
+\begin_layout Itemize
+Classes can't contain more than 40 students in Israel (Angrist & Lavy,
+ 1999)
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+Class Size = f(Cohort Size)
+\end_layout
+
+\begin_layout Itemize
+Municipalities with >4K voters had to use electronic voting in Brazil in 1998 (Fujiwara,
+ 2015)
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+Electoral Fraud = f(Municipality population)
+\end_layout
+
+\begin_layout Itemize
+People with >36 months of tenure get severance pay in Austria (Card,
+ Chetty & Weber,
+ 2007)
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+Cash on Hand during Unemployment = f(tenure at old job)
+\end_layout
+
+\begin_layout Itemize
+Individuals who start work after 1993 pay higher payroll taxes in Greece (Saez,
+ Matsaganis & Tsakloglou,
+ 2012)
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+Payroll tax liability = f(start date)
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Introduction
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\[
+D_{i}=\begin{cases}
+1 & \text{if }x_{i}\geq c\\
+0 & \text{if }x_{i}<c
+\end{cases}
+\]
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename LinearRD.png
+	scale 65
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Introduction
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The treatment 
+\begin_inset Formula $D_{i}$
+\end_inset
+
+ is a 
+\series bold
+\emph on
+discontinuous
+\series default
+\emph default
+ function of the 
+\emph on
+assignment variable 
+\emph default
+
+\begin_inset Formula $x_{i}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The outcome we care about 
+\begin_inset Formula $y_{i}$
+\end_inset
+
+ might also depend on 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+But we assume that the relationship between 
+\begin_inset Formula $y_{i}$
+\end_inset
+
+ and 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+ in the absence of the treatment would be smooth (continuous)
+\end_layout
+
+\begin_layout Itemize
+So we can use a 
+\series bold
+\emph on
+regression
+\emph default
+ 
+\series default
+to estimate the relationship between 
+\begin_inset Formula $y_{i}$
+\end_inset
+
+ and 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+,
+ and if there is a jump at 
+\begin_inset Formula $x_{i}=c$
+\end_inset
+
+,
+ we attribute that jump to the treatment.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Sharp vs.
+ Fuzzy RDD
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+RDDs come in 2 basic flavors:
+\end_layout
+
+\begin_layout Enumerate
+
+\series bold
+Sharp
+\series default
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The treatment is fully determined by the assignment variable:
+\begin_inset Formula 
+\[
+D_{i}=\begin{cases}
+1 & \text{if }x_{i}>c\\
+0 & \text{if }x_{i}\leq c
+\end{cases}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+
+\emph on
+Everyone
+\emph default
+ with 
+\begin_inset Formula $x_{i}>c$
+\end_inset
+
+ is treated,
+ and 
+\emph on
+everyone
+\emph default
+ with 
+\begin_inset Formula $x_{i}\leq c$
+\end_inset
+
+ is untreated
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+
+\series bold
+Fuzzy
+\series default
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The 
+\emph on
+probability 
+\emph default
+of being treated jumps at 
+\begin_inset Formula $x_{i}=c$
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\Pr\left(D_{i}=1\vert x_{i}\right)=\begin{cases}
+g_{1}\left(x_{i}\right) & \text{if }x_{i}>c\\
+g_{0}\left(x_{i}\right) & \text{if }x_{i}\leq c
+\end{cases}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $g_{1}\left(x_{i}\right)\neq g_{0}\left(x_{i}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+This ends up meaning that we use the threshold as an 
+\emph on
+instrument
+\emph default
+ for the treatment
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Sharp RDD
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Sharp RDD
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+When we're using OLS,
+ IV etc.
+ to estimate the effect of 
+\begin_inset Formula $D_{i}$
+\end_inset
+
+ on 
+\begin_inset Formula $y_{i}$
+\end_inset
+
+,
+ we want to control for observables 
+\begin_inset Formula $\mathbf{X}$
+\end_inset
+
+ that we believe are important,
+ mostly because of OVB.
+\end_layout
+
+\begin_layout Itemize
+We almost always do this 
+\emph on
+linearly
+\emph default
+:
+ 
+\begin_inset Formula $y_{i}=\alpha+\rho D_{i}+\mathbf{x}_{i}^{\prime}\beta+\varepsilon_{i}$
+\end_inset
+
+,
+ and this linearity assumption doesn't matter a huge amount
+\end_layout
+
+\begin_layout Itemize
+By contrast,
+ when we're doing RDD,
+ it matters a 
+\emph on
+lot 
+\emph default
+that we get the functional form for the assignment variable right (at least around the threshold).
+\end_layout
+
+\begin_layout Itemize
+To see why,
+ consider the sharp RDD setting,
+ and assume that the model 
+\emph on
+is 
+\emph default
+linear
+\begin_inset Formula 
+\begin{align*}
+\textsf{E}\left[y_{0i}\vert x_{i}\right] & =\alpha+\beta x_{i}\\
+y_{1i} & =y_{0i}+\rho
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Sharp RDD
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+So we could run a regression
+\begin_inset Formula 
+\[
+y_{i}=\alpha+\beta x_{i}+\rho D_{i}+\eta_{i}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Difference between RDD and our usual setting:
+ 
+\begin_inset Formula $D_{i}$
+\end_inset
+
+ is not just correlated with 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+ it's a deterministic function of 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+RDD will capture the causal effects by distinguishing the nonlinear,
+ discontinuous function 
+\begin_inset Formula $I\left\{ x_{i}\geq c\right\} $
+\end_inset
+
+ from the linear function 
+\begin_inset Formula $\beta x_{i}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename LinearRD_2.png
+	scale 21
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Sharp RDD
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+But,
+ what if the trend relationship 
+\begin_inset Formula $\textsf{E}\left[y_{0i}\vert x_{i}\right]$
+\end_inset
+
+ is nonlinear?
+ 
+\end_layout
+
+\begin_layout Itemize
+Suppose it is some smooth function 
+\begin_inset Formula $\textsf{E}\left[y_{0i}\vert x_{i}\right]=f\left(x_{i}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename NonLinearRD.png
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+We can construct our RD estimate by estimating
+\begin_inset Formula 
+\[
+y_{i}=f\left(x_{i}\right)+\rho D_{i}+\eta_{i}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Sharp RDD
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+So,
+ to be flexible,
+ let's model 
+\begin_inset Formula $f\left(x_{i}\right)$
+\end_inset
+
+ with a 
+\begin_inset Formula $p$
+\end_inset
+
+th order polynomial,
+ so that
+\begin_inset Formula 
+\[
+y_{i}=\alpha+\beta_{1}x_{i}+\beta_{2}x_{i}^{2}+\ldots+\beta_{p}x_{i}^{p}+\rho D_{i}+\eta_{i}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+In fact,
+ we can be even more flexible and allow the polynomial to be different on each side of the threshold
+\begin_inset Formula 
+\begin{align*}
+\textsf{E}\left[y_{0i}\vert x_{i}\right] & =f_{0}\left(x_{i}\right)=\alpha+\beta_{01}\tilde{x}_{i}+\beta_{02}\tilde{x}_{i}^{2}+\ldots+\beta_{0p}\tilde{x}_{i}^{p}\\
+\textsf{E}\left[y_{1i}\vert x_{i}\right] & =f_{1}\left(x_{i}\right)=\alpha+\beta_{11}\tilde{x}_{i}+\beta_{12}\tilde{x}_{i}^{2}+\ldots+\beta_{1p}\tilde{x}_{i}^{p}
+\end{align*}
+
+\end_inset
+
+where 
+\begin_inset Formula $\tilde{x}_{i}=x_{i}-c$
+\end_inset
+
+ so that the coefficient on 
+\begin_inset Formula $D_{i}$
+\end_inset
+
+ in a regression gives you the treatment effect.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Sharp RDD
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+To get a regression for this that we can implement:
+\begin_inset Formula 
+\[
+\textsf{E}\left[y_{i}\vert x_{i}\right]=\textsf{E}\left[y_{0i}\vert x_{i}\right]+\left(\textsf{E}\left[y_{1i}\vert x_{i}\right]-\textsf{E}\left[y_{0i}\vert x_{i}\right]\right)D_{i}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+And substituting in 
+\begin_inset Formula $\textsf{E}\left[y_{0i}\vert x_{i}\right]=f_{0}\left(x_{i}\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $\textsf{E}\left[y_{1i}\vert x_{i}\right]=f_{1}\left(x_{i}\right)$
+\end_inset
+
+:
+\begin_inset Formula 
+\begin{align*}
+y_{i} & =\alpha+\beta_{01}\tilde{x}_{i}+\beta_{02}\tilde{x}_{i}^{2}+\ldots+\beta_{0p}\tilde{x}_{i}^{p}\\
+ & \quad+\rho D_{i}+\left(\beta_{11}-\beta_{01}\right)D_{i}\tilde{x}_{i}+\left(\beta_{12}-\beta_{02}\right)D_{i}\tilde{x}_{i}^{2}+\ldots\\
+ & \qquad+\left(\beta_{1p}-\beta_{0p}\right)D_{i}\tilde{x}_{i}^{p}+\eta_{i}\\
+ & =\alpha+\beta_{01}\tilde{x}_{i}+\beta_{02}\tilde{x}_{i}^{2}+\ldots+\beta_{0p}\tilde{x}_{i}^{p}\\
+ & \quad+\rho D_{i}+\beta_{1}^{*}D_{i}\tilde{x}_{i}+\beta_{2}^{*}D_{i}\tilde{x}_{i}^{2}+\ldots+\beta_{p}^{*}D_{i}\tilde{x}_{i}^{p}+\eta_{i}
+\end{align*}
+
+\end_inset
+
+where 
+\begin_inset Formula $\beta_{k}^{*}=\beta_{1k}-\beta_{0k}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Sharp RDD
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The validity of the RD estimates will live or die by whether the polynomial 
+\begin_inset Quotes eld
+\end_inset
+
+adequately
+\begin_inset Quotes erd
+\end_inset
+
+ describes 
+\begin_inset Formula $\textsf{E}\left[y_{0i}\vert x_{i}\right]$
+\end_inset
+
+:
+ We have to get 
+\begin_inset Formula $f\left(x_{i}\right)$
+\end_inset
+
+ approx right,
+ at least around threshold:
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename NonLinearRDMistake.png
+	scale 25
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Sharp RDD
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+To make mistakes less likely,
+ we can focus on data only around the threshold,
+ say in an interval 
+\begin_inset Formula $\left[c-\Delta,c+\Delta\right]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+In this case
+\begin_inset Formula 
+\begin{align*}
+\textsf{E}\left[y_{i}\vert c-\Delta<x_{i}<c\right] & \simeq\textsf{E}\left[y_{0i}\vert x_{i}=c\right]\\
+\textsf{E}\left[y_{i}\vert c\leq x_{i}<c+\Delta\right] & \simeq\textsf{E}\left[y_{1i}\vert x_{i}=c\right]
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Which implies that as we zoom in
+\begin_inset Formula 
+\begin{align*}
+ & \lim_{\Delta\rightarrow0}\textsf{E}\left[y_{i}\vert c-\Delta<x_{i}<c\right]-\textsf{E}\left[y_{i}\vert c\leq x_{i}<c+\Delta\right]\\
+ & \quad\textsf{E}\left[y_{1i}-y_{0i}\vert x_{i}=c\right]
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Sharp RDD
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+This is super simple,
+ just compare average outcomes 
+\emph on
+just below
+\emph default
+ the threshold to average outcomes 
+\emph on
+just above
+\emph default
+ the threshold
+\end_layout
+
+\begin_layout Itemize
+But:
+ 
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+working in small neighborhoods of the cutoff implies little data...
+\end_layout
+
+\begin_layout Itemize
+The sample average is biased near a cutoff (in this case 
+\begin_inset Formula $c$
+\end_inset
+
+).
+ This can be corrected by using
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Local linear regressions (Hahn,
+ Todd & van der Klaauw,
+ 2001)
+\end_layout
+
+\begin_layout Itemize
+local polynomial regressions (Porter,
+ 2003)
+\end_layout
+
+\begin_layout Itemize
+Essentially,
+ these give more weight to observations that are closer to the cutoff.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Itemize
+In practice,
+ people usually rely on polynomials,
+ and then zoom in gradually and hope their estimates don't change.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Sharp RDD
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+An example:
+ Lee (2008) asks:
+ 
+\begin_inset Quotes eld
+\end_inset
+
+How big of an advantage to incumbents have in elections?
+\begin_inset Quotes erd
+\end_inset
+
+ using a sharp RDD design
+\end_layout
+
+\begin_layout Itemize
+Incumbency 
+\begin_inset Formula $\left(D_{i}=1\right)$
+\end_inset
+
+ is determined by the assignment variable vote share difference 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+:
+ 
+\begin_inset Formula $D_{i}=I\left\{ x_{i}\geq0\right\} $
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename LeeOutcome.png
+	scale 27
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Sharp RDD
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Apart from ensuring that the functional form is flexible enough,
+ we also want to make sure there are no omitted variables
+\end_layout
+
+\begin_layout Itemize
+An omitted variable would be some other characteristic that also jumps discontinuously at 
+\begin_inset Formula $x_{i}=c$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+What people usually do is plot RD pictures for other variables that we observe,
+ but that shouldn't be affected by 
+\begin_inset Formula $D_{i}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Itemize
+In Lee's case,
+ he looks at the number of past election victories:
+ happened before the elections being considered.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename LeeRobustness.png
+	scale 19
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Sharp RDD
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+A second concern is that we need the assignment variable 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+ to be exogenously assigned
+\end_layout
+
+\begin_layout Itemize
+That is,
+ people can't choose their 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+.
+ If people choose their 
+\begin_inset Formula $x_{i}$
+\end_inset
+
+ they may sort onto different sides of the threshold in order to get (or avoid) the treatment
+\end_layout
+
+\begin_layout Itemize
+In the Lee case,
+ we need politicians not to manipulate vote shares in order to win the election.
+ Hopefully,
+ if the vote counts are independently done,
+ this isn't a problem.
+ But Florida 2000...
+\end_layout
+
+\begin_layout Itemize
+McCrary,
+ 2008 proposes a test for whether or not people are sorting (bunching) around the threshold by looking for discontinuities in the distribution of characteristics that shouldn't be affected by the treatment (gender?,
+ age?,
+ etc.)
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Fuzzy RDD
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Fuzzy RDD
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+In a fuzzy RDD,
+ it's not the treatment itself that jumps at 
+\begin_inset Formula $x_{i}=c$
+\end_inset
+
+,
+ but the 
+\emph on
+probability
+\emph default
+ of receiving the treatment:
+\begin_inset Formula 
+\[
+\Pr\left(D_{i}=1\vert x_{i}\right)=\begin{cases}
+g_{1}\left(x_{i}\right) & \text{if }x_{i}>c\\
+g_{0}\left(x_{i}\right) & \text{if }x_{i}\leq c
+\end{cases}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $g_{1}\left(x_{i}\right)\neq g_{0}\left(x_{i}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+In principle,
+ 
+\begin_inset Formula $g_{1}\left(x_{i}\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $g_{0}\left(x_{i}\right)$
+\end_inset
+
+ can be anything,
+ as long as they're not the same at 
+\begin_inset Formula $x_{i}=c$
+\end_inset
+
+.
+ Let's assume that 
+\begin_inset Formula $g_{1}\left(c\right)>g_{0}\left(c\right)$
+\end_inset
+
+.
+\begin_inset Formula 
+\[
+\textsf{E}\left[D_{i}\vert x_{i}\right]=\textsf{Pr}\left(D_{i}=1\vert x_{i}\right)=g_{0}\left(x_{i}\right)+\left[g_{1}\left(x_{i}\right)-g_{0}\left(x_{i}\right)\right]T_{i}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $T_{i}=I\left\{ x_{i}>c\right\} $
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Fuzzy RDD
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The natural way to think about this is as an IV,
+ so let's use a 2SLS strategy.
+\end_layout
+
+\begin_layout Itemize
+Describe 
+\begin_inset Formula $g_{0}\left(x_{i}\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $g_{1}\left(x_{i}\right)$
+\end_inset
+
+ with 
+\begin_inset Formula $p$
+\end_inset
+
+th order polynomials
+\begin_inset Formula 
+\begin{align*}
+\textsf{E}\left[D_{i}\vert x_{i}\right] & =\gamma_{00}+\gamma_{01}x_{i}+\gamma_{02}x_{i}^{2}+\ldots+\gamma_{0p}x_{i}^{p}\\
+ & \quad\left[\pi+\left(\gamma_{11}-\gamma_{01}\right)x_{i}+\left(\gamma_{12}-\gamma_{02}\right)x_{i}^{2}+\ldots\left(\gamma_{1p}-\gamma_{0p}\right)x_{i}^{p}\right]T_{i}\\
+ & =\gamma_{00}+\gamma_{01}x_{i}+\gamma_{02}x_{i}^{2}+\ldots+\gamma_{0p}x_{i}^{p}\\
+ & \quad+\pi T_{i}+\gamma_{1}^{*}x_{i}T_{i}+\gamma_{2}^{*}x_{i}^{2}T_{i}+\ldots+\gamma_{p}^{*}x_{i}^{p}T_{i}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+This means that we can use 
+\begin_inset Formula $T_{i}$
+\end_inset
+
+ and the interaction terms 
+\begin_inset Formula $x_{i}T_{i}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $x_{i}^{2}T_{i}$
+\end_inset
+
+,
+ 
+\begin_inset Formula $\ldots$
+\end_inset
+
+,
+ 
+\begin_inset Formula $x_{i}^{p}T_{i}$
+\end_inset
+
+ as instruments for 
+\begin_inset Formula $D_{i}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Fuzzy RDD
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+The simplest Fuzzy RDD uses just 
+\begin_inset Formula $T_{i}$
+\end_inset
+
+ as the instrument.
+\end_layout
+
+\begin_layout Itemize
+The first stage regression is
+\begin_inset Formula 
+\[
+D_{i}=\gamma_{0}+\gamma_{1}x_{i}+\gamma_{2}x_{i}^{2}+\ldots+\gamma_{p}x_{i}^{p}+\pi T_{i}+\xi_{1i}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Substituting into the relationship between 
+\begin_inset Formula $y_{i},x_{i},$
+\end_inset
+
+ and 
+\begin_inset Formula $D_{i}$
+\end_inset
+
+ to get the reduced form relationship
+\begin_inset Formula 
+\begin{align*}
+y_{i} & =\alpha+\beta_{1}x_{i}+\beta_{2}x_{i}^{2}+\ldots+\beta_{p}x_{i}^{p}\\
+ & \quad+\rho\left[\gamma_{0}+\gamma_{1}x_{i}+\gamma_{2}x_{i}^{2}+\ldots+\gamma_{p}x_{i}^{p}+\pi T_{i}+\xi_{1i}\right]+\eta_{i}\\
+ & =\mu+\kappa_{1}x_{i}+\kappa_{2}x_{i}^{2}+\ldots+\kappa_{p}x_{i}^{p}+\rho\pi T_{i}+\xi_{2i}
+\end{align*}
+
+\end_inset
+
+where 
+\begin_inset Formula $\mu=\alpha+\rho\gamma$
+\end_inset
+
+,
+ and the 
+\begin_inset Formula $\kappa_{j}=\beta_{j}+\rho\gamma_{j}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Fuzzy RDD
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Similarly to the sharp RDD,
+ we can zoom in around the threshold and get non-parametric estimates.
+ 
+\end_layout
+
+\begin_layout Itemize
+The reduced form is
+\begin_inset Formula 
+\[
+\textsf{E}\left[y_{i}\vert c\leq x_{i}<c+\Delta\right]-\textsf{E}\left[y_{i}\vert c-\Delta\leq x_{i}<c\right]\simeq\rho\pi
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+While the first stage is
+\begin_inset Formula 
+\[
+\textsf{E}\left[D_{i}\vert c\leq x_{i}<c+\Delta\right]-\textsf{E}\left[D_{i}\vert c-\Delta\leq x_{i}<c\right]\simeq\pi
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+And so,
+\begin_inset Formula 
+\[
+\lim_{\Delta\rightarrow0}\frac{\textsf{E}\left[y_{i}\vert c\leq x_{i}<c+\Delta\right]-\textsf{E}\left[y_{i}\vert c-\Delta\leq x_{i}<c\right]}{\textsf{E}\left[D_{i}\vert c\leq x_{i}<c+\Delta\right]-\textsf{E}\left[D_{i}\vert c-\Delta\leq x_{i}<c\right]}=\rho
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The sample analog of this is a Wald estimator using 
+\begin_inset Formula $T_{i}$
+\end_inset
+
+ as an instrument for 
+\begin_inset Formula $D_{i}$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Fuzzy RDD
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+RDDs,
+ fuzzy or sharp,
+ are very powerful ways to get credible estimates of causal effects 
+\begin_inset Formula $y_{1i}-y_{0i}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Only assumption is the smoothness of the counterfactual 
+\begin_inset Formula $\textsf{E}\left[y_{0}\vert x_{i}\right]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Of course,
+ they are 
+\emph on
+Local
+\emph default
+ average treatment effects (LATEs):
+ The compliers are people around the threshold.
+\end_layout
+
+\begin_layout Itemize
+If we think effects are heterogeneous,
+ then we need to be carecul if we want to extrapolate from RDD estimates.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Fuzzy RDD
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Angrist & Lavy (1999) study the impact of class size on educational attainment
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+Maimonides' rule
+\begin_inset Quotes erd
+\end_inset
+
+ in Israel:
+ class size <40 students.
+\end_layout
+
+\begin_layout Itemize
+This rule implies that class 
+\begin_inset Formula $c$
+\end_inset
+
+'s size at school 
+\begin_inset Formula $s$
+\end_inset
+
+,
+ 
+\begin_inset Formula $m_{sc}$
+\end_inset
+
+ as a function of enrollment 
+\begin_inset Formula $e_{s}$
+\end_inset
+
+ is
+\begin_inset Formula 
+\[
+m_{sc}=\frac{e_{s}}{int\left[\frac{e_{s}-1}{40}\right]+1}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename AngristLavyFirstStage.png
+	scale 21
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Fuzzy RDD
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename AngristLavyResults.png
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+RDD in the wild
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+RDD Example 1:
+ Card,
+ Dobkin & Maestas (2008)
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename CardDobkinMaestasFirstStage.png
+	scale 34
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+RDD Example 1:
+ Card,
+ Dobkin & Maestas (2008)
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename CardDobkinMaestasRobustness.png
+	scale 37
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+RDD Example 1:
+ Card,
+ Dobkin & Maestas (2008)
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename CardDobkinMaestasResults.png
+	scale 35
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+RDD Example 2:
+ Card,
+ Chetty & Weber (2007)
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename CardChettyWeberNoBunching.png
+	scale 37
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+RDD Example 2:
+ Card,
+ Chetty & Weber (2007)
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename CardChettyWeberResultReemployment.png
+	scale 37
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+RDD Example 2:
+ Card,
+ Chetty & Weber (2007)
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename CardChettyWeberResultWages.png
+	scale 34
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
