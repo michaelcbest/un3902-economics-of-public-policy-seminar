@@ -1,0 +1,1033 @@
+\documentclass[notes=show,aspectratio=169]{beamer}
+\renewcommand{\rmdefault}{cmr}
+\usepackage{helvet}
+\renewcommand{\ttdefault}{cmtt}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+\usepackage{amsbsy}
+\usepackage{amstext}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage[english]{babel}
+\hypersetup{unicode=true,breaklinks=false,pdfborder={0 0 0},pdfborderstyle={},colorlinks=true,linkcolor=blue, citecolor=blue, urlcolor=blue}
+\usepackage{comment}
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
+% this default might be overridden by plain title style
+\newcommand\makebeamertitle{\frame{\maketitle}}%
+% (ERT) argument for the TOC
+\AtBeginDocument{%
+  \let\origtableofcontents=\tableofcontents
+  \def\tableofcontents{\@ifnextchar[{\origtableofcontents}{\gobbletableofcontents}}
+  \def\gobbletableofcontents#1{\origtableofcontents}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\usepackage{ifthen}
+\usepackage{multirow,bigstrut}
+\usepackage{tikz}
+\usetikzlibrary{patterns,decorations.pathreplacing,shapes}
+\usetikzlibrary{arrows}
+\usepackage{rotating}
+\usepackage{pdflscape}
+\usepackage{makecell}
+\usepackage{graphicx}
+\usepackage{animate}
+\usepackage{pifont}
+\usepackage{booktabs}
+\usepackage{relsize}
+\usepackage{tcolorbox}
+\usepackage{mathtools}
+\usepackage{amsbsy}
+\usepackage{amsmath}
+%\usepackage{adjustbox}
+%\usepackage{txfonts}
+%\usepackage{handoutWithNotes}
+%\pgfpagesuselayout{3 on 1 with notes}[a4paper,border shrink=5mm]
+
+% FOOTLINE - PAGE NUMBER RIGHT
+\defbeamertemplate*{footline}{guildford foot theme}
+{
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.7\paperwidth,ht=1cm,dp=0ex,left]{}%
+    {
+    \insertsectionnavigationhorizontal{.5\paperwidth}{}{}
+    }
+ \end{beamercolorbox}
+ \begin{beamercolorbox}[wd=0.31\paperwidth,ht=1cm,dp=0ex,right]{}%
+{\tiny
+\insertframenumber{} / \inserttotalframenumber\hspace*{5ex}
+}
+ \end{beamercolorbox}}%
+  \vskip5pt%
+}
+
+\beamertemplatenavigationsymbolsempty
+\usefonttheme{professionalfonts}
+\usecolortheme[RGB={0,0,125}]{structure}
+\setbeamersize{ text margin left=10px}
+\definecolor{newblue}{rgb}{0,0,0.6}
+\setbeamercolor{alerted text}{fg=newblue}
+\setbeamertemplate{frametitle}[default][center]
+
+%{\bfseries\insertframetitle\par}
+
+\RequirePackage{ifthen}
+
+\newboolean{sectiontoc}
+\setboolean{sectiontoc}{true} % default to true
+
+\AtBeginSubsection[]
+{
+  \ifthenelse{\boolean{sectiontoc}}{
+  \begin{frame}[plain]
+    \frametitle{Outline}
+    \tableofcontents[sectionstyle=show/hide,subsectionstyle=show/shaded/hide]
+  \end{frame}
+}
+}
+
+\AtBeginSection[]
+{
+  \ifthenelse{\boolean{sectiontoc}}{
+  \begin{frame}[noframenumbering,plain]
+    \frametitle{Outline}
+    \tableofcontents[sectionstyle=show/shaded,subsectionstyle=show/hide/hide]
+  \end{frame}
+}
+}
+
+\newcommand{\toclesssection}[1]{
+   \setboolean{sectiontoc}{false}
+   \section{#1}
+   \setboolean{sectiontoc}{true}
+}
+
+\newcommand{\toclesssubsection}[1]{
+   \setboolean{sectiontoc}{false}
+   \subsection{#1}
+   \setboolean{sectiontoc}{true}
+}
+
+\setbeameroption{hide notes}
+
+\newcommand{\ShortNameSection}[2][]{
+   \setboolean{sectiontoc}{false}
+   \section[#1]{#2}
+   \setboolean{sectiontoc}{true}
+}
+
+\newcommand{\light}[1]{\textcolor{gray}{#1}}
+
+\makeatother
+
+\begin{document}
+
+\title{\setcounter{framenumber}{0}
+\thispagestyle{empty} \textit{UN3902: Economics of Public Policy Seminar} \\ Week 3: Externalities and Public Goods I}
+\author{Michael Carlos Best}
+\date{February 3, 2026}
+
+\makebeamertitle
+
+\section{Externalities: Problems and Solutions}
+
+\subsection{Externality Theory}
+
+\begin{frame}{Introduction to Externalities: Global Warming}
+\begin{itemize}
+\item In 2015, representatives from 195 nations met in Paris, France, to negotiate an international pact to limit temperature rise around the world.
+\item Carbon dioxide emissions contribute to global warming, which could cause enormous damage.
+\item The cost of reducing the use of fossil fuels, particularly in the major industrialized nations, is immense. Some predict that we will have to reduce our use of fossil fuels to nineteenth-century (preindustrial) levels.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Average Global Temperature, 1880--2020}
+\begin{center}
+\includegraphics[width=\textwidth]{images/figure5_1.png}
+\end{center}
+\end{frame}
+
+\begin{frame}{Externalities: Key Definitions}
+\begin{itemize}
+\item Global warming is a classic example of an \textbf{externality}, which is a kind of market failure.
+\item \textbf{Externality}: Externalities arise whenever the actions of one party make another party worse or better off, yet the first party neither bears the costs nor receives the benefits of doing so.
+\item \textbf{Market failure}: A problem that causes the market economy to deliver an outcome that does not maximize efficiency.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Negative Externalities}
+\begin{itemize}
+\item \textbf{Negative production externality}: When a firm's production reduces the well-being of others who are not compensated by the firm.
+\begin{itemize}
+\item Example: Pollution from steel production, dumped in a river, hurts fishers.
+\end{itemize}
+\item \textbf{Negative consumption externality}: When an individual's consumption reduces the well-being of others who are not compensated by the individual.
+\begin{itemize}
+\item Example: Smoking at a restaurant affects the health and enjoyment of others.
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Private and Social Marginal Cost}
+\begin{itemize}
+\item Negative production externalities drive a wedge between private and social marginal cost.
+\item \textbf{Private marginal cost (PMC)}: The direct cost to producers of producing an additional unit of a good.
+\item \textbf{Social marginal cost (SMC)}: The private marginal cost to producers plus any costs associated with the production of the good that are imposed on others.
+\item The loss from pollution is a cost of production imposed on others.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Private and Social Marginal Benefit}
+\begin{itemize}
+\item Negative consumption externalities drive a wedge between private and social marginal benefit.
+\item \textbf{Private marginal benefit (PMB)}: The direct benefit to consumers of consuming an additional unit of a good by the consumer.
+\item \textbf{Social marginal benefit (SMB)}: The private marginal benefit to consumers minus any costs associated with the consumption of the good that are imposed on others.
+\item Your consumption of cigarettes at a restaurant may have a negative effect on my enjoyment of a meal.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Externalities and Efficiency}
+\begin{itemize}
+\item How do externalities affect efficiency?
+\item Efficiency requires that SMC = SMB.
+\item The market sets PMC = PMB.
+\item When PMC = SMC and PMB = SMB, the market is efficient.
+\item Production or consumption externalities lead to inefficiency because PMC $\neq$ SMC and/or PMB $\neq$ SMB
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Marginal Damage}
+\begin{itemize}
+\item With a negative production externality
+\begin{itemize}
+\item SMC = PMC + MD
+\item MD is the marginal damage done to others from each unit of production.
+\end{itemize}
+\item With a negative consumption externality
+\begin{itemize}
+\item SMB = PMB -- MD
+\item MD is the marginal damage done to others by your consumption of that unit.
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Economics of Negative Production Externalities: Steel Production}
+\begin{center}
+\includegraphics[width=0.7\textwidth]{images/figure5_2.png}
+\end{center}
+\end{frame}
+
+\begin{frame}{Application: The Externality of SUVs}
+The consumption of large cars such as SUVs produces three types of negative externalities:
+\begin{enumerate}
+\item \textbf{Environmental externalities}: In 2020, compact cars get 32.0 miles/gallon, but SUVs get only 23.9.
+\item \textbf{Wear and tear on roads}: Larger cars wear down the roads more.
+\item \textbf{Safety externalities}: For a car of average weight, the odds of having a fatal accident quadruple if the accident is with a typical SUV and not with a car of the same size.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Positive Externalities}
+\begin{itemize}
+\item Externalities can be positive as well as negative.
+\item \textbf{Positive production externality}: When a firm's production increases the well-being of others but the firm is not compensated by those others.
+\item \textbf{Positive consumption externality}: When an individual's consumption increases the well-being of others but the individual is not compensated by those others.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Economics of Positive Production Externalities}
+\begin{center}
+\includegraphics[width=0.75\textwidth]{images/figure5_4.png}
+\end{center}
+\end{frame}
+
+\begin{frame}{Quick Hint}
+One confusing aspect of the graphical analysis of externalities is knowing which curve to shift and in which direction. There are four possibilities:
+\begin{itemize}
+\item Negative production externality: SMC curve lies above PMC curve.
+\item Positive production externality: SMC curve lies below PMC curve.
+\item Negative consumption externality: SMB curve lies below PMB curve.
+\item Positive consumption externality: SMB curve lies above PMB curve.
+\end{itemize}
+Armed with these facts, the key is to assess which category a particular example fits into.
+\end{frame}
+
+\subsection{Private-Sector Solutions}
+
+\begin{frame}{Private-Sector Solutions to Negative Externalities}
+\begin{itemize}
+\item Externalities undermine efficiency because one party does not pay the costs or get all the (net) benefits of its actions.
+\item The solution to this, therefore, is to \textbf{internalize the externality}.
+\item \textbf{Internalizing the externality}: When either private negotiations or government action led the party to fully reflect the external costs or benefits of that party's actions.
+\item Steel producer could pay the fishers for each unit of steel produced so that they are compensated for the damage to their fishing grounds.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{The Solution: The Coase Theorem}
+\begin{itemize}
+\item The Coase theorem says that private parties will be able to solve the problem of externalities. This is accomplished by internalizing the externality.
+\item \textbf{Coase theorem (Part I)}: When there are well-defined property rights and costless bargaining, then negotiations between the party creating the externality and the party affected by the externality can bring about the socially optimal market quantity.
+\item \textbf{Coase theorem (Part II)}: The efficient solution to an externality does not depend on which party is assigned the property rights as long as someone is assigned those rights.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{The Solution: Coasian Payments}
+\begin{itemize}
+\item The charge internalizes the externality and removes the inefficiency of the negative externality.
+\end{itemize}
+\begin{center}
+\includegraphics[width=0.7\textwidth]{images/figure5_5.png}
+\end{center}
+\end{frame}
+
+\begin{frame}{The Problems with Coasian Solutions (1)}
+There are difficulties with Coasian solutions, making them less likely to arise as more people become involved.
+\begin{itemize}
+\item \textbf{The assignment problem}: The first problem is assigning blame. Does the fisher pay the steel plant for not polluting? Or does the steel plant pay for polluting?
+\item \textbf{The holdout problem}: Shared ownership of property rights gives each owner power over all the others. Each person has veto power and so may demand enormous payments.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{The Problems with Coasian Solutions (2)}
+\begin{itemize}
+\item \textbf{The free rider problem}: When an investment has a personal cost but a common benefit, individuals will underinvest. Individuals may not want to pay enough to reduce pollution.
+\item \textbf{Transaction costs and negotiating problems}: It is hard to negotiate when there are large numbers of individuals on one or both sides of the negotiation.
+\item This problem is amplified for an externality such as global warming, where the potentially divergent interests of billions of parties on one side must be somehow aggregated for a negotiation.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Bottom Line}
+\begin{itemize}
+\item Ronald Coase's insight that externalities can sometimes be internalized was a brilliant one.
+\item It provides the competitive market model with a defense against the onslaught of market failures.
+\item It is also an excellent reason to suspect that the market may be able to internalize some small-scale, localized externalities.
+\item It won't help with large-scale, global externalities.
+\end{itemize}
+\end{frame}
+
+\subsection{Public-Sector Remedies}
+
+\begin{frame}{Public-Sector Remedies for Externalities}
+Public policy makers employ three types of remedies to resolve the problems associated with negative externalities:
+\begin{enumerate}
+\item Corrective taxation to discourage use
+\item Subsidies to encourage use
+\item Regulation to directly change use
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Corrective Taxation and Subsidies}
+\begin{itemize}
+\item Taxes and subsidies change the private marginal cost or marginal benefit without affecting the social marginal cost or benefit.
+\item They can therefore be used to internalize the externality.
+\item Taxes that correct externalities are called ``Pigouvian taxation,'' after A.~C.~Pigou.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Corrective Taxation}
+\begin{itemize}
+\item This tax internalizes the externality and removes the inefficiency of the negative externality.
+\end{itemize}
+\begin{center}
+\includegraphics[width=0.7\textwidth]{images/figure5_6.png}
+\end{center}
+\end{frame}
+
+\begin{frame}{Application: Congestion Pricing}
+\begin{itemize}
+\item Traffic jams lead to huge time and environmental costs to the US economy. They are also a classic externality: each driver does not account for the fact that adding their car to the road increases costs on others.
+\item Economists recommend corrective taxation to solve such externalities, in this context, \textbf{congestion pricing}.
+\item London first created congestion tax in 2003. This was a flat tax of \$21.00 for entrance into city center on weekdays. Decreased cars on streets by 39\%
+\item In Stockholm, variable congestion fee used. Price depends on length of time driving in city. Decreased health impacts of pollution.
+\item Plans for congestion tax in New York City postponed after Covid-19 lockdown. Implemented Jan 2025. 
+\item See Cody Cook, Aboudy Kreidieh, Shoshana Vasserman, Hunt Allcott, Neha Arora, Freek van Sambeek, Andrew Tomkins \& Eray Turkel, \textit{The Short-Run Effects of Congestion Pricing in New York City} NBER Working Paper \#33584, 2025 on Courseworks.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Corrective Subsidies}
+\begin{itemize}
+\item The quantity produced rises from $Q_1$ to $Q_2$, the socially optimal level of production.
+\end{itemize}
+\begin{center}
+\includegraphics[width=0.7\textwidth]{images/figure5_7.png}
+\end{center}
+\end{frame}
+
+\begin{frame}{Application: Operation Warp Speed}
+\begin{itemize}
+\item Vaccination classic positive externality: private benefits of vaccination are less than social benefits. Private benefits do not take into account the health improvements of others by ones' own vaccination.
+\item The U.S. Government's ``Operation Warp Speed'' provided both ``push'' and ``pull'' incentives to speed rapid development of Covid-19 vaccines.
+\item Push incentives were large grants to firms, and pull incentives were large purchase guarantees.
+\item This ensured that vaccines would be developed quickly, and would be distributed quickly once made.
+\item Was huge success: instead of typical timeline of 10 to 15 years for vaccine development, Covid-19 vaccine created in just seven months with efficacy of over 90\%.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Regulation}
+\begin{itemize}
+\item The government could mandate that production take place at the socially optimal level of production.
+\item In an ideal world, Pigouvian taxation and regulation would be identical.
+\item Regulation has been the traditional choice for addressing environmental externalities in the United States and around the world.
+\item In practice, there are complications that may make taxes a more effective means of addressing externalities.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Extensions}
+    \begin{enumerate}
+        \item Contrasting Price vs. Quantity Regulation
+        \item Multiple Plants with Different Reduction Costs
+        \item Uncertainty About Costs of Reduction
+    \end{enumerate}
+\end{frame}
+
+% \subsection{Price vs. Quantity Regulation}
+
+% \begin{frame}{Price vs. Quantity Approaches: Basic Model}
+% \begin{itemize}
+% \item The optimal level of pollution reduction is $R^*$, the point at which these curves intersect. Because pollution is the complement of reduction, the optimal amount of pollution is $P^*$.
+% \end{itemize}
+% \begin{center}
+% \includegraphics[width=0.7\textwidth]{images/figure5_8.png}
+% \end{center}
+% \end{frame}
+
+% \begin{frame}{Price Regulation (Taxes) Versus Quantity Regulation}
+% \begin{itemize}
+% \item The efficient solution is for SMB = SMC and SMC = PMC.
+% \item Finding efficient quantity requires knowing the whole SMC curve.
+% \item If MD is constant, setting a tax is easier than setting a regulation since there is no need to know the shape of the MC curve.
+% \item But if marginal damage were unknown or not constant, the government would need to know the shapes of both MC and MD curves in order to set either the optimal tax or the optimal regulation.
+% \end{itemize}
+% \end{frame}
+
+% \begin{frame}{Multiple Plants with Different Reduction Costs (1)}
+% \begin{itemize}
+% \item The efficient solution is one where, for each plant, the marginal cost of reducing pollution is set equal to the social marginal benefit of that reduction, that is, where each plant's marginal cost curve intersects with the marginal benefit curve.
+% \end{itemize}
+% \begin{center}
+% \includegraphics[width=0.7\textwidth]{images/figure5_9.png}
+% \end{center}
+% \end{frame}
+
+% \begin{frame}{Multiple Plants with Different Reduction Costs (2)}
+% Three possible policies here are:
+% \begin{itemize}
+% \item \textbf{Quantity regulation}: For each plant, the marginal cost of reducing pollution is set equal to the social marginal benefit of that reduction.
+% \item \textbf{Corrective tax}: Pigouvian taxes cause efficient production by raising the cost of the input by the size of its external damage.
+% \item \textbf{Quantity regulation with tradable permits}: Trading allows the market to incorporate differences in the cost of pollution reduction across firms.
+% \end{itemize}
+% \end{frame}
+
+% \begin{frame}{Multiple Plants with Different Reduction Costs (3)}
+% How do price regulation (taxes) and quantity regulation differ?
+% \begin{itemize}
+% \item Quantity regulation ignores the fact that the plants have different marginal costs of pollution reduction.
+% \item Pigouvian taxes cause efficient production by raising the cost of the input by the size of its external damage, thereby raising private marginal costs to social marginal costs.
+% \item Taxes are preferred to quantity regulation, with an equal distribution of reductions across the plants, because taxes give plants more flexibility in choosing their optimal amount of reduction, allowing them to choose the efficient level.
+% \end{itemize}
+% \end{frame}
+
+% \begin{frame}{Multiple Plants with Different Reduction Costs (4)}
+% In conclusion:
+% \begin{itemize}
+% \item The main benefit of taxation over regulation arises when plants differ in their cost of reducing pollution.
+% \item How to determine how much each plant should produce?
+% \item Regulation often requires each plant to reduce usage by the same amount, but it would be more efficient to have the low-cost plants reduce use by more.
+% \item Pigouvian corrective taxes set equal to the marginal damage are more efficient.
+% \end{itemize}
+% \end{frame}
+
+% \begin{frame}{Uncertainty About Costs of Reduction}
+% How does uncertainty about costs of reduction affect corrective strategies?
+% \begin{itemize}
+% \item If costs are high, then regulation could be expensive since plants are forced to comply.
+% \item Using a price mechanism avoids this problem since firms will adjust until cost of adjustment = tax.
+% \item But if costs are uncertain, then so is the amount of pollution reduction that a tax achieves.
+% \end{itemize}
+% \end{frame}
+
+% \begin{frame}{Case 1: Flat MD Curve (Global Warming)}
+% \begin{itemize}
+% \item If costs are uncertain, then taxation at level $t = C_2$ can lead to a much lower deadweight loss (DBE) than does regulation of $R_1$ (ABC).
+% \end{itemize}
+% \begin{center}
+% \includegraphics[width=0.7\textwidth]{images/figure5_10a.png}
+% \end{center}
+% \end{frame}
+
+% \begin{frame}{Case 2: Steep MD Curve}
+% \begin{itemize}
+% \item If costs are uncertain, then taxation can lead to a much larger deadweight loss (DBE) than does regulation (ABC).
+% \end{itemize}
+% \begin{center}
+% \includegraphics[width=0.7\textwidth]{images/figure5_10b.png}
+% \end{center}
+% \end{frame}
+
+% \begin{frame}{Implications for Instrument Choice (1)}
+% \begin{itemize}
+% \item Using taxes leads to lower costs but less control over the amount of pollution reduction.
+% \item The instrument choice depends on whether the government wants to get the amount of pollution reduction right or whether it wants to minimize costs.
+% \end{itemize}
+% \end{frame}
+
+% \begin{frame}{Implications for Instrument Choice (2)}
+% \begin{itemize}
+% \item Quantity regulation ensures there is as much reduction as desired, regardless of the cost.
+% \item If it is critical to get the amount exactly right, quantity regulation is the best way to go.
+% \item Price regulation through taxes ensures that the cost of reductions never exceeds the level of the tax but leaves the amount of reduction uncertain.
+% \item If getting the protection close to right is not so important, then price regulations are a preferred option.
+% \end{itemize}
+% \end{frame}
+
+\begin{frame}{Conclusion}
+\begin{itemize}
+\item Externalities arise when one party's actions affect another party and the first party doesn't fully compensate (or get compensated by) the other for this effect.
+\item Externalities are the classic answer to the ``when'' question of public finance: if externalities are present, then the market has failed, and intervention is potentially justified.
+\item This naturally leads to the ``how'' question of public finance. Two solutions:
+\begin{itemize}
+\item Price-based measures (taxes and subsidies)
+\item Quantity-based measures (regulation)
+\end{itemize}
+\item Which of these methods will lead to the most efficient regulatory outcome depends on factors such as the heterogeneity of the firms being regulated, the flexibility embedded in quantity regulation, and the uncertainty over the costs of externality reduction.
+\end{itemize}
+\end{frame}
+
+\section{Externalities in Action: Environmental and Health Externalities}
+
+\subsection{Environmental Regulation: Particulates}
+
+\begin{frame}{The Case of Particulates}
+\begin{itemize}
+\item Particulates are a classic negative production externality.
+\item Burning coal releases mercury, SO$_2$, and NO$_x$, which combine with hydrogen in the atmosphere to create ``acid rain'' and particulate matter (soot), which is associated with everything from low visibility to heart attacks.
+\item The majority of SO$_2$ emissions come from coal-fired power plants, mostly located in the Ohio River Valley.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{The Damage of Particulates}
+The negative effects of particulates include:
+\begin{itemize}
+\item Environmental damage to both water and land ecosystems.
+\item Property damage to painted surfaces (autos) and metal or stone exteriors (statuary).
+\item Reduced visibility caused by suspended acidic chemicals (smog).
+\item Adverse health outcomes (lung or heart diseases).
+\end{itemize}
+\end{frame}
+
+\begin{frame}{History of Particulate Regulation}
+\begin{itemize}
+\item To combat damaging particulates, Congress passed the 1970 Clean Air Act.
+\item \textbf{1970 Clean Air Act (CAA)}: Landmark federal legislation that first regulated damaging emissions by setting maximum standards for atmospheric concentrations of various substances, including SO$_2$.
+\item Regulations affected only new plants, however, encouraging use of older, dirtier plants.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{History of Acid Rain Regulation}
+\begin{itemize}
+\item Clean air acts reduced SO$_2$ emissions but encouraged use of older plants.
+\item The 1990 amendments and emissions trading attempted to rectify this.
+\item \textbf{SO$_2$ allowance system}: The feature of the 1990 amendments to the Clean Air Act that granted plants permits to emit SO$_2$ in limited quantities and allowed them to trade those permits.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Estimating the Adverse Health Effects of Particulates (1)}
+How do particulates affect health?
+\begin{itemize}
+\item The typical approach taken in this literature is to relate adult mortality in a geographical area to the level of particulates (such as SO$_2$) in the air.
+\item The results are suspect: Areas with more particulates may differ from areas with fewer particulates in many other ways, not just in the amount of particulates in the air.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Estimating the Adverse Health Effects of Particulates (2)}
+Chay and Greenstone (2003) studied this question.
+\begin{itemize}
+\item In a quasi-experiment, they examined the infant mortality rate, using the regulatory changes induced by the Clean Air Act of 1970.
+\item Some areas (``attainment'') did not have to reduce SO$_2$ levels.
+\item Others (``nonattainment'') were required to do so.
+\item Infant mortality declined substantially in nonattainment areas, relative to attainment areas.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{SO$_2$ Levels in Attainment and Nonattainment Areas}
+\begin{itemize}
+\item For areas with TSPs below the mandated threshold, there was only a slight reduction in TSPs over time. For areas above the mandated threshold, there was a very large reduction in emissions after the legislation became effective in 1971.
+\end{itemize}
+\begin{center}
+\includegraphics[width=0.72\textwidth]{images/figure6_1.png}
+\end{center}
+\end{frame}
+
+\begin{frame}{Has the CAA Been a Success?}
+\begin{itemize}
+\item Led to dramatic improvements in infant health and lifetime earnings, among other things.
+\item But may have cost 600,000 jobs and \$75 billion in polluting industries.
+\item Recent studies suggest that our efforts to curb emissions have not gone far enough.
+\item Marginal costs to firms to reduce emissions were below estimated marginal benefits.
+\item Lack of enforcement combined with increases in economic activity and wildfires has led to an increase in particulate matter in US counties by 5.5\%.
+\end{itemize}
+\end{frame}
+
+% \subsection{Climate Change}
+
+% \begin{frame}{Climate Change}
+% \begin{itemize}
+% \item Global warming is a serious environmental externality.
+% \item Gas emissions led to increased global temperature because of the greenhouse effect.
+% \item \textbf{Greenhouse effect}: The process by which gases in the Earth's atmosphere reflect heat from the sun back to the Earth.
+% \item Global temperatures are increasing more rapidly than at any time in at least 1,000 years.
+% \item Temperatures are projected to rise even more rapidly over the next century.
+% \end{itemize}
+% \end{frame}
+
+% \begin{frame}{Climate Change: Impacts}
+% Climate change is causing serious environmental and economic damage, which will increase over time.
+% \begin{itemize}
+% \item 75\% increase in hurricanes since 1970s led US to spend \$136 billion on climate-related disaster funding in 2017.
+% \item Predicted that there will be 275\% increase in damage risk by 2050 without mitigation.
+% \item Damage to human health from higher temperatures, for example, from kidney failure.
+% \item Climate change expected to shrink US economy by 10\% by 2100.
+% \end{itemize}
+% \end{frame}
+
+% \begin{frame}{CO$_2$ Output: 25 Largest Contributors}
+% \begin{itemize}
+% \item China and the United States are by far the largest emitters of CO$_2$, together accounting for over two-fifths of the world's total.
+% \end{itemize}
+% \begin{center}
+% \includegraphics[width=0.8\textwidth]{images/figure6_2.png}
+% \end{center}
+% \end{frame}
+
+% \begin{frame}{Application: The Montreal Protocol (1)}
+% \begin{itemize}
+% \item International cooperation will be necessary to address global warming.
+% \item Montreal Protocol of 1987, which banned the use of chlorofluorocarbons (CFCs), is an early example.
+% \item As with global warming, this was a potentially enormous long-run problem.
+% \item The CFC problem was showing itself immediately and urgently: By the 1980s, a 25-million-square-kilometer hole had opened in the ozone layer over Antarctica!
+% \end{itemize}
+% \end{frame}
+
+% \begin{frame}{Application: The Montreal Protocol (2)}
+% \begin{itemize}
+% \item The Montreal Protocol was adopted, aimed for complete phaseout of specified chemicals (mostly CFCs and halons), according to specified schedules.
+% \item The result is that the hole in the ozone layer has begun to recover, and scientists predict it will return to normal around 2070.
+% \item It may take dramatic developments to spur action on global warming, which will not be solved for centuries after emissions are greatly reduced.
+% \item If the world waits for a crisis to spur us into action, it may be too late.
+% \end{itemize}
+% \end{frame}
+
+% \begin{frame}{The Kyoto Treaty}
+% \begin{itemize}
+% \item In 1997, Kyoto hosted international negotiations to address carbon emissions.
+% \item 37 industrialized nations agreed to combat global warming by reducing their emissions of greenhouse gases to 5\% below 1990 levels by 2010.
+% \item Written into a treaty that has since been ratified by 37 of the 38 signatory countries and went into effect in early 2005.
+% \item Not ratified by the United States.
+% \end{itemize}
+% \end{frame}
+
+% \begin{frame}{Can Trading Make Environmental Agreements More Cost-Effective? (1)}
+% \begin{itemize}
+% \item The Kyoto treaty allowed for \textbf{international emissions trading}.
+% \item \textbf{International emissions trading}: Under the Kyoto treaty, the industrialized signatories are allowed to trade emissions rights among themselves as long as the total emissions goals are met.
+% \item Allows efficient countries to reduce their emissions on behalf of less efficient ones (for a price).
+% \end{itemize}
+% \end{frame}
+
+% \begin{frame}{Can Trading Make Environmental Agreements More Cost-Effective? (2)}
+% \begin{itemize}
+% \item In this no-trading world, the marginal cost of achieving the Kyoto target of a reduction of 440 million metric tons (as measured by the U.S. curve) is \$210 per metric ton of carbon. Other nations have much lower marginal costs of reduction. For those nations, reducing carbon emissions by 190 million metric tons would cost them only \$20 per metric ton of carbon.
+% \end{itemize}
+% \begin{center}
+% \includegraphics[width=0.7\textwidth]{images/figure6_3a.png}
+% \end{center}
+% \end{frame}
+
+% \begin{frame}{Can Trading Make Environmental Agreements More Cost-Effective? (3)}
+% \begin{itemize}
+% \item Any reductions that cost more than \$50 per ton can be offset by purchasing permits instead. At that price, the United States would choose to reduce its own emissions by 40 million metric tons. By distributing the reduction from the high-cost United States to low-cost nations, we could significantly lower the price of reductions worldwide.
+% \end{itemize}
+% \begin{center}
+% \includegraphics[width=0.7\textwidth]{images/figure6_3b.png}
+% \end{center}
+% \end{frame}
+
+% \begin{frame}{Participation of Developing Countries (1)}
+% \begin{itemize}
+% \item Emissions by developing countries have grown rapidly over the past several decades, and in 2019, advanced economies produced only about one-third of all global emissions.
+% \item It is much cheaper to use fuel efficiently as you develop an industrial base than it is to ``retrofit'' an existing industrial base.
+% \item By some estimates, an international trading system that included developing nations would reduce the cost of the Kyoto treaty by a factor of four.
+% \end{itemize}
+% \end{frame}
+
+% \begin{frame}{Participation of Developing Countries (2)}
+% \begin{itemize}
+% \item Developing nations object to this argument.
+% \item They claim that the problem that the world faces today is the result of environmentally insensitive growth by developed nations. Why, they ask, should they clean up the mess that the United States and other nations have left behind?
+% \item Obtaining the participation of developing nations will likely involve some significant international transfers of resources from the developed to the developing world as compensation.
+% \end{itemize}
+% \end{frame}
+
+% \begin{frame}{Application: Congress Takes on Global Warming (1)}
+% \begin{itemize}
+% \item In 2009, the House passed the American Clean Energy and Security Act (ACES) to help combat global warming.
+% \item Lower limits on the amount of emissions allowed, and firms could comply with the tighter targets in a number of ways:
+% \begin{itemize}
+% \item Emissions reductions
+% \item Emit pollution up to limit set by purchased emissions permits
+% \item Offset emissions by purchasing pollution credits from entities that that receive them for actions to reduce climate change
+% \end{itemize}
+% \end{itemize}
+% \end{frame}
+
+% \begin{frame}{Application: Congress Takes on Global Warming (2)}
+% The ACES Act drew criticism from several sources.
+% \begin{itemize}
+% \item Some feared increased costs of energy production.
+% \item Emitting firms would now either need to buy permits, buy credits, or undertake other expensive actions to reduce their emissions.
+% \item Some felt that the full value of the allowances should be rebated to consumers and not simply given back to the polluting industries.
+% \item There was not enough support in the Senate to bring the bill to a vote, and the bill failed.
+% \item There has been continued reluctance in recent years to attempt such a broad legislative approach to climate change.
+% \end{itemize}
+% \end{frame}
+
+% \begin{frame}{The Paris Agreement and the Future}
+% \begin{itemize}
+% \item The most significant recent step toward incorporating developing countries into a plan to reduce emissions was the Paris Agreement of 2015.
+% \item The United States pledged to reduce greenhouse gas emissions by 28\% below 2005 levels. In 2020, President Trump removed the United States from the agreement. However, President Biden reentered the agreement on his first day in office.
+% \item China is set to launch what will be the largest emissions trading scheme in the world.
+% \item In 2014, China launched a campaign to curb pollution, which, in four years, resulted in cities having 32\% less particulate matter in the air.
+% \end{itemize}
+% \end{frame}
+
+\subsection{The Economics of Cigarette Smoking}
+
+\begin{frame}{The Economics of Cigarette Smoking}
+\begin{itemize}
+\item Not all externalities are large-scale environmental problems.
+\item Some of the most important externalities are local and individualized.
+\item Many of these arise in the arena of personal health, and one of the most interesting is cigarette smoking.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Annual Percentage of U.S. Adults Who Smoke Cigarettes, 1955--2016}
+\begin{itemize}
+\item The percentage of Americans who smoke has declined substantially over the past few decades, yet 14.2\% of Americans still smoke.
+\end{itemize}
+\begin{center}
+\includegraphics[width=0.73\textwidth]{images/figure6_4.png}
+\end{center}
+\end{frame}
+
+\begin{frame}{The Externalities of Cigarette Smoking}
+\begin{itemize}
+\item Negative health consequences do not, by themselves, mean cigarette smoking generates externalities.
+\item Externalities require that the smoker not bear all these costs.
+\item Rational cigarette smokers---who know the health risks---may internalize these costs.
+\item But there are several reasons that the costs might not be internalized.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Increased Health Care Costs}
+Cigarette smoking increases health care costs. Is this an externality?
+\begin{itemize}
+\item Not if people pay for their health care themselves
+\item Or if their insurance premiums are actuarially adjusted
+\item \textbf{Actuarial adjustments}: Changes to insurance premiums that insurance companies make in order to compensate for expected expense differences.
+\item Yes, if their insurance premiums are not adjusted, since nonsmokers would pay some of the cost
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Workplace Productivity}
+Smokers have lower workplace productivity because they are more likely to get sick and to take (smoking) breaks. Externality?
+\begin{itemize}
+\item Yes, if cigarette smokers and nonsmokers are paid the same amount, then cigarette smokers end up taking profits from their employers or wages from nonsmokers
+\item No, if cigarette smokers are paid according to their productivity
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Fires}
+Cigarette smokers are much more likely to start fires than nonsmokers, mostly due to falling asleep with burning cigarettes. Externality?
+\begin{itemize}
+\item Yes, if cigarette smokers burn other people's property
+\item Yes, if cigarette smokers burn their own property, and fire insurance/fire department costs aren't actuarially adjusted
+\item No, if cigarette smokers burn only their own property, and the costs are actuarially adjusted
+\end{itemize}
+\end{frame}
+
+\begin{frame}{The ``Death Benefit''}
+\begin{itemize}
+\item Cigarette smokers' early deaths might create a positive externality for taxpayers.
+\item Social Security and Medicare pay out until death.
+\item Early deaths of cigarette smokers mean smokers receive less in benefits, leaving greater benefits for nonsmokers.
+\item If smokers die early, they don't incur nursing home or other medical costs at very advanced ages, offsetting medical costs for treatment of cancers and heart disease at younger ages.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Externality Estimates}
+\begin{itemize}
+\item The effects of these four components, along with some other minor negative externalities, make the estimate of the external costs of cigarette smoking roughly \$0.56 per pack in 2020 dollars.
+\item This figure is sensitive to many factors, but, by most estimates, the external cost of cigarette smoking is well below the average cigarette tax in the United States, which is more than \$1 per pack.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{What About Secondhand Smoke?}
+\begin{itemize}
+\item Secondhand smoke appears to be a classic externality.
+\item \textbf{Secondhand smoke}: Tobacco smoke inhaled by individuals in the vicinity of smokers.
+\item The costs of secondhand smoke are not easily added to the list of external costs:
+\begin{itemize}
+\item There is considerable medical uncertainty about the damage done by secondhand smoke.
+\item Most of the damage from secondhand smoke is delivered to the spouse and children of smokers. The rational cigarette smoker has thus already internalized the damage to their family in accounting for their overall net benefits from smoking.
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Do ``Internalities'' Matter?}
+Economists usually assume that smokers follow the rational addiction model:
+\begin{itemize}
+\item They know the costs (which occur far in the future).
+\item They understand the possibility of addiction.
+\end{itemize}
+This model may not be a good description of smoking.
+\begin{itemize}
+\item \textbf{Youth smoking}: More than 75\% of adult smokers begin smoking before their nineteenth birthday.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Adults Are Unable to Quit Smoking (1)}
+\begin{itemize}
+\item Many adults who smoke would like to quit but are unable to do so.
+\item Eight in ten smokers in America express a desire to quit the habit, but many fewer than that actually do quit.
+\item According to one study, over 80\% of smokers try to quit in a typical year, and the average smoker tries to quit every eight and a half months.
+\item 54\% of serious quit attempts fail within one week.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Adults Are Unable to Quit Smoking (2)}
+\begin{itemize}
+\item Many smokers suffer from self-control problems and use commitment devices.
+\item \textbf{Self-control problem}: An inability to carry out optimal strategies for consumption.
+\item \textbf{Commitment devices}: Devices that help individuals who are aware of their self-control problems fight their bad tendencies.
+\item Smokers who want to quit make public promises to do so, making it embarrassing to smoke.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Implications for Government Policy}
+\begin{itemize}
+\item If smokers are not rational, then intervention may be justified because of internalities.
+\item \textbf{Negative internality}: The damage done to oneself through adverse behavior that is not fully accounted for in decision making.
+\item Taxation of cigarettes is a plausible, effective mechanism to discourage smoking.
+\end{itemize}
+\end{frame}
+
+\subsection{Other Externality-Creating Behaviors}
+
+\begin{frame}{The Economics of Drinking}
+Very large externalities:
+\begin{itemize}
+\item In U.S., almost 30 people were killed per day in car crashes involving alcohol-impaired drivers.
+\item In 2019, people killed in alcohol-impaired driving crashes accounted for nearly one-third of traffic-related deaths.
+\item Driving externalities due to alcohol use are estimated at \$2.05 per drink, much higher than current alcohol taxes, which amount to an average of \$0.21 per ounce of ethanol.
+\item Alcohol is estimated to be involved in 55\% of violent crimes.
+\item Two-thirds of victims attacked by a significant other report that the perpetrator had consumed alcohol.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Evidence: The Effects of Legal Drinking Age at 21 (1)}
+\begin{itemize}
+\item Drinking is regulated as well as taxed: People younger than 21 cannot drink.
+\item How does this regulation affect people's health?
+\item Carpenter and Dobkin study this question using a regression discontinuity design (RDD), a very clean strategy.
+\item The RDD compares health outcomes of people just above and just below their birthday.
+\item These people are likely to be quite similar, so the RDD estimates the causal effect of being able to drink.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Evidence: The Effects of Legal Drinking Age at 21 (2)}
+\begin{itemize}
+\item There is a discontinuous shift at age 21---a clear jump in the proportion of days drinking at the twenty-first birthday.
+\end{itemize}
+\begin{center}
+\includegraphics[width=0.85\textwidth]{images/figure6_5.png}
+\end{center}
+\end{frame}
+
+\begin{frame}{Evidence: The Effects of Legal Drinking Age at 21 (3)}
+Other studies confirm the importance of age 21 for the damage done by drinking.
+\begin{itemize}
+\item Carrell et al. (2011) found that academic performance falls on reaching drinking age.
+\item Yoruk (2015) found that young adults worked less when drinking became legal.
+\item Ahammer et al. (2020) found a similar jump in alcohol consumption days by 39 percent upon reaching legal drinking age in countries where the legal age is 16.
+\item Hansen and Waddell (2016) found that crime increased right at age 21.
+\end{itemize}
+\end{frame}
+
+% \begin{frame}{Illicit Drugs}
+% \begin{itemize}
+% \item Drug overdoes deaths have generally been on the rise.
+% \item Major driver of this trend is abuse of opioids.
+% \item Increased realization that physicians were undertreating pain, as well as advancement in ``slow release'' opioid formulations (like Oxycontin) led to increased prescription beginning in the late 1990s.
+% \item Had terrible consequences, as new formulations of opioid painkillers proved highly addictive.
+% \item By 2009, 37,000 Americans annually were dying from opioid overdoses
+% \item The rise of Fentanyl, a synthetic opioid, has furthered the increase in deaths from drug overdoses.
+% \end{itemize}
+% \end{frame}
+
+% \begin{frame}{Application: Public Policy Toward Obesity (1)}
+% Obesity has both enormous externalities and internalities.
+% \begin{itemize}
+% \item Addressing obesity through tax policy is hard: While every cigarette is bad for you, clearly some food consumption is good for you!
+% \item Major policy focus:
+% \begin{itemize}
+% \item Improved information about caloric/nutrition content
+% \item Decreasing prevalence of ``food deserts'' in low-income neighborhoods
+% \item Taxes on sugary drinks
+% \end{itemize}
+% \end{itemize}
+% \end{frame}
+
+% \begin{frame}{Application: Public Policy Toward Obesity (2)}
+% Alternative policies are under consideration:
+% \begin{itemize}
+% \item Provide consumers with opportunities to downsize portions.
+% \item Directly charge individuals for being obese or for not caring for their weight.
+% \item Other states and employers are providing financial incentives for employees to enroll in wellness programs that will help them manage their weight.
+% \end{itemize}
+% \end{frame}
+
+\begin{frame}{Conclusion}
+Public finance provides tools to help us think through the regulation of many kinds of externalities:
+\begin{itemize}
+\item Regional externalities such as particulates
+\item Global externalities such as climate change
+\item Even the ``internalities'' of smoking and other health-related decisions
+\end{itemize}
+Careful analysis of public policy options requires:
+\begin{itemize}
+\item Distinguishing external costs from costs that are absorbed through the market mechanism.
+\item Understanding the benefits and costs of alternative regulatory mechanisms to address externalities.
+\item Considering whether only externalities or also internalities should count in regulatory decisions.
+\end{itemize}
+\end{frame}
+
+\section{Congestion Pricing in NYC}
+
+\subsection{Cook et al. 2026 - The Short Run Effects}
+
+\begin{frame}{Cook et al. 2026 - Motivation}
+\begin{itemize}
+\item In January 2025, New York City implemented a congestion pricing scheme in Manhattan below 60th street.
+\item As we saw, congestion pricing is a classic Pigouvian tax designed to reduce negative externalities from traffic congestion and pollution.
+\item The policy has generated substantial debate both before and after its implementation.
+\item The policy is partial: Only some trips taxed and only some roads. 
+\item Welfare effects depend on behavioral responses: Do people change driving behavior? In the taxed area? Outside the taxed are?
+\item Cook et al. (2026) provide one of the first rigorous evaluations of the short run effects of this policy.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Cook et al. 2026 - Congestion Tax in NYC}
+\begin{itemize}
+\item The congestion tax applies to vehicles entering Manhattan south of 60th street.
+\item Tolls vary by time of day and vehicle type, ranging from \$9 for cars, trucks pay \$14.40--\$21.60.
+\item Lower prices overnight. Higher prices without EZ-Pass.
+\item Taxis pay \$0.75 / trip and ridesharing services \$1.50 / trip.
+\item Exemptions include emergency vehicles, public transit.
+\item Revenues to be used to fund public transportation improvements.
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Cook et al. 2026 - Data}
+\begin{itemize}
+\item Main data comes from Google Maps Traffic Trends, which provides anonymized, aggregated data on vehicle trips in NYC.
+\item Covers 9/2024 -- 6/2025.
+\item Data from NYC and 5 control cities: Chicago, Atlanta, Boston, Philadelphia, and Baltimore.
+\item Data at segment level:
+\begin{equation}
+    \bar{y}_{jt} = \frac{\sum_{s \in S_{j}}\sigma_{s,t} \times d_{s,t}}{\sum_{s \in S_{j}} \sigma_{s,t} (d_{s,t}/y_{s,t})}
+\end{equation}
+where outcome $y_{jt}$ for segment $j$ in period $t$, $S_{j}$ is road segments in group $j$, $\sigma_{jt}$ is pre-reform share of traversals, and $d_{s,t}$ is distance on segment $s$.
+\item Also origin-destination outcomes, air quality, spending, foot traffic data.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+{Cook et al. 2026 - Empirical Strategy}
+\begin{itemize}
+\item The authors use Generalized Synthetic Controls (GSC) introduced by Xu (2017). Untreated potential outcomes for unit $i$ at time $t$ are modeled as:
+\begin{equation}
+    Y_{it}\left(0\right) = \alpha_{i} + \gamma_{t} + \boldsymbol{\lambda}_{i}^{\top} \boldsymbol{f}_{t} + \varepsilon_{it}
+\end{equation}
+where $\boldsymbol{f}_{t}$ is a low-dimensional set of common factors with unit-specific loadings $\boldsymbol{\lambda}_{i}$.
+\item Estimated ATT is then:
+\begin{equation}
+    \widehat{ATT}_{t} = \frac{1}{\vert\mathcal{I}\vert} \sum_{i\in \mathcal{I}} Y_{it} - \hat{Y}_{it}\left(0\right)
+\end{equation}
+where $\mathcal{I}$ is the set of treated units.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+{Cook et al. 2026 - Results: CBD}
+\includegraphics[width = \linewidth]{images/CookEtAl01.png}
+\end{frame}
+
+
+\begin{frame}
+{Cook et al. 2026 - Results: CBD}
+\includegraphics[width = 0.49\linewidth]{images/CookEtAl02.png}
+\includegraphics[width = 0.49\linewidth]{images/CookEtAl03.png}
+\end{frame}
+
+\begin{frame}
+{Cook et al. 2026 - Results: Spillovers}
+\begin{itemize}
+\item To measure spillovers, define a measure of the extent of exposure of each road segment: \textit{co-occurrence}.
+\item Let: $S_{CBD}$ be the set of segments in the CBD and $R$ the set of trips. Each trip is $R_{i} = \{s_{1},\ldots,s_{N}\}$: a set of segments $s_{j}$ traversed to get from the origin to the destination. 
+\item Then co-occurrence of segment $s$ with the CBD $C_{s}$ is:
+\begin{equation}
+    C_{s} = \frac{\vert \{R_{i} \in R \vert s \in R_{i} \wedge  S_{CBD} \cap R_{i} \neq \emptyset\} \vert}{\vert \{R_{i} \in R \vert s \in R_{i}\}\vert}
+\end{equation}
+\item Then estimate ATT separately by co-occurrence.
+\end{itemize}
+\end{frame}
+
+
+\begin{frame}
+{Cook et al. 2026 - Results: CBD}
+\includegraphics[width = \linewidth]{images/CookEtAl04.png}
+\end{frame}
+
+\subsection{Over to You? Data catalog}
+
+\begin{frame}{Data Catalog}
+\begin{enumerate}
+        \item \href{https://www.congestion-pricing-tracker.com/}{\nolinkurl{https://www.congestion-pricing-tracker.com/}} Congestion Pricing Tracker.
+        \item \href{https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page}{\nolinkurl{https://www1.nyc.gov/site/tlc/about/tlc-trip-record-data.page}} NYC Taxi and Limousine Commission Trip Record Data.
+        \item \href{https://c2smart.engineering.nyu.edu/manhattan-congestion-tracker/}{\nolinkurl{https://c2smart.engineering.nyu.edu/manhattan-congestion-tracker/}} Manhattan Congestion Tracker.
+        \item \href{https://data.cityofnewyork.us/Transportation/Automated-Traffic-Volume-Counts/7ym2-wayt/about_data}{\nolinkurl{https://data.cityofnewyork.us/Transportation/Automated-Traffic-Volume-Counts/7ym2-wayt/about_data}} NYC Automated Traffic Volume Counts. 
+\end{enumerate}
+\end{frame}
+
+\begin{frame}{Data Catalog: Congestion Pricing Tracker}
+    \includegraphics[width = \linewidth]{images/DataCatalog1.png}
+\end{frame}
+
+\begin{frame}{Data Catalog: T\&LC Trip Record Data}
+    \includegraphics[width = \linewidth]{images/DataCatalog2.png}
+\end{frame}
+
+\begin{frame}{Data Catalog: Manhattan Congestion Tracker}
+    \includegraphics[width = \linewidth]{images/DataCatalog3.png}
+\end{frame}
+
+\begin{frame}{Data Catalog: NYC Automated Traffic Volume Counts}
+    \includegraphics[width = \linewidth]{images/DataCatalog4.png}
+\end{frame}
+
+\end{document}

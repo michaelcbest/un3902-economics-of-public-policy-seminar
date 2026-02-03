@@ -1,0 +1,12 @@
+\babel@toc {english}{}\relax 
+\beamer@sectionintoc {1}{Externalities: Problems and Solutions}{2}{0}{1}
+\beamer@subsectionintoc {1}{1}{Externality Theory}{3}{0}{1}
+\beamer@subsectionintoc {1}{2}{Private-Sector Solutions}{17}{0}{1}
+\beamer@subsectionintoc {1}{3}{Public-Sector Remedies}{24}{0}{1}
+\beamer@sectionintoc {2}{Externalities in Action: Environmental and Health Externalities}{34}{0}{2}
+\beamer@subsectionintoc {2}{1}{Environmental Regulation: Particulates}{35}{0}{2}
+\beamer@subsectionintoc {2}{2}{The Economics of Cigarette Smoking}{44}{0}{2}
+\beamer@subsectionintoc {2}{3}{Other Externality-Creating Behaviors}{58}{0}{2}
+\beamer@sectionintoc {3}{Congestion Pricing in NYC}{64}{0}{3}
+\beamer@subsectionintoc {3}{1}{Cook et al. 2026 - The Short Run Effects}{65}{0}{3}
+\beamer@subsectionintoc {3}{2}{Over to You? Data catalog}{74}{0}{3}
