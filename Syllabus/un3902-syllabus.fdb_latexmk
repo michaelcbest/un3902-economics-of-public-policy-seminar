@@ -1,6 +1,6 @@
 # Fdb version 4
-["pdflatex"] 1768857212.22897 "/Users/michaelbest/Documents/GitHub/un3902-economics-of-public-policy-seminar/Syllabus/un3902-syllabus.tex" "un3902-syllabus.pdf" "un3902-syllabus" 1768857212.81876 0
-  "/Users/michaelbest/Documents/GitHub/un3902-economics-of-public-policy-seminar/Syllabus/un3902-syllabus.tex" 1768857212.02255 15881 04748f926583cf9862e3aa6c20b7c3e8 ""
+["pdflatex"] 1770674488.63211 "/Users/michaelbest/Documents/GitHub/un3902-economics-of-public-policy-seminar/Syllabus/un3902-syllabus.tex" "un3902-syllabus.pdf" "un3902-syllabus" 1770674489.27206 0
+  "/Users/michaelbest/Documents/GitHub/un3902-economics-of-public-policy-seminar/Syllabus/un3902-syllabus.tex" 1770674488.23524 15881 7b5076bb4378dd2f54504fef66463295 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/base/8r.enc" 1165713224 4850 80dc9bab7f31fb78a000ccfed0e27cab ""
   "/usr/local/texlive/2024/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc" 1254269338 2375 baa924870cfb487815765f9094cf3728 ""
   "/usr/local/texlive/2024/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -198,9 +198,9 @@
   "/usr/local/texlive/2024/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1736099045.323 5467645 128b85b7cde5f5edc5cb7f1dd7ff8736 ""
   "/usr/local/texlive/2024/texmf-var/web2c/pdftex/pdflatex.fmt" 1736099016 8221439 7a3b4fbd918f1fb88364fd9ee2734f96 ""
   "/usr/local/texlive/2024/texmf.cnf" 1710266656 577 e590dabc9e28c5b61546e15f63eebcdf ""
-  "un3902-syllabus.aux" 1768857212.77278 242 f57ec3d9d99f2931d959138811223074 "pdflatex"
-  "un3902-syllabus.out" 1768857212.64885 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "un3902-syllabus.tex" 1768857212.02255 15881 04748f926583cf9862e3aa6c20b7c3e8 ""
+  "un3902-syllabus.aux" 1770674489.22495 242 f57ec3d9d99f2931d959138811223074 "pdflatex"
+  "un3902-syllabus.out" 1770674489.09388 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "un3902-syllabus.tex" 1770674488.23524 15881 7b5076bb4378dd2f54504fef66463295 ""
   (generated)
   "un3902-syllabus.aux"
   "un3902-syllabus.log"
