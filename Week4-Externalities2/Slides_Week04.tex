@@ -1,0 +1,1047 @@
+\documentclass[aspectratio=169]{beamer}
+\renewcommand{\rmdefault}{cmr}
+\usepackage{helvet}
+\renewcommand{\ttdefault}{cmtt}
+\usepackage[T1]{fontenc}
+\usepackage[latin9]{inputenc}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+\usepackage{amsbsy}
+\usepackage{amstext}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage[english]{babel}
+\hypersetup{unicode=true,breaklinks=false,pdfborder={0 0 0},pdfborderstyle={},colorlinks=true,linkcolor=blue, citecolor=blue, urlcolor=blue}
+\usepackage{comment}
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
+% this default might be overridden by plain title style
+\newcommand\makebeamertitle{\frame{\maketitle}}%
+% (ERT) argument for the TOC
+\AtBeginDocument{%
+  \let\origtableofcontents=\tableofcontents
+  \def\tableofcontents{\@ifnextchar[{\origtableofcontents}{\gobbletableofcontents}}
+  \def\gobbletableofcontents#1{\origtableofcontents}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\usepackage{ifthen}
+\usepackage{multirow,bigstrut}
+\usepackage{tikz}
+\usetikzlibrary{patterns,decorations.pathreplacing,shapes}
+\usetikzlibrary{arrows}
+\usepackage{rotating}
+\usepackage{pdflscape}
+\usepackage{makecell}
+\usepackage{graphicx}
+\usepackage{animate}
+\usepackage{pifont}
+\usepackage{booktabs}
+\usepackage{relsize}
+\usepackage{tcolorbox}
+\usepackage{mathtools}
+\usepackage{amsbsy}
+\usepackage{amsmath}
+
+% FOOTLINE - PAGE NUMBER RIGHT
+\defbeamertemplate*{footline}{guildford foot theme}
+{
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.7\paperwidth,ht=1cm,dp=0ex,left]{}%
+    {
+    \insertsectionnavigationhorizontal{.5\paperwidth}{}{}
+    }
+ \end{beamercolorbox}
+ \begin{beamercolorbox}[wd=0.31\paperwidth,ht=1cm,dp=0ex,right]{}%
+{\tiny
+\insertframenumber{} / \inserttotalframenumber\hspace*{5ex}
+}
+ \end{beamercolorbox}}%
+  \vskip5pt%
+}
+
+\beamertemplatenavigationsymbolsempty
+\usefonttheme{professionalfonts}
+\usecolortheme[RGB={0,0,125}]{structure}
+\setbeamersize{ text margin left=10px}
+\definecolor{newblue}{rgb}{0,0,0.6}
+\setbeamercolor{alerted text}{fg=newblue}
+\setbeamertemplate{frametitle}[default][center]
+
+\RequirePackage{ifthen}
+
+\newboolean{sectiontoc}
+\setboolean{sectiontoc}{true} % default to true
+
+\AtBeginSubsection[]
+{
+  \ifthenelse{\boolean{sectiontoc}}{
+  \begin{frame}[plain]
+    \frametitle{Outline}
+    \tableofcontents[sectionstyle=show/hide,subsectionstyle=show/shaded/hide]
+  \end{frame}
+}
+}
+
+\AtBeginSection[]
+{
+  \ifthenelse{\boolean{sectiontoc}}{
+  \begin{frame}[noframenumbering,plain]
+    \frametitle{Outline}
+    \tableofcontents[sectionstyle=show/shaded,subsectionstyle=show/hide/hide]
+  \end{frame}
+}
+}
+
+\newcommand{\toclesssection}[1]{
+   \setboolean{sectiontoc}{false}
+   \section{#1}
+   \setboolean{sectiontoc}{true}
+}
+
+\newcommand{\toclesssubsection}[1]{
+   \setboolean{sectiontoc}{false}
+   \subsection{#1}
+   \setboolean{sectiontoc}{true}
+}
+
+\setbeameroption{hide notes}
+
+\newcommand{\ShortNameSection}[2][]{
+   \setboolean{sectiontoc}{false}
+   \section[#1]{#2}
+   \setboolean{sectiontoc}{true}
+}
+
+\newcommand{\light}[1]{\textcolor{gray}{#1}}
+
+\makeatother
+
+\begin{document}
+
+\title{\setcounter{framenumber}{0}
+\thispagestyle{empty} \textit{UN3902: Economics of Public Policy Seminar} \\ Week 4: Externalities and Public Goods II}
+\author{Michael Carlos Best}
+\date{February 10, 2026}
+
+\makebeamertitle
+
+\section{Public Goods (Gruber chapter 7)}
+
+\subsection{Optimal Provision of Public Goods}
+
+\begin{frame}
+\frametitle{Public Goods: Trash Collection in Beirut, Lebanon}
+\begin{itemize}
+\item Why don't people pay to have their neighbor's trash collected?
+\begin{itemize}
+  \item No one wants to pay, but everyone wants someone else to pay.
+  \item Private trash collection, financed by a voluntary fee paid by neighborhood residents, faces the classic free rider problem.
+  \item Goods that suffer from this free rider problem are known in economics as public goods. 
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Public Goods: A taxonomy}
+\begin{itemize}
+\item Pure public goods: Goods that are perfectly non-rival in consumption and are non-excludable.
+\begin{enumerate}
+  \item Non-rival in consumption: One individual's consumption of a good does not affect another's opportunity to consume the good.
+  \item Non-excludable: Individuals cannot deny each other the opportunity to consume a good.
+\end{enumerate}
+\item Impure public goods: Goods that satisfy the two public good conditions (non-rival in consumption and non-excludable) to some extent but not fully.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Defining Pure and Impure Public Goods}
+\begin{center}
+  \begin{tabular}{|l|c|c|c|}
+  \hline
+  & & \multicolumn{2}{c|}{\textbf{Is the Good Rival in Consumption?}} \\ \cline{3-4}
+  & & \textbf{Yes} & \textbf{No} \\ \hline
+  & \multirow{2}{*}{\textbf{Yes}} & \textsc{private good} & \textsc{impure public good} \\ 
+  \textbf{Is the Good} & & (ice cream) &  (Streaming) \\ \cline{2-4}
+  \textbf{Excludable?} & \multirow{2}{*}{\textbf{No}} & \textsc{impure public good} & \textsc{pure public good}  \\
+  & & (Crowded sidewalk) & (National defense) \\ \hline
+\end{tabular}
+\end{center}
+\end{frame}
+
+\begin{frame}
+\frametitle{Optimal Provision of Public Goods: Introduction}
+\begin{itemize}
+\item How much of the public good should society provide?
+\item Markets will not provide the correct amount.
+\item To answer this question, start by reconsidering the market for a private good like ice cream cones.
+\item Ben and Jerry have different tastes for ice cream (ic) relative to the other good (c). How does the market aggregate their preferences?
+\item Quick hint: To make the model easier to use, assume that the other good is a numeraire good, a good for which the price is set at \$1. This makes the absolute and relative price of the ice cream equal.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Optimal Provision of Private Goods}
+\begin{itemize}
+  \item Ben and Jerry demand different quantities of the good at each price.
+  \item The optimality condition for the consumption of private goods is written as:
+  \begin{equation*}
+     \frac{MU_{ic}^{B}}{MU_{c}^{B}} = MRS_{ic,c}^{B} = MRS_{ic,c}^{J} = \frac{P_{ic}}{P_{c}} = P_{ic} 
+  \end{equation*}
+  \item Equilibrium on the supply side requires $MC_{ic} = P_{ic}$.
+  \item Therefore, in equilibrium $MRS_{ic,c}^{B} = MRS_{ic,c}^{J} = MC_{ic}$.
+  \item The marginal cost of production equals the marginal benefit.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Horizontal Summation in Private Goods Market}
+
+\begin{center}
+\includegraphics[width=\textwidth]{images/ch07_slide08_img1.png}
+\end{center}
+To find the social demand curve, add quantity at each price and sum horizontally.
+\end{frame}
+
+\begin{frame}
+\frametitle{Optimal Provision of Public Goods}
+\begin{itemize}
+  \item For \textit{public} goods, such as missiles (m), Ben's consumption of missiles doesn't reduce Jerry's consumption.
+  \item Therefore, the social-efficiency-maximizing quantity sets
+  \begin{equation*}
+    MRS_{m,c}^{B} + MRS_{m,c}^{J} = MC_{m}
+  \end{equation*}
+  \item Social efficiency is maximized when marginal cost is set equal to the sum of the marginal rates of substitution rather than each individual's marginal rate of substitution.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Vertical Summation in Public Goods Market}
+\begin{center}
+\includegraphics[height=\textheight]{images/ch07_slide10_img1.png}
+\end{center}
+\end{frame}
+
+\subsection{Private Provision of Public Goods}
+
+\begin{frame}
+\frametitle{Private Provision of Public Goods: Private-Sector Underprovision}
+\begin{itemize}
+\item The market does not produce the efficient amount of public goods because of the free rider problem.
+\item Free rider problem: When an investment has a personal cost but a common benefit, individuals will underinvest.
+\item Since Ben's consumption of missiles also benefits Jerry, Jerry may not want to pay (or vice versa).
+\item This results in the private market producing an inefficiently low quantity of the good.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{APPLICATION: The Free Rider Problem in Practice 1}
+\begin{itemize}
+\item The free rider problem is one of the most powerful concepts in all of economics.
+\item Provision of Fire Services:
+\item Until 2013, fire services in Victoria, Australia, were financed by a tax on fire insurance policies. Individuals who did not insure still received services.
+\item In 2013, Victoria moved to financing fire services through property taxes in order to address this issue.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{APPLICATION: The Free Rider Problem in Practice 2}
+\begin{itemize}
+\item Public Art Institutions:
+\item Museums that do not charge for admission face a significant free rider problem.
+\item The Metropolitan Museum of Art in New York had a ``recommended'' donation instead of an admission fee, so only 17\% paid the full charge.
+\item To address this, the Met has started charging admission to out-of-town visitors.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{APPLICATION: The Free Rider Problem in Practice 3}
+\begin{itemize}
+\item Online information sharing:
+\item In 2018, Dropbox, an online file hosting service, had 500 million users but only 12 million users paying for the service.
+\item In March of 2019, Dropbox limited the number of devices linked to an account to three and started charging many individuals and businesses a \$9.99/month subscription fee.
+\item Since then, an additional 2.3 million users have started paying for the service.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Can Private Providers Overcome the Free Rider Problem?}
+\begin{itemize}
+\item The free rider problem does not lead to a complete absence of private provision of public goods.
+\item When private suppliers are given the ability to overcome the problem of non-excludability, they can produce the efficient quantity of the good.
+\item The private sector can in some cases combat the free rider problem to provide public goods by charging user fees that are proportional to their valuation of the public good.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{APPLICATION: Business Improvement Districts 1}
+\begin{itemize}
+\item Clean, safe sidewalks are public goods.
+\item Cities attempt to provide them through street repair and police work, financed with tax revenue.
+\item But New York City's Times Square in the 1980s was a failure:
+\item ``Dirty, dangerous, decrepit, and increasingly derelict''
+\item In 1992, a group of private firms formed a ``Business Improvement District'' to improve the area themselves.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{APPLICATION: Business Improvement Districts 2}
+\begin{itemize}
+\item How did this BID work?
+\item A (BID) is a legal entity that privately provides local services and funds these services with fees charged to local businesses.
+\item How do BIDs overcome the free rider problem?
+\item NYC law allows BIDs to levy fees on all local businesses as long as 60\% of businesses agree to join.
+\item In the Times Square case, 84\% of local businesses agreed to pay fees to fund the BID's services.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{APPLICATION: Business Improvement Districts 3}
+\begin{itemize}
+\item Resounding success:
+\item Crime has dropped significantly.
+\item The area is cleaner and more attractive.
+\item Business and tourism are booming.
+\item Success of BIDs depends on the legal underpinnings: Can members charge fees to encourage payment?
+\item The BID entity overcame the public goods problem by overcoming the non-excludable assumption. They received government permission to (potentially) charge, via a tax, all consumers.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{When Is Private Provision Likely to Overcome the Free Rider Problem?}
+\begin{itemize}
+  \item Markets can, to some extent, overcome the free rider problem when some individuals have a higher demand for a public good than others.
+  \begin{itemize}
+    \item Suppose Ben cares much more about fireworks than Jerry. Ben may be willing to pay for the fireworks, even though Jerry will also benefit.
+    \item Ben will want to buy a lot of fireworks for himself ($MRS^{B} = MC_{f}$)
+    \item And the efficiency loss isn't too big ($MRS^{B} \approx MRS^{B} + MRS^{J}$)
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Altruism and Social Capital}
+\begin{itemize}
+\item Private markets provide public goods when people are altruistic.
+\item Altruistic: When individuals value the benefits and costs to others in making their consumption choices.
+\begin{itemize}
+  \item Many laboratory experiments provide evidence for altruism and show that people contribute to public goods.
+\end{itemize}
+\item Social capital: The value of altruistic and communal behavior in society.
+\begin{itemize}
+  \item The quantity of social capital depends on how much people of the same community affected by the public good can ``trust'' each other and are therefore willing to chance their personal investment of time and effort into paying for the public good without any formal guarantee of reciprocity from other community members.
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Warm Glow}
+\begin{itemize}
+\item People might simply feel good about contributing to public goods or charity.
+\item Warm glow model: A model of the public goods provision in which individuals care about both the total amount of the public good and their particular contributions as well.
+\item Different from altruism because people don't care about just the amount of the public good.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Learn by Doing: Practice Question 1}
+\begin{itemize}
+\item Which of these does NOT reduce the problem of underprovision of public goods?
+\item business improvement districts
+\item government intervention
+\item social capital
+\item vertical summation
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Learn by Doing: Practice Question 1 (Answer)}
+\begin{itemize}
+\item Which of these does NOT reduce the problem of underprovision of public goods?
+\item business improvement districts
+\item government intervention
+\item social capital
+\item vertical summation (correct answer)
+\end{itemize}
+\end{frame}
+
+\subsection{Public Provision of Public Goods}
+
+\begin{frame}
+\frametitle{Public Provision of Public Goods}
+\begin{itemize}
+\item Even with private provision, there is a role for government provision of public goods.
+\item Under private provision, not everyone contributes to the good, even though everyone benefits.
+\item Government provision potentially solves the problem of noncontributors.
+\item Nonetheless, there are several challenges to government provision.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Private Responses to Public Provision: The Problem of Crowd-Out}
+\begin{itemize}
+\item Crowd-out: As the government provides more of a public good, the private sector will provide less.
+\item In full crowd-out, government intervention accomplishes nothing because an increase of 5 units provided by the government results in a decrease of 5 units provided privately.
+\item Full crowd-out is rare. Partial crowd-out is much more common and can occur in two different cases:
+\begin{itemize}
+  \item When noncontributors to the public good are taxed to finance provision of the good
+  \item When individuals derive utility from their own contribution as well as from the total amount of public good
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Contributors Versus Noncontributors}
+\begin{itemize}
+\item Government provision is financed by payments by private individuals.
+\item By forcing noncontributors to contribute to the fund for public provision, the government can increase total public goods provision.
+\item Noncontributors will be forced to increase their expenditures on the goods.
+\item Contributors will experience an increase in effective wealth, which has a positive income effect on their purchase of the private good, so government intervention will not fully crowd out their spending.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Warm Glow and the Evidence on Crowd-Out}
+\begin{itemize}
+\item If you get utility from your particular contributions for any reason (warm glow), then an increase in government contributions will not fully crowd out your giving.
+\begin{itemize}
+  \item If you only care about how much you give, government contributions have no effect on your giving.
+\end{itemize}
+\item Existing evidence on crowd-out is quite mixed.
+\begin{itemize}
+  \item Studies assessing how individual contributions respond to government spending suggest a very small crowd-out.
+  \item These studies suffer from many bias problems.
+  \item Laboratory experiments suggest that crowd-out is large.
+  \item There is no consensus on the size of crowd-out.
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{EVIDENCE: Measuring Crowd-Out 1}
+\begin{itemize}
+\item The evidence on crowd-out is mixed.
+\item Kingma (1989) looked at how contributions varied as local governments contributed different amounts to public radio.
+\item The study found that for every \$1 increase in government funding for public radio, private contributions fell by 13.5 cents.
+\item Bias: Areas with high government contribution could be high income or have a high taste for radio.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{EVIDENCE: Measuring Crowd-Out 2}
+\begin{itemize}
+\item Laboratory evidence seems more convincing.
+\item In another study, individuals contributed tokens to a public good. On average, participants contributed 2.78 tokens.
+\item The game was then changed so that a 2-token tax on every player was contributed to the public good.
+\item Without warm glow effects, players should have reduced their contributions by 2 tokens.
+\item However, each player cut his or her contributions by only 1.43 tokens.
+\item Unclear how well this result generalizes outside of the lab, however.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{The Right Mix of Public and Private}
+\begin{itemize}
+\item One extreme is provision entirely by the public sector.
+\item The other extreme is subsidized or mandated private provision, with the government providing incentives.
+\item Contracting out: An approach through which the government retains responsibility for providing a good or service but hires private-sector firms to actually provide the good or service.
+\item Two problems with contracting out:
+\item The private sector's incentives may not align with public goals, leading to lower public costs but worse outcomes along other dimensions that policy makers may care about.
+\item Bidding in contracting out is often far from competitive.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{APPLICATION: The Good Side of Contracting Out}
+\begin{itemize}
+\item Contracting out public goods to private companies may or may not work to deliver public goods efficiently.
+\item Commonwealth Care
+\item The state contracted five different private MCOs to provide all of the poorest residents' medical needs.
+\item The state used a bidding mechanism in which new enrollees were auto-assigned to the MCO that provided the lowest cost bid to the state.
+\item This led to aggressive bidding, resulting in costs rising by only 3.7\% from 2007 through 2013.
+\item In the same period, premiums for employer-sponsored insurance in Massachusetts rose by 30\%.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{APPLICATION: The Bad Side of Contracting Out}
+\begin{itemize}
+\item Private Prisons
+\begin{itemize}
+\item Roughly 10\% cheaper, but this was achieved by paying lower wages to prison guards.
+\item This resulted in lower-quality guards and higher instances of violence.
+\end{itemize}
+\item Halfway houses
+\begin{itemize}
+\item New Jersey's halfway houses offer assistance to newly released inmates to ease the transition back into society.
+\item Because they are cheaper, there has been increased use in halfway houses as an alternative to jailing prisoners.
+\item This has led to poor conditions in the houses, as violence and drug use have increased due to low levels of supervision.
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{APPLICATION: The Bad Side of Contracting Out}
+\begin{itemize}
+\item Competitive bidding prone to an important problem: contractors themselves measure savings and quality
+\item New York City hired McKinsey to create a plan to curtail violence at Riker's Island. McKinsey reported that its plan had reduced violence by 70\%, though violence had in fact increased by 50\%. McKinsey had supposedly rigged the results.
+\item Wackenhut is a primary security contractor at weapons plants in the United States. In running drills to test security at weapons plants, Wackenhut ``attackers'' told Wackenhut ``defenders'' which targets would be attacked, making the defense teams appear to perform remarkably well.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{APPLICATION: The Bad Side of Contracting Out}
+\begin{itemize}
+\item Cost-cutting, a benefit of private contracting, can adversely affect quality.
+\begin{itemize}
+\item A study in Stockholm, Sweden found that while private ambulances took less time to reach patients, they were associated with higher mortality, likely attributable to cost cutting that decreased the quality of the staff.
+\end{itemize}
+\item Emergency situations limit competitive bidding
+\begin{itemize}
+  \item In the rush to provide Covid-related supplies, U.S. and U.K. governments awarded contracts to companies with government ties, that had no experience in the medical field, or that had previously been accused of fraud.
+  \item Many argue that in emergency situations, the government should move toward direct provision.
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Measuring the Costs and Benefits of Public Goods 1}
+\begin{itemize}
+\item Optimal public good provision requires being able to measure both the benefits and the costs of providing public goods. In practice, this is quite difficult.
+\item Consider the case of a highway. Cost includes wages and materials.
+\item What if, without this highway project, half of the workers on the project would be unemployed?
+\item How can the government take into account that it is not only paying wages but also providing a new job opportunity for these workers?
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Measuring the Costs and Benefits of Public Goods 2}
+\begin{itemize}
+\item The benefits of highway construction are also difficult to measure.
+\item What is the value of the time saved for commuters due to reduced traffic jams?
+\item And what is the value to society of the reduced number of deaths if the highway is improved?
+\item These difficult questions are addressed by the field of cost-benefit analysis, which provides a framework for measuring the costs and benefits of public projects.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{How Can We Measure Preferences for Public Good?}
+\begin{itemize}
+\item Three challenges in measuring preferences for public goods.
+\item Preference revelation: People may not want to reveal their true valuation because the government might charge them more for the good if they say that they value it highly.
+\item Preference knowledge: People may not know what their valuation is.
+\item Preference aggregation: How can the government combine the preferences of millions of citizens?
+\item These problems are addressed by the field of political economy, the study of how governments go about making public policy decisions, such as the appropriate level of public goods.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Learn by Doing: Practice Question 2}
+\begin{itemize}
+\item Which of these are issues in finding the optimal level of public provision of public goods?
+\item measuring preferences
+\item measuring costs
+\item noncontributors
+\item I \& II only
+\item I \& III only
+\item II \& III only
+\item I, II, \& III
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Learn by Doing: Practice Question 2 (Answer)}
+\begin{itemize}
+\item Which of these are issues in finding the optimal level of public provision of public goods?
+\item measuring preferences
+\item measuring costs
+\item noncontributors
+\item I \& II only (correct answer)
+\item I \& III only
+\item II \& III only
+\item I, II, \& III
+\end{itemize}
+\end{frame}
+
+\subsection{Conclusion}
+
+\begin{frame}
+\frametitle{Conclusion}
+\begin{itemize}
+\item A major function of governments at all levels is the provision of public goods.
+\item Sometimes the private sector can provide public goods but usually not the optimal amount.
+\item Government intervention can potentially increase efficiency.
+\item Success of intervention depends on the:
+\item Ability of government to measure costs and benefits.
+\item Ability to implement optimal plan.
+\end{itemize}
+\end{frame}
+
+\section{State and Local Government Expenditures (Gruber chapter 10)}
+
+\subsection{Fiscal Federalism in the United States and Abroad}
+
+\begin{frame}
+\frametitle{Fiscal Federalism}
+\begin{itemize}
+\item The United States has a federal system, dividing activity between a national government and state and local governments.
+\item Education, for example, is often provided by state governments.
+\item Optimal fiscal federalism: The question of which activities should take place at which level of government and who should pay for them.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Fiscal Federalism in the United States and Abroad 1}
+\begin{itemize}
+\item The distribution of government spending has changed dramatically over time in the United States.
+\item 1902: The federal government accounted for about 34\% of total government spending.
+\item 2019: The federal government accounted for about 57\% of total government spending.
+\item Local and state spending has declined considerably.
+\item Much state and local spending is now supported by intergovernmental grants.
+\item Intergovernmental grants: Payments from one level of government to another.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{State and Local Spending in the United States, 1902--2019}
+\begin{center}
+\includegraphics[width=\textwidth]{images/ch10_slide07_img1.png}
+\end{center}
+\end{frame}
+
+\begin{frame}
+\frametitle{Fiscal Federalism in the United States and Abroad 2}
+\begin{itemize}
+\item Three primary factors are behind the change in the composition of government spending.
+\item The Sixteenth Amendment, which allowed the federal government to levy income taxes on citizens
+\item New Deal programs of the 1930s in response to the Great Depression
+\item The introduction of social insurance and welfare programs
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Spending and Revenue of State and Local Governments 1}
+\begin{itemize}
+\item The types of spending done by state and local governments differ dramatically from those of the U.S. federal government.
+\item State and local governments spend the majority of revenue on education, followed by health care and transportation.
+\item The federal government spends the majority of revenue on health care, Social Security, and national defense.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Spending and Revenue of State and Local Governments 2}
+\begin{itemize}
+\item State and local governments rely on multiple sources of revenues.
+\item State governments use sales and income taxes primarily.
+\item Local governments use property taxes heavily. They make up about half of local government revenue.
+\item Property tax: The tax on land and any buildings on it, such as commercial businesses or residential homes.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Spending and Revenue of State and Local Governments 3}
+Expenditures and revenues vary greatly across states.
+\begin{center}
+\begin{tabular}{|l|l|l|l|}
+  \hline
+  & & \textbf{State} & \textbf{\$ / Capita} \\ \hline
+  \textbf{Spending} & \textbf{Education} & Wyoming & 5,389 (high) \\
+  & & Michigan & 3,015 (median) \\
+  & & Idaho & 1,995 (low) \\ \hline
+  \textbf{Spending} & \textbf{Health Care} & DC & 11,944 (high) \\
+  & & Missouri & 8,107 (median) \\
+  & & Utah & 5,982 (low) \\ \hline
+  \textbf{Taxes} & \textbf{Income Tax} & New York & 2,877 (high) \\
+  & & Missouri & 1,037 (median) \\
+  & & AK/SD/FL/NV/WY/WA/TX & 0 (low) \\ \hline
+  \textbf{Taxes} & \textbf{Sales Tax} & Washington & 2,476 (high) \\
+  & & Wyoming & 1,116 (median) \\
+  & & DC/DE/OR/MT/NH & 0 (low) \\ \hline
+\end{tabular}
+\end{center}
+\end{frame}
+
+\begin{frame}
+\frametitle{Fiscal Federalism Abroad 1}
+\begin{center}
+  \begin{tabular}{lcc}
+    \hline
+    & \textbf{Spending \%} & \textbf{Revenue \%} \\ \hline
+    Greece & 7.0 & 3.0 \\
+    Portugal & 13.3 & 10.1 \\
+    France & 19.8 & 16.5 \\
+    Norway & 34.1 & 16.5 \\
+    United States & 43.3 & 47.9 \\
+    Denmark & 64.5 & 26.7 \\ \hline
+    \textbf{OECD average} & \textbf{31.1} & \textbf{19.5} \\ \hline
+  \end{tabular}
+\end{center}
+
+Compared to subnational governments of other nations, U.S. state and local governments account for a relatively large portion of total government activity.
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Fiscal Federalism Abroad 2}
+\begin{itemize}
+\item Higher levels of centralization exist in many countries because subnational governments have no power to tax citizens.
+\item Many countries engage in fiscal equalization.
+\item Fiscal equalization: Policies by which the national government distributes grants to subnational governments in an effort to equalize differences in wealth.
+\item In many other countries, the central government redistributes a much larger share of revenues to subnational governments.
+\end{itemize}
+\end{frame}
+
+\subsection{Optimal Fiscal Federalism}
+
+\begin{frame}
+\frametitle{Optimal Fiscal Federalism: The Tiebout Hypothesis}
+\begin{itemize}
+\item What determines how much and how efficiently local governments provide public goods?
+\item The private market provides the optimal amount of private goods.
+\item Why does the market do so well for private goods but not public goods?
+\item Tiebout's insight: \textit{Shopping} and \textit{competition} are missing from the market for public goods.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{The Tiebout Model: Shopping and Competition}
+\begin{itemize}
+\item There is neither shopping nor competition for public goods provided by the federal government.
+\item But when public goods are provided at the local level, competition arises.
+\item Individuals can \textit{``vote with their feet.''}
+\item This threat of exit can induce efficiency in local public goods production.
+\item Under certain conditions, public goods provision at the local level will be \textit{fully efficient}.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Optimal Fiscal Federalism: The Tiebout Model}
+\begin{itemize}
+\item Competition across towns can lead to the optimal provision of public goods.
+\item Towns determine public good levels and tax rates.
+\item People move freely across towns, picking their preferred locality.
+\item People with similar tastes end up together, paying the same amount in taxes and receiving the same public goods.
+\item There is no free riding because everyone pays the same amount in each town.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Problems with Tiebout Competition}
+\begin{itemize}
+\item The Tiebout model requires a number of assumptions that may not hold in reality.
+\item People are perfectly mobile.
+\item People have full information on taxes and benefits.
+\item People must be able to choose among a range of towns that might match their taste for public goods.
+\item The provision of some public goods requires sufficient scale or size.
+\item There must be enough towns so that individuals can sort themselves into groups with similar preferences for public goods.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Problems with Tiebout Financing: Taxation}
+\begin{itemize}
+\item The Tiebout model requires equal financing of the public good among all residents.
+\item Lump-sum tax: A fixed taxation amount independent of a person's income, consumption of goods and services, or wealth.
+\item Lump-sum taxes are often infeasible/unfair, so taxes are income or wealth based.
+\item But then the more affluent citizens pay more than those that are less affluent, so the less affluent may chase those that are more affluent.
+\item Everyone wants to live in towns with people who are richer than they are so that they can free ride on their neighbors' higher tax payments.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Problems with Tiebout Financing: Zoning}
+\begin{itemize}
+\item To keep less affluent people from chasing more affluent people, towns enact zoning.
+\item Zoning: Restrictions that towns place on the use of real estate.
+\item Zoning regulation establishes, for example, minimum lot sizes.
+\item Zoning regulations protect the tax base of wealthy towns by pricing low-income people out of the housing market.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Problems with the Tiebout Model: No Externalities/Spillovers}
+\begin{itemize}
+\item The Tiebout model assumes that public goods have effects only in a given town and that the effects do not spill over into neighboring towns.
+\item Many local public goods have similar externality or spillover features: police, public works, education.
+\item If there are spillovers, then low-tax, low-benefit municipalities can free ride off high-tax, high-benefit ones.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Evidence on the Tiebout Model: Resident Similarity Across Areas}
+\begin{itemize}
+\item Tiebout competition works through sorting.
+\item A testable implication: When people have more choice of local community, the tastes for public goods will be more similar among town residents than when people do not have many choices.
+\item Comparing larger and smaller metropolitan areas (with more and less choice), this seems to be true.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Evidence on the Tiebout Model: Capitalization of Fiscal Differences into House Prices}
+\begin{itemize}
+\item People not only vote with their feet; they also vote with their pocketbook in the form of house prices.
+\item House price capitalization: Incorporation into the price of a house the costs (including local property taxes) and benefits (including local public goods) of living in the house.
+\item Areas with relatively generous public goods (given taxes) should have higher house prices.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Evidence on the Tiebout Model: California's Proposition 13 (1)}
+\begin{itemize}
+\item California's Proposition 13 became law in 1978.
+\item Set the maximum amount of any tax on property at 1\% of the ``full cash value.''
+\item Full cash value: Value as of 1976, with annual increases of 2\% at most.
+\item Reduced property taxes immensely in some areas, little change in others.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Evidence on the Tiebout Model: California's Proposition 13 (2)}
+\begin{itemize}
+\item Each \$1 of property tax reduction increased house values by about \$7, about equal to the PDV of a permanent \$1 tax cut.
+\item In principle, the fall in property taxes would result in a future reduction in public goods and services, which would lower home values. This occurred in San Jose, where the public school system declared bankruptcy.
+\item The fact that house prices rose by almost the present discounted value of the taxes suggests that Californians did not think that they would lose many valuable public goods and services when taxes fell. This was the case in areas such as San Francisco.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Optimal Fiscal Federalism 1}
+\begin{itemize}
+\item The Tiebout model implies that three factors should determine local public good provision:
+\end{itemize}
+\begin{enumerate}
+\item Tax-benefit linkages: The relationship between taxes paid and government goods and services received.
+\begin{itemize}
+\item Goods with strong tax-benefit linkages should be provided locally.
+\end{itemize}
+\item Cross-municipality spillovers: If local public goods have large spillover effects on other communities, the goods will be underprovided by any locality.
+\item Economies of scale: Public goods with large economies of scale are not efficiently provided by many competing local jurisdictions.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle{Optimal Fiscal Federalism 2}
+\begin{itemize}
+\item The Tiebout model predicts that local spending should focus on broad-based programs with few externalities and relatively low economies of scale. Local communities should play a limited role in providing public goods that are redistributive, have large spillovers, and have large economies of scale.
+\item If taxes and benefits are linked and there are no spillovers or economies of scale, then local public good provision is close to optimal.
+\end{itemize}
+\end{frame}
+
+\subsection{Redistribution Across Communities}
+
+\begin{frame}
+\frametitle{Redistribution Across Communities 1}
+\begin{itemize}
+\item Enormous inequality in revenue across municipalities:
+\item Carlisle, MA, raises \$23,617 per student while Lakeville, MA, raises \$9,347.
+\item Should we care about the inequality?
+\item If Tiebout is right, then this reflects optimal sorting and financing. If a town has low revenues or low spending, it is because residents chose to provide a low level of public goods. This is efficient given that their tastes and redistribution should not occur.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Redistribution Across Communities 2}
+\begin{itemize}
+\item Should we care about the inequality?
+\item If Tiebout does not perfectly reflect reality, redistribution from high-revenue, high-spending communities to low-revenue, low-spending communities is supported for two reasons:
+\end{itemize}
+\begin{enumerate}
+  \item People may not be able to ``vote with their feet.''
+  \item Externalities may be present.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle{APPLICATION: Barriers to Tiebout and the ``Great Divergence'' (1)}
+\begin{itemize}
+\item In 2016, the top 20 cities in the United States had average earnings that were almost 50\% more than that of all remaining U.S. cities.
+\item Economists have always assumed that the market would resolve differences in economic opportunities across areas through personal mobility.
+\item In his book \textit{The Great Divergence}, Enrico Moretti argues that this is not happening due to strong forces of agglomeration in the new knowledge economy.
+\item The arrival of talented workers in an area raises the economic returns for other talented workers in that area.
+\item Moretti found that everyone, not just technology workers, do better in these highly educated cities.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{APPLICATION: Barriers to Tiebout and the ``Great Divergence'' (2)}
+\begin{itemize}
+\item If anyone can easily point out the places where riches are made, why doesn't everyone just move there?
+\item These cities have the highest cost of living due to high demand and low supply.
+\item Zoning restrictions prevent the quantity of housing supplied from increasing.
+\item These constraints on local building stop the U.S. economy from functioning efficiently.
+\item One study estimates that millions of workers are ``missing'' from the most productive cities in the economy, and the U.S. economy is 14\% smaller as a result.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Tools of Redistribution: Grants}
+\begin{itemize}
+\item The main tool of redistribution is intergovernmental grants-cash transfers from one level of government to another.
+\item Grants are a large and growing share of federal spending and come in multiple forms, with different implications.
+\item Matching grant: A grant the amount of which is tied to the amount of spending by the local community.
+\item Block grant: A grant of some fixed amount with no mandate on how it is to be spent.
+\item Conditional block grant: A grant of some fixed amount with a mandate that the money be spent in a particular way.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{A Town's Choice Between Education and Private Goods}
+Consider a community's budget constraint AB and spending at point X.
+\begin{center}
+\includegraphics[height=0.9\textheight]{images/ch10_slide34_img1.png}
+\end{center}
+\end{frame}
+
+\begin{frame}
+\frametitle{Matching Grants}
+A matching grant reduces the cost of education by 1/2. Budget constraint pivots from AB to AC and increases spending to point Y. Both income and substitution effects.
+\begin{center}
+\includegraphics[width=0.8\textwidth]{images/ch10_slide35_img1.png}
+\end{center}
+\end{frame}
+
+\begin{frame}
+\frametitle{Block Grant}
+A block grant shifts budget constraint from AB to DE and increases spending to point Z. Only income effect occurs.
+\begin{center}
+\includegraphics[width=0.8\textwidth]{images/ch10_slide36_img1.png}
+\end{center}
+\end{frame}
+
+\begin{frame}
+\frametitle{Implications of Different Grant Types}
+\begin{itemize}
+\item Different grant types affect incentives in different ways.
+\item Matching grants rotate out the budget constraint, acting like a subsidy.
+\item Helps with externalities since they are targeted.
+\item Block grants shift out the entire budget constraint, raising spending on all goods.
+\item Good for redistribution.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Redistribution in Action: School Finance Equalization 1}
+\begin{itemize}
+\item School finance equalization: Laws that mandate redistribution of funds across communities in a state to ensure more equal financing of schools.
+\item Generally, studies conclude that spending equalization has led to an equalization in student outcomes.
+\item Finance equalization schemes differ across states:
+\item California redistributes effectively all revenues.
+\item New Jersey redistributes most revenue from towns with revenue above the 85th percentile.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Redistribution in Action: School Finance Equalization 2}
+\begin{itemize}
+\item Different structures result in different tax prices.
+\item Tax price: For school equalization schemes, the amount of revenue a local district would have to raise in order to gain \$1 more of spending.
+\item If half of revenue is redistributed, tax price is \$2.
+\item If all revenue is redistributed, tax price is infinite.
+\item Evidence suggests that extreme equalization schemes with very high tax prices may lead to an overall reduction in per-pupil spending.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{APPLICATION: School Finance Equalization and Property Tax Limitations in California}
+\begin{itemize}
+\item If residents perceived that property taxes were ``too high'' in California, why did they wait until 1978 to lower them?
+\item Proposition 13 was actually a response to school finance equalization in California.
+\item Taxes no longer financed local school spending, just taxes rather than prices. Tax price became infinite.
+\item Voters were happy to limit property taxes once those taxes no longer brought them any benefit.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Learn by Doing: Practice Question 2}
+\begin{itemize}
+\item The town of Yellowseed chooses to purchase 50 units of transportation and 100 units of private goods. The state government decides to subsidize Yellowseed's transportation by providing 2 units of transportation for every 3 units of transportation purchased. Which of the following is true?
+\item Yellowseed will purchase fewer units of transportation and fewer units of private goods.
+\item Yellowseed will purchase fewer units of transportation and more units of private goods.
+\item Yellowseed will purchase more units of transportation and fewer units of private goods.
+\item Yellowseed will purchase more units of transportation and more units of private goods.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Learn by Doing: Practice Question 2 (Answer)}
+\begin{itemize}
+\item The town of Yellowseed chooses to purchase 50 units of transportation and 100 units of private goods. The state government decides to subsidize Yellowseed's transportation by providing 2 units of transportation for every 3 units of transportation purchased. Which of the following is true?
+\item Yellowseed will purchase fewer units of transportation and fewer units of private goods.
+\item Yellowseed will purchase fewer units of transportation and more units of private goods.
+\item Yellowseed will purchase more units of transportation and fewer units of private goods.
+\item Yellowseed will purchase more units of transportation and more units of private goods. (correct answer)
+\end{itemize}
+\end{frame}
+
+\subsection{Conclusion}
+
+\begin{frame}
+\frametitle{Conclusion 1}
+\begin{itemize}
+\item Central governments collect only part of total tax revenues and spend only part of total public spending.
+\item The United States places a large share of governmental responsibilities on its subnational governments relative to other developed countries.
+\item The Tiebout model suggests that the spending should be done locally when:
+\item Spending is on goods for which local preferences are relatively similar.
+\item Most residents can benefit from those goods.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Conclusion 2}
+\begin{itemize}
+\item Higher levels of government may not believe the conclusions of the idealized Tiebout model.
+\item They will want to redistribute across lower levels of government.
+\item If the high-level government decides that it wants to redistribute across lower levels, it can do so through several different types of grants.
+\item Appropriate choice of grants depends on goal of government financing.
+\end{itemize}
+\end{frame}
+
+\section{Data!}
+
+\begin{frame}
+\frametitle{Data!}
+\begin{enumerate}
+  \item \href{https://state-local-finance-data.taxpolicycenter.org/pages.cfm}{\nolinkurl{https://state-local-finance-data.taxpolicycenter.org/pages.cfm}} Urban Institute State and Local Finance Data.
+    \item \href{https://www.osc.ny.gov/local-government/data}{\nolinkurl{https://www.osc.ny.gov/local-government/data}} New York State Local Government Data.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Urban Institute Data (1)}
+  \begin{center}
+    \includegraphics[width=\textwidth]{images/UrbanInstitute1.png}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{Urban Institute Data (2)}
+  \begin{center}
+    \includegraphics[height=\textheight]{images/UrbanInstitute2.png}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{NY State Data (1)}
+  \begin{center}
+    \includegraphics[width=\textwidth]{images/NYS1.png}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{NY State Data (2)}
+  \begin{center}
+    \includegraphics[width=\textwidth]{images/NYS2.png}
+  \end{center}
+\end{frame}
+
+\begin{frame}
+  \frametitle{NY State Data (3)}
+  \begin{center}
+    \includegraphics[height=\textheight]{images/NYS3.png}
+  \end{center}
+\end{frame}
+
+\end{document}

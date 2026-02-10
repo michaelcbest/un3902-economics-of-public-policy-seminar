@@ -1,0 +1,12 @@
+\babel@toc {english}{}\relax 
+\beamer@sectionintoc {1}{Public Goods (Gruber chapter 7)}{2}{0}{1}
+\beamer@subsectionintoc {1}{1}{Optimal Provision of Public Goods}{3}{0}{1}
+\beamer@subsectionintoc {1}{2}{Private Provision of Public Goods}{12}{0}{1}
+\beamer@subsectionintoc {1}{3}{Public Provision of Public Goods}{26}{0}{1}
+\beamer@subsectionintoc {1}{4}{Conclusion}{43}{0}{1}
+\beamer@sectionintoc {2}{State and Local Government Expenditures (Gruber chapter 10)}{45}{0}{2}
+\beamer@subsectionintoc {2}{1}{Fiscal Federalism in the United States and Abroad}{46}{0}{2}
+\beamer@subsectionintoc {2}{2}{Optimal Fiscal Federalism}{56}{0}{2}
+\beamer@subsectionintoc {2}{3}{Redistribution Across Communities}{70}{0}{2}
+\beamer@subsectionintoc {2}{4}{Conclusion}{85}{0}{2}
+\beamer@sectionintoc {3}{Data!}{88}{0}{3}
