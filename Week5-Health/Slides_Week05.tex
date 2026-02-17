@@ -1,0 +1,844 @@
+\documentclass[aspectratio=169]{beamer}
+\renewcommand{\rmdefault}{cmr}
+\usepackage{helvet}
+\renewcommand{\ttdefault}{cmtt}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+\usepackage{amsbsy}
+\usepackage{amstext}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage[english]{babel}
+\hypersetup{unicode=true,breaklinks=false,pdfborder={0 0 0},pdfborderstyle={},colorlinks=true,linkcolor=blue, citecolor=blue, urlcolor=blue}
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
+% this default might be overridden by plain title style
+\newcommand\makebeamertitle{\frame{\maketitle}}%
+% (ERT) argument for the TOC
+\AtBeginDocument{%
+  \let\origtableofcontents=\tableofcontents
+  \def\tableofcontents{\@ifnextchar[{\origtableofcontents}{\gobbletableofcontents}}
+  \def\gobbletableofcontents#1{\origtableofcontents}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\usepackage{ifthen}
+\usepackage{multirow,bigstrut}
+\usepackage{tikz}
+\usetikzlibrary{patterns,decorations.pathreplacing,shapes}
+\usetikzlibrary{arrows}
+\usepackage{rotating}
+\usepackage{pdflscape}
+\usepackage{makecell}
+\usepackage{graphicx}
+\usepackage{booktabs}
+
+\defbeamertemplate*{footline}{guildford foot theme}
+{
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.7\paperwidth,ht=1cm,dp=0ex,left]{}%
+    {
+    \insertsectionnavigationhorizontal{.5\paperwidth}{}{}
+    }
+ \end{beamercolorbox}
+ \begin{beamercolorbox}[wd=0.31\paperwidth,ht=1cm,dp=0ex,right]{}%
+{\tiny
+\insertframenumber{} / \inserttotalframenumber\hspace*{5ex}
+}
+ \end{beamercolorbox}}%
+  \vskip5pt%
+}
+
+\beamertemplatenavigationsymbolsempty
+\usefonttheme{professionalfonts}
+\usecolortheme[RGB={0,0,125}]{structure}
+\setbeamersize{text margin left=10px}
+\definecolor{newblue}{rgb}{0,0,0.6}
+\setbeamercolor{alerted text}{fg=newblue}
+\setbeamertemplate{frametitle}[default][center]
+
+\RequirePackage{ifthen}
+
+\newboolean{sectiontoc}
+\setboolean{sectiontoc}{true}
+
+\AtBeginSubsection[]
+{
+  \ifthenelse{\boolean{sectiontoc}}{
+  \begin{frame}[plain]
+    \frametitle{Outline}
+    \tableofcontents[sectionstyle=show/hide,subsectionstyle=show/shaded/hide]
+  \end{frame}
+}
+}
+
+\AtBeginSection[]
+{
+  \ifthenelse{\boolean{sectiontoc}}{
+  \begin{frame}[noframenumbering,plain]
+    \frametitle{Outline}
+    \tableofcontents[sectionstyle=show/shaded,subsectionstyle=show/hide/hide]
+  \end{frame}
+}
+}
+
+\newcommand{\toclesssection}[1]{
+   \setboolean{sectiontoc}{false}
+   \section{#1}
+   \setboolean{sectiontoc}{true}
+}
+
+\newcommand{\toclesssubsection}[1]{
+   \setboolean{sectiontoc}{false}
+   \subsection{#1}
+   \setboolean{sectiontoc}{true}
+}
+
+\makeatother
+
+\begin{document}
+
+\title{\textit{UN3902: Economics of Public Policy Seminar} \\ Week 5: Health}
+\author{Michael Carlos Best}
+\date{February 17, 2026}
+
+\makebeamertitle
+
+\section{Health Insurance (Gruber Chapter 15)}
+
+\subsection{An Overview of Health Care in the United States}
+
+\begin{frame}
+\frametitle{Health Improvements and Health Spending}
+\begin{itemize}
+\item Since 1950:
+\begin{itemize}
+\item Medical technology has improved dramatically.
+\end{itemize}
+\begin{itemize}
+\item Heart attack mortality fell by 70\%, infant mortality fell by 80\%.
+\end{itemize}
+\begin{itemize}
+\item Health spending grew from 5 to 17\% of GDP.
+\end{itemize}
+\end{itemize}
+\begin{itemize}
+\item Yet all is not well for the U.S. healthcare system.
+\begin{itemize}
+\item There are huge disparities in medical outcomes.
+\end{itemize}
+\begin{itemize}
+\item The United States is the only major industrialized nation without universal access to health care.
+\end{itemize}
+\begin{itemize}
+\item The Affordable Care Act attempts to address the gaps in health care in the United States, but many are still without coverage.
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Health Care Spending in the OECD Nations, 2019 }
+\begin{itemize}
+\item Health care spending is much higher in the United States than in the typical industrialized nation.
+\end{itemize}
+\begin{center}
+\includegraphics[width=0.9\textwidth]{images/gruber_7e_lecture_slides_ch15_slide4_img2.png}
+\end{center}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Health Spending and Health Outcomes}
+\begin{center}
+\includegraphics[height=\textheight]{images/LifeExpectancy.png}
+\end{center}
+\end{frame}
+
+\begin{frame}
+\frametitle{Distribution of Health Expenditures in the United States, 2019}
+\begin{itemize}
+\item Together, hospital and physician spending accounted for almost two-thirds of all health care spending.
+\end{itemize}
+\begin{center}
+\includegraphics[height=0.9\textheight]{images/gruber_7e_lecture_slides_ch15_slide5_img3.png}
+\end{center}
+\end{frame}
+
+\begin{frame}
+\frametitle{APPLICATION: Finding the Inefficiency in U.S. Health Care: U.S. Rankings in Health System Outcomes }
+\begin{itemize}
+\item The United States is a major outlier in international terms when it comes to health care spending.
+\end{itemize}
+\begin{center}
+\includegraphics[width=0.85\textwidth]{images/gruber_7e_lecture_slides_ch15_slide6_img4.png}
+\end{center}
+\end{frame}
+
+\begin{frame}
+\frametitle{APPLICATION: Finding the Inefficiency in U.S. Health Care: Comparison to Other Countries}
+\begin{itemize}
+\item The United States lags behind other countries internationally.
+\end{itemize}
+\begin{itemize}
+\item The United States has the highest per-person health care costs of this set of countries.
+\end{itemize}
+\begin{itemize}
+\item The United States has the highest rate of infant mortality.
+\end{itemize}
+\begin{itemize}
+\item The United States has the highest rate of preventable death.
+\end{itemize}
+\begin{itemize}
+\item The United States has the highest rate of going without care over the past year because of cost.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{APPLICATION: Finding the Inefficiency in U.S. Health Care: Breakdown of Health Care Overspending}
+\begin{itemize}
+\item The three largest sources of wasteful spending are high prices, excess administration costs, and unnecessary or inefficiently delivered services.
+\end{itemize}
+\begin{center}
+\includegraphics[height=0.8\textheight]{images/gruber_7e_lecture_slides_ch15_slide8_img5.png}
+\end{center}
+\end{frame}
+
+\begin{frame}
+\frametitle{APPLICATION: Finding the Inefficiency in U.S. Health Care: Wasted Administrative Spending }
+\begin{itemize}
+\item Arises primarily from the fragmented nature of our health care insurance and delivery system.
+\begin{itemize}
+\item The administrative costs of private insurance in the United States average about 12\%, considerably higher than other developed nations.
+\end{itemize}
+\begin{itemize}
+\item Health care providers that have different private and public owners and have to deal with multiple private and public health care payers spend a huge amount in billing and collecting payments.
+\end{itemize}
+\begin{itemize}
+\item A study by Himmelstein et al. (2014) found that hospitals spend 1.43\% of GDP on administrative costs.
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{APPLICATION: Finding the Inefficiency in U.S. Health Care: High Prices}
+\begin{itemize}
+\item The United States pays higher prices on average for services and drugs.
+\end{itemize}
+\begin{center}
+\includegraphics[width=0.75\textwidth]{images/gruber_7e_lecture_slides_ch15_slide10_img6.png}
+\end{center}
+\end{frame}
+
+\begin{frame}
+\frametitle{How Health Insurance Works: The Basics}
+\begin{itemize}
+\item Individuals, or firms on their behalf, pay monthly premiums to insurance companies.
+\end{itemize}
+\begin{itemize}
+\item In return, the insurance companies pay the providers of medical goods and services for most of the cost of goods and services used by the individual.
+\end{itemize}
+\begin{itemize}
+\item There are three types of patient payments:
+\begin{enumerate}
+\item Deductibles---limit to cost individual pays
+\item Copayment---fixed payment individual pays
+\item Coinsurance---percentage of each bill individual pays
+\end{enumerate}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Distribution of the U.S. Population Across Health Insurance Types}
+\begin{center}
+\begin{tabular}{|l|l|}
+\hline
+ & People (millions) \\
+\hline
+\textbf{Total population} & \textbf{324.6} \\
+\textit{Private} & 220.8 \\
+\quad Employment-based & 183.0 \\
+\quad Direct purchase & 33.2 \\
+\textit{Public} & 110.7 \\
+\quad Medicare & 58.8 \\
+\quad Medicaid & 55.9 \\
+\quad Tricare/CHAMPVA & 3.2 \\
+\textit{The uninsured} & 26.1 \\ \hline
+Data from: Keisler-Starkey and Bunch (2020), Table 1. &  \\
+\hline
+\end{tabular}
+\end{center}
+\end{frame}
+
+\begin{frame}
+\frametitle{Private Insurance}
+\begin{itemize}
+\item In 2019, about 68.5\% of the U.S. population had private health insurance.
+\end{itemize}
+\begin{itemize}
+\item Private insurance is provided by employers and by the nongroup insurance market.
+\end{itemize}
+\begin{itemize}
+\item Nongroup insurance market: The market through which individuals or families buy insurance directly rather than through a group, such as the workplace.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Why Employers Provide Private Insurance,  Part I: Risk Pooling}
+\begin{itemize}
+\item One reason employers provide insurance is to pool risks.
+\begin{itemize}
+\item Risk pool: The group of individuals who enroll in an insurance plan.
+\end{itemize}
+\end{itemize}
+\begin{itemize}
+\item The goal of all insurers is to create large insurance pools with a predictable distribution of medical risk.
+\end{itemize}
+\begin{itemize}
+\item The law of large numbers helps achieve this goal.
+\end{itemize}
+\begin{itemize}
+\item By pooling all employees, employer-provided health insurance also avoids adverse selection.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Why Employers Provide Private Insurance,  Part II: The Tax Subsidy}
+\begin{itemize}
+\item Employers also provide insurance because it is subsidized.
+\end{itemize}
+\begin{itemize}
+\item Tax subsidy to employer-provided health insurance: Workers are taxed on their wage compensation but not on compensation in the form of health insurance, leading to a subsidy to health insurance provided through employers.
+\end{itemize}
+\begin{itemize}
+\item While Nigel's private insurance is cheaper, Khadija ends up with more income after taxes due to the subsidy to employer-provided insurance.
+\end{itemize}
+\begin{center}
+\begin{tabular}{|l|l|l|l|l|l|l|}
+\hline
+ & Marginal & Employer & Pre- & After & Personal & After-Tax,  \\
+ & Product, & Health & Tax & Tax & Health & After-Health \\
+ & Wage  & Insurance & Wage & Tax & Health  & Insurance \\
+ &  & Spending &  & Wage & Spending & Income \\
+\hline
+Nigel & \$30,000 & 0 & \$30,000 & \$20,000 & \$4,000 & \$16,000 \\
+Kim & \$30,000 & \$5,000 & \$25,000 & \$16,666 & 0 & \$16,666 \\
+\hline
+\end{tabular}
+\end{center}
+\end{frame}
+
+\begin{frame}
+\frametitle{The Other Alternative: Nongroup Insurance}
+\begin{itemize}
+\item The nongroup insurance market was traditionally not a well-functioning market.
+\end{itemize}
+\begin{itemize}
+\item Nongroup insurance was not always available.
+\end{itemize}
+\begin{itemize}
+\item Those in the worst health were often unable to obtain coverage (or obtain it only at an incredibly high price).
+\end{itemize}
+\begin{itemize}
+\item A central feature of the ACA was an effort to reduce these barriers to the nongroup insurance market.
+\begin{itemize}
+\item Banned pre-existing conditions exclusions and disallowed higher charges for less healthy enrollees.
+\end{itemize}
+\begin{itemize}
+\item Provided tax credits that subsidize the cost of insurance.
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Medicare}
+\begin{itemize}
+\item \textbf{Medicare:} A federal program that provides health insurance to all people over age 65 and disabled persons under age 65.
+\end{itemize}
+\begin{itemize}
+\item Every citizen who has worked for 10 years in Medicare-covered employment (and their spouse) is eligible for Medicare at age 65.
+\end{itemize}
+\begin{itemize}
+\item Medicare is financed by a payroll tax on employees and employers.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Medicaid}
+\begin{itemize}
+  \item \textbf{Medicaid}: A federal and state program that provides healthcare for the poor.
+  \item Medicaid benefits are targeted at several groups:
+  \begin{itemize}
+    \item Those who qualify for cash welfare programs
+    \item Most low-income children in the United States
+    \item Most low-income pregnant women
+    \item All very low-income families (in states that expanded the program to this group under ACA.)
+    \item The low-income elderly and disabled (for expenses not covered by Medicare).
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{The Uninsured}
+\begin{itemize}
+\item Who are they?
+\end{itemize}
+\begin{itemize}
+\item There are 26 million in the United States without any insurance coverage.
+\item The uninsured have low-than-average incomes.
+\item In 2019, nearly three quarters of the nonelderly uninsured came from families where one or more members were full-time workers.
+\item About 14.2\% of the uninsured are children.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Why Are Individuals Uninsured?}
+\begin{itemize}
+\item They may be counting on uncompensated care.
+\begin{itemize}
+\item Uncompensated care: The costs of delivering health care for which providers are not reimbursed.
+\end{itemize}
+\end{itemize}
+\begin{itemize}
+\item Insurance may cost too much, given risks and prices.
+\end{itemize}
+\begin{itemize}
+\item Insurers may be unwilling to insure the worst risks because of fears of adverse selection.
+\end{itemize}
+\begin{itemize}
+\item They are not appropriately valuing insurance coverage.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Why Care About the Uninsured? 1}
+\begin{itemize}
+\item There are several reasons to care about the uninsured.
+\end{itemize}
+\begin{itemize}
+\item There are physical externalities associated with communicable diseases.
+\end{itemize}
+\begin{itemize}
+\item There is a significant financial externality imposed by the uninsured on the insured.
+\end{itemize}
+\begin{itemize}
+\item Care is not delivered appropriately to the uninsured.
+\end{itemize}
+\begin{itemize}
+\item Paternalism and equity motivations.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Why Care About the Uninsured? 2}
+\begin{itemize}
+\item A final reason for caring about the uninsured is that becoming uninsured is a concern for millions of individuals who currently have insurance.
+\begin{itemize}
+\item Job lock: The unwillingness to move to a better job for fear of losing health insurance.
+\end{itemize}
+\end{itemize}
+\begin{itemize}
+\item Health insurance availability may inhibit productivity-increasing job switches.
+\end{itemize}
+\end{frame}
+
+\subsection{How Generous Should Insurance Be to Patients?}
+
+\begin{frame}
+\frametitle{How Generous Should Insurance Be to Patients?}
+\begin{itemize}
+  \item The generosity of health insurance is measured along two dimensions:
+  \begin{itemize}
+    \item Generosity to patients
+    \item Generosity to providers
+  \end{itemize}
+  \item Most generous plans (to patients) provide first-dollar coverage.
+  \begin{itemize}
+    \item First-dollar coverage: Insurance plans that cover all medical spending, with little or no patient payment.
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Consumption-Smoothing Benefits of Health Insurance for Patients}
+\begin{itemize}
+  \item The consumption-smoothing benefit from first-dollar coverage of minor and predictable medical events is small for two reasons:
+  \begin{itemize}
+    \item Risk-averse individuals gain little utility from insuring a small risk.
+    \item Individuals are much more able to self-insure such spending than to self-insure large and unpredictable medical events.
+  \end{itemize}
+  \item On the other hand, the moral hazard costs are large.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Moral Hazard Costs of Health Insurance for Patients}
+\begin{itemize}
+\item Trade-off of health insurance: The gains in terms of consumption smoothing versus the costs in terms of overuse of medical care
+\end{itemize}
+\begin{center}
+\includegraphics[width=0.8\textwidth]{images/gruber_7e_lecture_slides_ch15_slide29_img7.png}
+\end{center}
+\end{frame}
+
+\begin{frame}
+\frametitle{The ``Flat of the Curve''}
+\begin{itemize}
+\item People should not get medical care beyond point B, the point at which each dollar of spending buys a dollar of improved health.
+\end{itemize}
+\begin{center}
+\includegraphics[width=0.75\textwidth]{images/gruber_7e_lecture_slides_ch15_slide30_img8.png}
+\end{center}
+\end{frame}
+
+\begin{frame}
+\frametitle{How Elastic Is the Demand for Medical Care?  The RAND Health Insurance Experiment}
+\begin{itemize}
+\item RAND Health Insurance Experiment (HIE): Evidence on the elasticity of health care demand
+\end{itemize}
+\begin{itemize}
+\item Medical care demand is price sensitive: Free care plan used one-third more care than 95\% coinsurance plan.
+\end{itemize}
+\begin{itemize}
+\item Yet more generous plans did not improve health . . .
+\end{itemize}
+\begin{itemize}
+\item except for low-income, chronically ill people.
+\end{itemize}
+\begin{itemize}
+\item These findings largely supported by subsequent quasi-experimental studies.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{EVIDENCE: Estimating the Elasticity of Demand for Medical Care}
+\begin{itemize}
+\item In Japan, copayments drop dramatically at age 70.
+\end{itemize}
+\begin{itemize}
+\item As the graphs show, this corresponds to a jump in the number of visits to the doctor and hospital admissions.
+\end{itemize}
+\begin{itemize}
+\item Despite this, there is no measurable effect on patient mortality, confirming the ``flat of the curve'' conclusion from the HIE.
+\end{itemize}
+\begin{center}
+\includegraphics[width=0.52\textwidth]{images/gruber_7e_lecture_slides_ch15_slide32_img9.png}
+\end{center}
+\end{frame}
+
+
+\begin{frame}
+\frametitle{Optimal Health Insurance}
+\begin{itemize}
+\item Optimal health insurance:
+\end{itemize}
+\begin{itemize}
+\item Trades off moral hazard against risk protection.
+\end{itemize}
+\begin{itemize}
+\item First-dollar coverage bad for moral hazard, not very valuable risk protection.
+\end{itemize}
+\begin{itemize}
+\item Therefore, optimal health insurance policy:
+\begin{itemize}
+\item Individuals bear a large share of medical costs within some affordable range.
+\end{itemize}
+\begin{itemize}
+\item Fully insured only against very large costs.
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\section{Government Health Insurance (Gruber Chapter 16)}
+
+\subsection{The Medicaid Program for Low-Income Families}
+
+\subsection{What Are the Benefits of the Medicaid Program?}
+
+\subsection{The Medicare Program}
+
+\subsection{Controlling Costs in the Medicare Program}
+
+\subsection{Long-Term Care}
+
+\subsection{16.6 Health Care Reform and the ACA}
+
+\subsection{16.7 Conclusion}
+
+\begin{frame}
+\frametitle{Introduction: The Patient Protection and Affordable Care Act}
+\begin{itemize}
+\item Fundamental reform of the U.S. health care system has been a constant source of political debate for much of the past century. In 2010, President Barack Obama signed into law a sweeping overhaul of the U.S. health care system.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Introduction: The Patient Protection and Affordable Care Act}
+\begin{itemize}
+\item The Patient Protection and Affordable Care Act (ACA) made five fundamental changes to the U.S. health care system.
+\end{itemize}
+\begin{enumerate}
+\item It banned insurers from denying coverage because of pre-existing conditions.
+\item It banned insurers from charging different prices to different people based on their health.
+\item It mandated all U.S. residents be covered by health insurance.
+\item It required the federal government extensively subsidize health insurance coverage for the poor.
+\item It took a variety of actions to lower health care costs.
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle{Introduction: The Patient Protection and Affordable Care Act}
+\begin{itemize}
+\item This legislation was highly controversial and passed through Congress with a very slim margin in a strictly partisan vote (no Republicans voted for it).
+\end{itemize}
+\begin{itemize}
+\item The right worried that the law would lead to restricted patient choice and a bloated government bureaucracy.
+\end{itemize}
+\begin{itemize}
+\item Those on the left believed that this proposal represented a retreat from the government-run single-payer system that might more efficiently expand coverage and control costs.
+\begin{itemize}
+\item Single-payer system: A health care system in which all health insurance is provided and paid for by the government.
+\end{itemize}
+\end{itemize}
+\begin{itemize}
+\item President Trump and the Republican Congress were unable to repeal the ACA  but took a set of legislative and regulatory actions have significantly weakened the law's impact.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Health Care Reform and the ACA}
+\begin{itemize}
+\item There has been an historical impasse over national health insurance.
+\end{itemize}
+\begin{itemize}
+\item Some argue for a single-payer system.
+\begin{itemize}
+\item Government-provided health insurance for all.
+\end{itemize}
+\begin{itemize}
+\item Guarantees full coverage.
+\end{itemize}
+\begin{itemize}
+\item Low administrative costs.
+\end{itemize}
+\begin{itemize}
+\item Eliminates inequality in care.
+\end{itemize}
+\begin{itemize}
+\item Straightforward to control costs by budgeting.
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Health Care Reform and the ACA}
+\begin{itemize}
+\item Public system also has disadvantages:
+\begin{itemize}
+\item Dramatically increases government expenditures.
+\end{itemize}
+\begin{itemize}
+\item Budgeting is a blunt instrument.
+\begin{itemize}
+\item May not allow doctors to use a technology that is worth its high cost.
+\end{itemize}
+\end{itemize}
+\begin{itemize}
+\item Severe political hurdles from health insurance companies.
+\end{itemize}
+\end{itemize}
+\begin{itemize}
+\item Others push for a private-sector solution, possibly with subsidies.
+\begin{itemize}
+\item Adverse selection, other market failures remain.
+\end{itemize}
+\begin{itemize}
+\item No evidence that the private sector can contain costs.
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{The Massachusetts Experiment with Incremental Universalism}
+\begin{itemize}
+\item In 2006, Massachusetts pushed to cover remaining 9\% without insurance.
+\end{itemize}
+\begin{itemize}
+\item ``Three-legged-stool'' approach:
+\begin{itemize}
+\item Ban pre-existing conditions exclusion, health-based pricing.
+\end{itemize}
+\begin{itemize}
+\item Individual mandate, avoiding adverse selection.
+\begin{itemize}
+\item Mandate: A legal requirement for employers to offer insurance or for individuals to obtain some type of insurance coverage.
+\end{itemize}
+\end{itemize}
+\begin{itemize}
+\item Subsidized/free insurance for low-income families.
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{The Massachusetts Experiment with Incremental Universalism}
+\begin{itemize}
+\item Striking results:
+\begin{itemize}
+\item Massachusetts uninsurance rate 3\%, compared to 18\% nationally.
+\end{itemize}
+\begin{itemize}
+\item Half of the increase in coverage from Medicaid or government subsidized plans.
+\end{itemize}
+\begin{itemize}
+\item Premiums in the nongroup market have fallen by half relative to national trends.
+\end{itemize}
+\begin{itemize}
+\item Costs of the reform roughly consistent with projections.
+\end{itemize}
+\begin{itemize}
+\item Some studies have found the policy has improved health of population.
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{The Affordable Care Act}
+\begin{itemize}
+\item In 2010, President Obama signed into law the Affordable Care Act, based on the Massachusetts health reform.
+\end{itemize}
+\begin{itemize}
+\item Adopts the ``three-legged stool'' of Massachusetts:
+\begin{itemize}
+\item Prices are community rated, not health specific.
+\end{itemize}
+\begin{itemize}
+\item Individuals are mandated to buy insurance.
+\end{itemize}
+\begin{itemize}
+\item Medicaid expanded, with subsidies for lower-income people.
+\end{itemize}
+\end{itemize}
+\begin{itemize}
+\item Expected to cost \$1 trillion over the next decade.
+\end{itemize}
+\begin{itemize}
+\item Includes substantial efforts to control costs.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Early Evidence on the Effects of the ACA}
+\begin{itemize}
+\item Projecting the impacts of a reform as large as the ACA is difficult, but the CBO has attempted to do so, most recently in CBO (2014).
+\end{itemize}
+\begin{itemize}
+\item They projected that these reforms will lead to 26 million newly insured residents by 2019.
+\end{itemize}
+\begin{itemize}
+\item The CBO also projected that the spending cuts and revenue increases in the ACA will more than offset the new spending under the ACA so that the law will reduce the deficit by more than \$100 billion over the first decade and more than \$1 trillion over the next.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Trends in Uninsurance for Adults Ages 18 to 64}
+\begin{itemize}
+\item Uninsurance rates among the states declined precipitously from 2014 through 2016 before rising again in 2017.
+\end{itemize}
+\begin{center}
+\includegraphics[width=\textwidth]{images/gruber_7e_lecture_slides_ch16_slide29_img3.png}
+\end{center}
+\end{frame}
+
+\begin{frame}
+\frametitle{Projected Impacts of the ACA and Early Evidence on Its Effects}
+\begin{itemize}
+\item Early evidence on the effects of the ACA appears to support the contentions of the CBO analysis.
+\end{itemize}
+\begin{itemize}
+\item The number of uninsured in the United States has fallen by about 20 million, with the uninsurance rate declining by more than one-third.
+\end{itemize}
+\begin{itemize}
+\item Other studies suggest that this coverage has also improved access to care and self-reported health, decreased emergency room use, and increased use of preventive care.
+\end{itemize}
+\begin{itemize}
+\item Cost growth since the passage of the ACA has been historically low, at a rate of 1.4\% in 2013.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Evidence on the Impact of ACA on Mortality}
+\begin{itemize}
+  \item Recent paper by Miller, Johnson \& Wherry (2020) studies impact of Medicaid expansions on mortality of Americans aged 55--64.
+  \item Exploit differences in timing of Medicaid expansions in different states to identify the effect of the expansions on mortality.
+  \item Pursue a dynamic difference-in-differences design, comparing changes in mortality in expansion states to changes in mortality in not-yet-expansion states, before and after the expansions.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Evidence on the Impact of ACA on Mortality}
+\begin{center}
+  \includegraphics[width=0.95\textwidth]{images/DD_Pic.png}
+\end{center}
+\end{frame}
+
+\begin{frame}
+\frametitle{The ACA Runs Into Trouble}
+\begin{itemize}
+\item Public support for the ACA was below 50\% both before and after passage and remained below 50\% even as the law was enacted and the coverage gains took place.
+\begin{itemize}
+\item This unpopularity was a significant factor in major Republican gains in the 2016 election.
+\end{itemize}
+\end{itemize}
+\begin{itemize}
+\item The ACA's partial reform structure created more opponents than supporters.
+\begin{itemize}
+\item Many of the benefits were through expanded Medicaid and other mechanisms not directly linked by voters to ``Obamacare.''
+\end{itemize}
+\end{itemize}
+\begin{itemize}
+\item The Trump administration and Congress took actions that significantly weakened the ACA.
+\begin{itemize}
+\item Foremost of these actions is the repeal of the individual mandate.
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Conclusion}
+\begin{itemize}
+\item The ACA held the potential to address many shortcomings in our health insurance system, greatly reducing the ranks of the uninsured.
+\end{itemize}
+\begin{itemize}
+\item Evidence from past insurance expansions suggests that this will provide a cost-effective means of improving health.
+\end{itemize}
+\begin{itemize}
+\item The law failed to achieve widespread popularity and was significantly scaled back by President Trump and Congress.
+\end{itemize}
+\begin{itemize}
+\item Further reform is needed to control costs.
+\end{itemize}
+\end{frame}
+
+\section{Case Study for Class Discussion}
+
+\begin{frame}
+\frametitle{Case Study for Class Discussion}
+\begin{itemize}
+\item In Jan 2026, expanded tax subsidies for health insurance under ACA expired, leading to a large increase in the cost of insurance for millions of Americans.
+\item Read up on this.
+\begin{itemize}
+  \item \href{https://www.nytimes.com/2026/01/30/upshot/obamacare-subsidies-financial-cliff.html?smid=url-share}{\url{https://www.nytimes.com/2026/01/30/upshot/obamacare-subsidies-financial-cliff.html?smid=url-share}}
+  \item \href{https://www.cbpp.org/research/health/health-insurance-premium-spikes-imminent-as-tax-credit-enhancements-set-to-expire}{\url{https://www.cbpp.org/research/health/health-insurance-premium-spikes-imminent-as-tax-credit-enhancements-set-to-expire}}
+  \item \href{https://www.urban.org/research/publication/48-million-people-will-lose-coverage-2026-if-enhanced-premium-tax-credits}{\url{https://www.urban.org/research/publication/48-million-people-will-lose-coverage-2026-if-enhanced-premium-tax-credits}}
+  \item \href{https://www.cbpp.org/blog/how-to-evaluate-proposals-to-address-expiring-premium-tax-credit-enhancements}{\url{https://www.cbpp.org/blog/how-to-evaluate-proposals-to-address-expiring-premium-tax-credit-enhancements}}
+\end{itemize}
+\item let's use this google doc to plan an evaluation together! \href{https://docs.google.com/document/d/1UC5z4sPzOZTeC4wy4aErScUNNLexrcniVdQw-1ZkrB0/edit?usp=sharing}{\url{https://docs.google.com/document/d/1UC5z4sPzOZTeC4wy4aErScUNNLexrcniVdQw-1ZkrB0/edit?usp=sharing}}
+\end{itemize}
+\end{frame}
+
+\end{document}

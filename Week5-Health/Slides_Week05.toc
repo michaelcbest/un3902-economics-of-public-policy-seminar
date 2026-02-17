@@ -1,0 +1,13 @@
+\babel@toc {english}{}\relax 
+\beamer@sectionintoc {1}{Health Insurance (Gruber Chapter 15)}{2}{0}{1}
+\beamer@subsectionintoc {1}{1}{An Overview of Health Care in the United States}{3}{0}{1}
+\beamer@subsectionintoc {1}{2}{How Generous Should Insurance Be to Patients?}{25}{0}{1}
+\beamer@sectionintoc {2}{Government Health Insurance (Gruber Chapter 16)}{33}{0}{2}
+\beamer@subsectionintoc {2}{1}{The Medicaid Program for Low-Income Families}{34}{0}{2}
+\beamer@subsectionintoc {2}{2}{What Are the Benefits of the Medicaid Program?}{35}{0}{2}
+\beamer@subsectionintoc {2}{3}{The Medicare Program}{36}{0}{2}
+\beamer@subsectionintoc {2}{4}{Controlling Costs in the Medicare Program}{37}{0}{2}
+\beamer@subsectionintoc {2}{5}{Long-Term Care}{38}{0}{2}
+\beamer@subsectionintoc {2}{6}{16.6 Health Care Reform and the ACA}{39}{0}{2}
+\beamer@subsectionintoc {2}{7}{16.7 Conclusion}{40}{0}{2}
+\beamer@sectionintoc {3}{Case Study for Class Discussion}{56}{0}{3}
