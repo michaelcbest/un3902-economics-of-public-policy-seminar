@@ -1,0 +1,649 @@
+\documentclass[aspectratio=169]{beamer}
+\renewcommand{\rmdefault}{cmr}
+\usepackage{helvet}
+\renewcommand{\ttdefault}{cmtt}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+\usepackage{amsbsy}
+\usepackage{amstext}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage[english]{babel}
+\hypersetup{unicode=true,breaklinks=false,pdfborder={0 0 0},pdfborderstyle={},colorlinks=true,linkcolor=blue, citecolor=blue, urlcolor=blue}
+
+\makeatletter
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Textclass specific LaTeX commands.
+% this default might be overridden by plain title style
+\newcommand\makebeamertitle{\frame{\maketitle}}%
+% (ERT) argument for the TOC
+\AtBeginDocument{%
+  \let\origtableofcontents=\tableofcontents
+  \def\tableofcontents{\@ifnextchar[{\origtableofcontents}{\gobbletableofcontents}}
+  \def\gobbletableofcontents#1{\origtableofcontents}
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% User specified LaTeX commands.
+\usepackage{ifthen}
+\usepackage{multirow,bigstrut}
+\usepackage{tikz}
+\usetikzlibrary{patterns,decorations.pathreplacing,shapes}
+\usetikzlibrary{arrows}
+\usepackage{rotating}
+\usepackage{pdflscape}
+\usepackage{makecell}
+\usepackage{graphicx}
+\usepackage{booktabs}
+
+\defbeamertemplate*{footline}{guildford foot theme}
+{
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.7\paperwidth,ht=1cm,dp=0ex,left]{}%
+    {
+    \insertsectionnavigationhorizontal{.5\paperwidth}{}{}
+    }
+ \end{beamercolorbox}
+ \begin{beamercolorbox}[wd=0.31\paperwidth,ht=1cm,dp=0ex,right]{}%
+{\tiny
+\insertframenumber{} / \inserttotalframenumber\hspace*{5ex}
+}
+ \end{beamercolorbox}}%
+  \vskip5pt%
+}
+
+\beamertemplatenavigationsymbolsempty
+\usefonttheme{professionalfonts}
+\usecolortheme[RGB={0,0,125}]{structure}
+\setbeamersize{text margin left=10px}
+\definecolor{newblue}{rgb}{0,0,0.6}
+\setbeamercolor{alerted text}{fg=newblue}
+\setbeamertemplate{frametitle}[default][center]
+
+\RequirePackage{ifthen}
+
+\newboolean{sectiontoc}
+\setboolean{sectiontoc}{true}
+
+\AtBeginSubsection[]
+{
+  \ifthenelse{\boolean{sectiontoc}}{
+  \begin{frame}[plain]
+    \frametitle{Outline}
+    \tableofcontents[sectionstyle=show/hide,subsectionstyle=show/shaded/hide]
+  \end{frame}
+}
+}
+
+\AtBeginSection[]
+{
+  \ifthenelse{\boolean{sectiontoc}}{
+  \begin{frame}[noframenumbering,plain]
+    \frametitle{Outline}
+    \tableofcontents[sectionstyle=show/shaded,subsectionstyle=show/hide/hide]
+  \end{frame}
+}
+}
+
+\newcommand{\toclesssection}[1]{
+   \setboolean{sectiontoc}{false}
+   \section{#1}
+   \setboolean{sectiontoc}{true}
+}
+
+\newcommand{\toclesssubsection}[1]{
+   \setboolean{sectiontoc}{false}
+   \subsection{#1}
+   \setboolean{sectiontoc}{true}
+}
+
+\makeatother
+
+\begin{document}
+
+\title{\textit{UN3902: Economics of Public Policy Seminar} \\ Week 6: Inequality}
+\author{Michael Carlos Best}
+\date{February 24, 2026}
+
+\makebeamertitle
+
+\section{Income Inequality and Government Transfer Programs (Gruber Chapter 17)}
+
+\subsection{Facts on Income Distribution in the United States}
+
+\begin{frame}
+\frametitle{Introduction: Differences in Life Expectancy 1}
+\begin{itemize}
+\item The last week of April 2015 was marked by several weeks of protests in Baltimore, Maryland sparked by the death of Freddie Gray while in custody of the police
+\item the protests erupted into violence resulting in almost 500 arrests, and an estimated \$9 million in damage to businesses. 
+\item The larger cause may have been the astounding level of inequality in the city of Baltimore. Even in neighborhoods only several miles apart, life circumstances in Baltimore are dramatically different.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Introduction: Differences in Life Expectancy 2}
+\begin{center}
+\includegraphics[width=0.67\textwidth]{images/slide04_img1.png}
+\end{center}
+\end{frame}
+
+\begin{frame}
+\frametitle{Introduction: Differences in Life Expectancy 3}
+\begin{itemize}
+\item In Freddie Gray's neighborhood of Sandtown-Winchester, the average life expectancy in 2015 was 67 years; just three miles away in the wealthy Baltimore neighborhood of Roland Park, life expectancy averaged 84 years.
+\item The life expectancy in Freddie Gray's neighborhood is well below that in North Korea, one of the poorest countries in the world---and at about the same level as the U.S. average in 1948.
+\item This is not an isolated example: in 2015, 15 Baltimore neighborhoods have a life expectancy below that of North Korea.
+\item This enormous discrepancy represents huge underlying differences in economic resources in these different neighborhoods.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Introduction: Differences in Life Expectancy 4}
+\begin{itemize}
+\item The life expectancy discrepancy represents huge underlying differences in economic resources in these different neighborhoods. In 2015,
+\item the median household income in Sandtown-Winchester neighbourhood was \$24,000 per year, compared with more than \$107,000 in the Roland Park neighborhood.
+\item more than half of residents in Sandtown-Winchester lived below \$25,000 per year, while fewer than 10\% of those in Roland Park did.
+\item only 2.5\% of children in Roland Park lived below the poverty line while 54.8\% of children in Sandtown-Winchester did.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Introduction: Income Distribution and Transfer Programs 1}
+\begin{itemize}
+\item This dramatic discrepancy in resources raises a central question for public finance.
+\item Social welfare may be maximized by redistributing from high-income individuals to low-income individuals, but the private sector is unlikely to provide such income redistribution.
+\item Government can solve this problem by taxing its citizens to provide public redistribution.
+\item The most well-known source of redistributing income to low-income citizens is through cash transfer.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Introduction: Income Distribution and Transfer Programs 2}
+\begin{itemize}
+\item To some conservatives, the negative effects of cash payments to low-income single mothers are responsible for many of the social ills in the United States.
+\item To some liberals, it is wrong to force low-income families off transfer programs and into the labor market.
+\item Who is right? Has cash transfer played a constructive or a destructive role in the lives of low-income groups?
+\item In this chapter, we discuss income redistribution and its effects, both in theory and in reality.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Relative Income Inequality 1}
+\begin{itemize}
+\item Relative income inequality: The amount of income that the least wealthy individuals have relative to the most wealthy.
+\item Since 1980, relative income inequality has increased in the United States.
+\end{itemize}
+
+\begin{table}
+\centering
+\small
+\begin{tabular}{lllllll}
+\toprule
+Income & 1967 & 1980 & 1990 & 2000 & 2010 & 2019 \\
+\midrule
+Lowest 20\% & 4.0 & 4.2 & 3.8 & 3.6 & 3.3 & 3.1 \\
+Second 20\% & 10.8 & 10.2 & 9.6 & 8.9 & 8.5 & 8.3 \\
+Third 20\% & 17.3 & 16.8 & 15.9 & 14.8 & 14.6 & 14.1 \\
+Fourth 20\% & 24.2 & 24.7 & 24.0 & 23.0 & 23.4 & 22.7 \\
+Highest 20\% & 43.6 & 44.1 & 46.6 & 49.8 & 50.3 & 51.9 \\ \midrule
+\multicolumn{7}{l}{\textit{Data from: U.S. Bureau of the Census (2021), Table H-2 }}  \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Relative Income Inequality 2}
+\begin{itemize}
+\item Much of the income inequality has been driven by enormous increases in income at the very top of the income distribution.
+\end{itemize}
+\begin{center}
+\includegraphics[width=0.9\textwidth]{images/slide10_img1.png}
+\end{center}
+\end{frame}
+
+\begin{frame}
+\frametitle{Relative Income Inequality: OECD Countries A--G, 2018}
+\begin{itemize}
+\item Relative income inequality in the United States is much higher than it is in other developed nations.
+\end{itemize}
+
+\begin{table}
+\centering
+\small
+\begin{tabular}{lllllll}
+\toprule
+\multicolumn{7}{l}{\textit{Income Share in Total Income for OECD Nations}} \\
+\midrule
+Country (2018) & Bottom 10\% & Bottom 20\% & Bottom 40\% & Top 
+40\% & Top 
+20\% & Top 
+10\% \\
+Austria & 3.1 & 8.5 & 22.7 & 59.4 & 36.6 & 22.3 \\
+Belgium & 3.8 & 9.2 & 23.3 & 58.1 & 34.8 & 20.7 \\
+Canada & 2.9 & 7.8 & 21.0 & 61.1 & 37.8 & 22.9 \\
+Czech Republic & 4.1 & 9.9 & 24.3 & 57.5 & 34.7 & 20.5 \\
+Denmark & 3.8 & 9.5 & 23.6 & 58.3 & 35.7 & 21.9 \\
+Finland & 3.9 & 9.4 & 23.4 & 58.8 & 36.3 & 22.3 \\
+France & 3.4 & 8.6 & 21.9 & 60.8 & 39.0 & 25.0 \\
+Germany & 3.3 & 8.5 & 22.1 & 60.1 & 37.5 & 23.2 \\
+Greece & 2.9 & 7.7 & 20.9 & 61.5 & 38.2 & 23.4 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Relative Income Inequality: OECD Countries H--N, 2018}
+\begin{table}
+\centering
+\small
+\begin{tabular}{lllllll}
+\toprule
+\multicolumn{7}{l}{\textit{Income Share in Total Income for OECD Nations}} \\
+\midrule
+Country (2018) & Bottom 10\% & Bottom 20\% & Bottom 40\% & Top 
+40\% & Top 
+20\% & Top 
+10\% \\
+Hungary & 3.2 & 8.5 & 22.2 & 60.2 & 37.5 & 23.1 \\
+Italy & 2.0 & 6.6 & 19.4 & 63.0 & 39.7 & 24.5 \\
+Korea & 2.2 & 6.2 & 18.4 & 64.4 & 40.7 & 25.0 \\
+Luxembourg & 2.7 & 7.6 & 20.5 & 62.2 & 39.5 & 24.6 \\
+Mexico & 2.0 & 5.6 & 15.9 & 69.4 & 47.9 & 32.3 \\
+New Zealand & 2.9 & 7.3 & 19.2 & 64.5 & 42.2 & 27.5 \\
+Norway & 3.3 & 8.9 & 23.6 & 57.9 & 35.2 & 21.45 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Relative Income Inequality: OECD Countries P--Z, 2018}
+\begin{itemize}
+\item The share of income received by the top 10\% in the United States was 15\% higher than the OECD average.
+\end{itemize}
+
+\begin{table}
+\centering
+\small
+\begin{tabular}{lllllll}
+\toprule
+\multicolumn{7}{l}{\textit{Income Share in Total Income for OECD Nations}} \\
+\midrule
+Country (2018) & Bottom 10\% & Bottom 20\% & Bottom 40\% & Top 
+40\% & Top 
+20\% & Top 
+10\% \\
+Poland & 3.2 & 8.5 & 22.3 & 59.6 & 36.6 & 22.2 \\
+Portugal & 3.0 & 7.8 & 20.7 & 62.2 & 39.8 & 25.1 \\
+Slovak Republic & 3.5 & 9.4 & 24.5 & 56.5 & 32.8 & 18.5 \\
+Sweden & 3.5 & 8.7 & 22.6 & 59.4 & 36.6 & 22.7 \\
+Turkey & 2.4 & 6.2 & 17.1 & 67.7 & 46.3 & 31.3 \\
+United Kingdom & 2.4 & 6.7 & 18.5 & 65.4 & 43.6 & 29.0 \\
+United States & 1.6 & 5.3 & 16.2 & 67.6 & 44.5 & 28.5 \\
+OECD & 2.9 & 7.7 & 20.6 & 62.3 & 39.6 & 24.8 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Absolute Deprivation and Poverty Rates}
+\begin{itemize}
+\item Inequality does not measure absolute deprivation.
+\begin{itemize}
+\item \textbf{Absolute deprivation}: The amount of income the least wealthy people have relative to some measure of ``minimally acceptable'' income.
+\end{itemize}
+\item Measured by the share of people below poverty line.
+\begin{itemize}
+\item \textbf{Poverty line}: The federal government's standard for measuring absolute deprivation.
+\item It was determined to be three times the cost of a minimally nutritionally accepted diet.
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Poverty Lines by Family Size (2020)}
+\begin{itemize}
+\item Since their development in 1964, these amounts have simply been updated for inflation.
+\end{itemize}
+
+\begin{table}
+\centering
+\small
+\begin{tabular}{ll}
+\toprule
+Size of Family Unit & Poverty Line \\
+\midrule
+1 & \$12,760 \\
+2 & 17,240 \\
+3 & 21,720 \\
+4 & 26,200 \\
+5 & 30,680 \\
+6 & 35,160 \\
+7 & 39,640 \\
+8 & 44,120 \\
+For each additional person, add & 4,480 \\
+\textit{Data from: U.S. Department of Health and Human Services (2021).} &  \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Poverty Rates over Time in the United States}
+\begin{itemize}
+\item Poverty rates declined rapidly in 1960s and early 1970s and then oscillated for all age groups. Poverty rates began to decline again after 2010.
+\end{itemize}
+
+\begin{center}
+\includegraphics[width=0.95\textwidth]{images/slide16_img1.png}
+\end{center}
+\end{frame}
+
+\begin{frame}
+\frametitle{APPLICATION: Problems in Poverty Line Measurement 1}
+\begin{itemize}
+\item Three problems with the current calculation of the poverty line:
+\end{itemize}
+\begin{enumerate}
+\item Bundle has changed.
+\begin{itemize}
+\item Shelter, medical care, and other goods are important, but only food mattered in initial poverty line calculation.
+\end{itemize}
+\item Differences in cost of living.
+\begin{itemize}
+\item Rents differ enormously across areas, yet the same poverty line applies to all locations.
+\end{itemize}
+\item Income definition is incomplete.
+\begin{itemize}
+\item Medicaid and childcare does not count toward the poverty line, yet are part of an individual's available resources.
+\end{itemize}
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle{APPLICATION: Problems in Poverty Line Measurement 2}
+\begin{itemize}
+\item In the early 1990s, the National Academy of Sciences produced a list of changes to the way the U.S. poverty line is calculated in order to address these criticisms.
+\item But there are practical difficulties:
+\begin{itemize}
+\item How to quantify the value from income smoothing due to receiving Medicaid when adjusting income?
+\item Implementing these changes would lead to huge redistribution from the South and Midwest to the East and West.
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\subsection{Transfer Policy in the United States}
+
+\begin{frame}
+\frametitle{Transfer Policy in the United States 1}
+\begin{itemize}
+\item Transfer programs can be categorical or means-tested.
+\item \textbf{Categorical transfer}: Transfer programs restricted by some demographic characteristic, such as single motherhood or disability.
+\item \textbf{Means-tested transfer}: Transfer programs restricted only by income and asset levels.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Transfer Policy in the United States 2}
+\begin{itemize}
+\item They can also be cash or in-kind.
+\item \textbf{Cash transfer}: Transfer programs that provide cash benefits to recipients.
+\begin{itemize}
+\item Benefit guarantee: The cash transfer benefit for individuals with no other income, which may be reduced as income increases.
+\item Benefit reduction rate: The rate at which transfer benefits are reduced per dollar of other income earned.
+\end{itemize}
+\item \textbf{In-kind transfer}: Transfer programs that deliver goods, such as medical care or housing, to recipients.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Cash Transfer Programs}
+\begin{itemize}
+\item Transfer programs in the U.S.:
+\item Cash transfer programs:
+\begin{itemize}
+\item Temporary Assistance for Needy Families (TANF). Jointly funded by the federal and state governments, provides support to low-income families with children in which one biological parent is absent.
+\item Supplemental Security Income (SSI). provides cash transfer to people who are aged, blind, or have a disability.
+\begin{itemize}
+\item It fills holes that are left by Social Security and disability insurance (DI).
+\item Youths with disabilities comprise a large share of the SSI caseload.
+\item It is not very widely known, nor is it debated with the ferocity of TANF, but it is, in fact, a bigger program, with expenditures of more than \$56 billion in 2019.
+\end{itemize}
+\end{itemize}
+\item Redistributive program:
+\begin{itemize}
+\item Earned Income Tax Credit (EITC), which subsidizes labor supply for low-income families.
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{In-Kind Programs}
+\begin{itemize}
+\item Supplemental Nutrition Assistance Program (SNAP)
+\begin{itemize}
+\item Provides a debit card like that can be used to buy food.
+\end{itemize}
+\item Medicaid
+\begin{itemize}
+\item Largest categorical transfer program.
+\end{itemize}
+\item Public Housing
+\begin{itemize}
+\item Provision of housing in public housing projects, and ``Section 8 vouchers'' subsidize housing.
+\end{itemize}
+\item Other Nutritional Programs
+\begin{itemize}
+\item Special Supplemental Nutrition Program for Women, Infants, and Children (WIC) and School Lunch and Breakfast Programs.
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\subsection{The Moral Hazard Costs of Transfer Policy}
+
+\begin{frame}
+\frametitle{The Moral Hazard Costs of Transfer Policy}
+\begin{itemize}
+  \item Income redistribution as a ``leaky bucket'': we are carrying money from low- to high-income groups but some money leaks out along the way.
+  \item There are three sources of leakage as society transfers money.
+  \begin{itemize}
+    \item Administrative costs of enabling this transfer.
+    \item Taxation of high-income individuals lowers returns to work and savings and might cause people to work less hard or save less.
+    \item Moral hazard: Transfers raise the incentive for individuals to earn low income in order to qualify for transfers.
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Moral Hazard Effects of a Means-Tested Transfer System 1}
+\begin{itemize}
+\item Means-tested transfer systems cause moral hazard.
+\item Consider a simplified version of TANF, with benefits B:
+\begin{equation*}
+  B = G - t \times w \times h
+\end{equation*}
+\item G is the guarantee, t the benefit reduction rate, w wages, and h hours worked.
+\item Setting G = \$10,000 and t = 1, it would cost \$131 billion to eliminate poverty, which is only about one-sixth of the cost of the Social Security program.
+\item \textbf{But:} This ignores behavioral responses.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Moral Hazard Effects of a Means-Tested Transfer System 2}
+\begin{itemize}
+\item 100\% Benefit Reduction Rate:  All families with income below the poverty line and many individuals with income above the poverty line immediately stop earning income so they can get more leisure and consumption.
+\end{itemize}
+\begin{center}
+\includegraphics[width=0.77\textwidth]{images/slide30_img1.png}
+\end{center}
+\end{frame}
+
+\begin{frame}
+\frametitle{Solving Moral Hazard by Lowering the Benefit Reduction Rate}
+\begin{itemize}
+\item 50\% Benefit Reduction Rate: The net impact of new rate on labor supply is ambiguous and depends on relative sizes and preferences of worker groups.
+\end{itemize}
+
+\begin{center}
+\includegraphics[width=0.77\textwidth]{images/slide31_img1.png}
+\end{center}
+\end{frame}
+
+\begin{frame}
+\frametitle{The ``Iron Triangle'' of Redistributive Programs 1}
+\begin{itemize}
+\item Reducing the benefit rate ends up redistributing less.
+\item This illustrates the ``Iron Triangle'' of redistributive programs.
+\item Iron Triangle: There is no way to change either the benefit reduction rate or the benefit guarantee to encourage work, redistribute more income, and lower costs simultaneously.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{The Iron Triangle of Redistributive Programs 2}
+\begin{itemize}
+\item There are three approaches that might get around this iron triangle.
+\item Moving to categorical transfer payments
+\item Using in-Kind Benefits
+\item Increasing outside options
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Moving to Categorical Transfer Payments}
+\begin{itemize}
+\item Moral hazard arises because the government wants to redistribute to low-income people, but people control their income.
+\item If we could target benefits to earnings capacity, there would be no moral hazard.
+\item Two targets are people with disabilities and single mothers.
+\item What makes a good targeting mechanism?
+\begin{itemize}
+\item No way to change behavior in order to qualify.
+\item Targets people with low earning capacity.
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Targeting by Single Motherhood}
+\begin{itemize}
+\item Time series evidence shows that since the 1970s, while the average maximum monthly transfer benefit for a family of three has declined dramatically, single motherhood has in fact increased steadily over time.
+\end{itemize}
+
+\begin{center}
+\includegraphics[width=0.92\textwidth]{images/slide35_img1.png}
+\end{center}
+\end{frame}
+
+\begin{frame}
+\frametitle{Using In-Kind Benefits}
+\begin{itemize}
+\item Ordeal mechanisms: Features of transfer programs that make them unattractive, leading to the self-selection of only the most needy recipients.
+\item The paradox of ordeal mechanisms
+\begin{itemize}
+\item If the government provides a benefit that is not attractive to the non-needy but helps out the truly needy, then targeting will be more efficient.
+\item The paradox of ordeal mechanisms is therefore that apparently making the less able worse off can actually make them better off.
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{APPLICATION: An Example of Ordeal Mechanisms}
+\begin{itemize}
+\item In setting up a soup kitchen to support the needy, the government can:
+\begin{itemize}
+\item Hire many workers, keeping wait times down.
+\item Hire few workers, producing long lines.
+\end{itemize}
+\item The long line might discourage high-income earners from using the soup kitchen.
+\item The ordeal mechanism works because the target population has a relatively high value for the good (soup) and a relatively low cost for the ordeal.
+\end{itemize}
+\end{frame}
+
+\subsection{Universal Basic Income?}
+
+\begin{frame}
+\frametitle{Universal Basic Income}
+\begin{itemize}
+\item Although the U.S. economy grew steadily since the end of the Great Recession, except for the Covid-19 recession, those benefits are not being shared widely in society.
+\item Accompanying this growing inequality has been a sense that the existing transfer system is not equipped to address the income disparities in society.
+\item For these reasons, there has been a resurgence of interest among progressive policy experts in establishing a Universal Basic Income (UBI).
+\begin{itemize}
+\item A UBI gives all citizens a flat grant of income, no strings attached.
+\item Evidence around the world shows UBI positive results.
+\end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{Average Annual Income Growth, 1980--2019}
+\begin{itemize}
+\item The top 0.001\% of the income distribution has seen income growth of 6\% per year compared to 1.5\% or less for the bottom 85\%.
+\end{itemize}
+
+\begin{center}
+\includegraphics[width=0.85\textwidth]{images/slide60_img1.png}
+\end{center}
+\end{frame}
+
+\begin{frame}
+\frametitle{The Alaska Permanent Fund Dividend and Labor Supply}
+\begin{itemize}
+\item In 1982, the Alaska Permanent Fund Dividend (APFD) was put in place, paying all Alaskan residents out of the income of the Alaska Permanent Fund Corporation.
+\begin{itemize}
+\item This payment ensures that all Alaskans benefit from oil revenues.
+\item The dividend annually lifts 15,000 -- 25,000 Alaskans out of poverty.
+\item Alaska is the most equal state in the nation in terms of income distribution.
+\end{itemize}
+\item Comparing Alaska's employment rate to a control group has shown no long-run labor reduction from this modest universal basic income.
+\end{itemize}
+\end{frame}
+
+\begin{frame}
+\frametitle{The Employment Impacts of a Basic Income}
+\begin{itemize}
+\item The APFD had no noticeable negative effect on employment in that state relative to a comparable set of control states.
+\end{itemize}
+\begin{center}
+\includegraphics[width=0.8\textwidth]{images/slide62_img1.png}
+\end{center}
+\end{frame}
+
+\section{(quick) Hackathon!}
+
+\begin{frame}
+\frametitle{Hackathon: COVID-19 and Inequality}
+\begin{itemize}
+\item Use the data from the Opportunity Insights group available here: \href{https://economictracker.org/}{\url{https://economictracker.org/}} to answer the following questions:
+\end{itemize}
+\begin{enumerate}
+\item Did the COVID-19 pandemic increase or decrease income inequality in the United States? By how much?
+\item Did the federal policy response (stimulus payments, extended unemployment insurance) offset or aggravate the impacts of COVID-19 on income inequality?
+\end{enumerate}
+\end{frame}
+
+\begin{frame}
+\frametitle{Hackathon: COVID-19 and Inequality -- Process}
+\begin{itemize}
+\item Split into 2 groups
+\item 10 mins: Discuss how to answer your question and decide on a strategy for doing so.
+\begin{enumerate}
+\item Measurement: How will you measure inequality? How will you measure the incidence of COVID-19? How will you measure the impact of federal policy response?
+\item What will be your unit of analysis? The data is aggregated at the zip code level, so you will need to decide how to use this data to answer your question.
+\item Will you have a causal research design? If so, what will it be?
+\end{enumerate}
+\item 20 mins: Divide up tasks and work on them.
+\item 10 mins: write up your work and nominate a presenter.
+\item 10 mins: presentation and discussion.
+\end{itemize}
+\end{frame}
+
+\end{document}
