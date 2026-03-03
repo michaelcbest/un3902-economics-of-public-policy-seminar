@@ -1,0 +1,11 @@
+\babel@toc {english}{}\relax 
+\beamer@sectionintoc {1}{Types of Taxation}{2}{0}{1}
+\beamer@sectionintoc {2}{Individual Income Tax Structure}{8}{0}{2}
+\beamer@sectionintoc {3}{Tax Design}{14}{0}{3}
+\beamer@subsectionintoc {3}{1}{Fairness and Equity}{15}{0}{3}
+\beamer@subsectionintoc {3}{2}{Taxation and Economic Efficiency}{18}{0}{3}
+\beamer@subsectionintoc {3}{3}{Empirical Evidence: The Window Tax}{24}{0}{3}
+\beamer@subsectionintoc {3}{4}{Progressive Systems}{30}{0}{3}
+\beamer@subsectionintoc {3}{5}{Optimal Income Taxation}{36}{0}{3}
+\beamer@sectionintoc {4}{Income Shares and the Elasticity of Taxable Income}{45}{0}{4}
+\beamer@sectionintoc {5}{Over to You}{50}{0}{5}
