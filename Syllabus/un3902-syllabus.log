@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.1.5)  9 FEB 2026 17:01
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024) (preloaded format=pdflatex 2025.1.5)  7 MAR 2026 21:47
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -740,15 +740,16 @@ Overfull \hbox (34.96725pt too wide) in paragraph at lines 179--180
  []
 
 [3] [4]
-Overfull \hbox (2.29051pt too wide) in paragraph at lines 264--265
+Overfull \hbox (2.29051pt too wide) in paragraph at lines 259--260
 [][][]$\T1/lmtt/m/n/10.95 https : / / www . ictd . ac / dataset/$[][] \T1/ppl/m/n/10.95 In-ter-na-tional Cen-tre for Tax and De-vel-op-ment Data. 
  []
 
+[5]
 
 Package caption Warning: Unused \captionsetup[subfigure] on input line 35.
 See the caption package documentation for explanation.
 
-[5] (./un3902-syllabus.aux)
+[6] (./un3902-syllabus.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
@@ -757,18 +758,18 @@ Package rerunfilecheck Info: File `un3902-syllabus.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 25644 strings out of 474116
- 471942 string characters out of 5743683
+ 25659 strings out of 474116
+ 472046 string characters out of 5743683
  1939187 words of memory out of 5000000
  47531 multiletter control sequences out of 15000+600000
  578278 words of font info for 76 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  90i,5n,93p,1200b,593s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2024/texmf-dist/fonts/type1/public/lm/lmtt10.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2024/texmf-dist/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on un3902-syllabus.pdf (5 pages, 100470 bytes).
+Output written on un3902-syllabus.pdf (6 pages, 101672 bytes).
 PDF statistics:
- 95 PDF objects out of 1000 (max. 8388607)
- 79 compressed objects within 1 object stream
- 16 named destinations out of 1000 (max. 500000)
+ 116 PDF objects out of 1000 (max. 8388607)
+ 99 compressed objects within 1 object stream
+ 31 named destinations out of 1000 (max. 500000)
  13 words of extra memory for PDF output out of 10000 (max. 10000000)
 

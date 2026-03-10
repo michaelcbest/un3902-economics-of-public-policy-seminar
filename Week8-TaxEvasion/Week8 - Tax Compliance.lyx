@@ -1,0 +1,4272 @@
+#LyX 2.4 created this file. For more info see https://www.lyx.org/
+\lyxformat 620
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass beamer
+\begin_preamble
+\usepackage{ifthen}
+\usepackage{multirow,bigstrut}
+\usepackage{tikz}
+\usetikzlibrary{patterns,decorations.pathreplacing,shapes,snakes}
+\usetikzlibrary{arrows}
+\usepackage{rotating}
+\usepackage{pdflscape}
+\usepackage{makecell}
+\usepackage{graphicx}
+\usepackage{animate}
+\usepackage{pifont}
+\usepackage{booktabs}
+\usepackage{relsize}
+%\usepackage{adjustbox}
+%\usepackage{txfonts}
+%\usepackage{handoutWithNotes}
+%\pgfpagesuselayout{3 on 1 with notes}[a4paper,border shrink=5mm]
+
+% FOOTLINE - PAGE NUMBER RIGHT
+\defbeamertemplate*{footline}{guildford foot theme}
+{
+  \leavevmode%
+  \hbox{%
+  \begin{beamercolorbox}[wd=.7\paperwidth,ht=1cm,dp=0ex,left]{}%
+    {
+    \insertsectionnavigationhorizontal{.5\paperwidth}{}{}
+    }
+ \end{beamercolorbox}
+ \begin{beamercolorbox}[wd=0.31\paperwidth,ht=1cm,dp=0ex,right]{}%
+{\tiny
+\insertframenumber{} / \inserttotalframenumber\hspace*{5ex}
+}
+ \end{beamercolorbox}}%
+  \vskip5pt%
+}
+
+\beamertemplatenavigationsymbolsempty
+\usefonttheme{professionalfonts}
+\usecolortheme[RGB={0,0,125}]{structure} 
+\setbeamersize{ text margin left=10px}
+%\definecolor{newblue}{rgb}{0,0,0.6}
+%\setbeamercolor{alerted text}{fg=newblue}
+\setbeamertemplate{frametitle}[default][center]
+
+%{\bfseries\insertframetitle\par}
+
+\RequirePackage{ifthen}
+
+\newboolean{sectiontoc}
+\setboolean{sectiontoc}{true} % default to true
+
+\AtBeginSubsection[] 
+{ 
+  \ifthenelse{\boolean{sectiontoc}}{
+  \begin{frame}[plain]
+    \frametitle{Outline} 
+    \tableofcontents[sectionstyle=show/hide,subsectionstyle=show/shaded/hide] 
+  \end{frame} 
+} 
+}
+
+\AtBeginSection[] 
+{ 
+  \ifthenelse{\boolean{sectiontoc}}{
+  \begin{frame}[plain]
+    \frametitle{Outline} 
+    \tableofcontents[sectionstyle=show/shaded,subsectionstyle=show/hide/hide] 
+  \end{frame} 
+} 
+}
+
+\newcommand{\toclesssection}[1]{
+   \setboolean{sectiontoc}{false}
+   \section{#1}
+   \setboolean{sectiontoc}{true}
+}
+
+\newcommand{\toclesssubsection}[1]{
+   \setboolean{sectiontoc}{false}
+   \subsection{#1}
+   \setboolean{sectiontoc}{true}
+}
+
+\setbeameroption{hide notes}
+
+\newcommand{\ShortNameSection}[2][]{
+   \setboolean{sectiontoc}{false}
+   \section[#1]{#2}
+   \setboolean{sectiontoc}{true}
+}
+
+\newcommand{\light}[1]{\textcolor{gray}{#1}}
+\end_preamble
+\options notes=show,aspectratio=169
+\use_default_options false
+\maintain_unincluded_children no
+\language english
+\language_package none
+\inputencoding auto-legacy
+\fontencoding T1
+\font_roman "cmr" "default"
+\font_sans "helvet" "default"
+\font_typewriter "cmtt" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_roman_osf false
+\font_sans_osf false
+\font_typewriter_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures false
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref true
+\pdf_bookmarks false
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder true
+\pdf_colorlinks true
+\pdf_backref section
+\pdf_pdfusetitle false
+\pdf_quoted_options "linkcolor=blue, citecolor=blue, urlcolor=blue"
+\papersize default
+\use_geometry true
+\use_package amsmath 2
+\use_package amssymb 2
+\use_package cancel 0
+\use_package esint 1
+\use_package mathdots 0
+\use_package mathtools 0
+\use_package mhchem 0
+\use_package stackrel 0
+\use_package stmaryrd 0
+\use_package undertilde 0
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\use_formatted_ref 0
+\use_minted 0
+\use_lineno 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tablestyle default
+\tracking_changes false
+\output_changes false
+\change_bars false
+\postpone_fragile_content false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\docbook_table_output 0
+\docbook_mathml_prefix 1
+\end_header
+
+\begin_body
+
+\begin_layout Title
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+setcounter{framenumber}{0}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+thispagestyle{empty}
+\end_layout
+
+\end_inset
+
+UN 3902
+\begin_inset Newline newline
+\end_inset
+
+Economics of Public Policy Seminar
+\begin_inset Newline newline
+\end_inset
+
+
+\begin_inset Formula $\;$
+\end_inset
+
+
+\begin_inset Newline newline
+\end_inset
+
+Week 8:
+ Tax Compliance and Taxation in LMICs
+\end_layout
+
+\begin_layout Author
+Michael Carlos Best
+\end_layout
+
+\begin_layout Date
+March 10,
+ 2026
+\end_layout
+
+\begin_layout Section
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Motivation
+\end_layout
+
+\end_inset
+
+Motivating Facts
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Tax Compliance is a Big Deal in the US
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename pictures/nytimes.png
+	lyxscale 40
+	width 98text%
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Taxation is Key to Achieving Development
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+
+\emph on
+It is shortage of resources,
+ and not inadequate incentives,
+ which limits the pace of economic development.
+ Indeed the importance of public revenue from the point of view of accelerated economic development could hardly be exaggerated.
+ 
+\end_layout
+
+\begin_layout Standard
+
+\size small
+Nicholas Kaldor,
+ 
+\emph on
+“Taxation for Economic Development,”
+\emph default
+ Journal of Modern African Studies,
+ 1963,
+ p.
+ 7.
+\size default
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename pictures/SDG 17.png
+	scale 17
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename pictures/SDG Target 17-1.png
+	scale 17
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Motivating Facts:
+ Besley & Persson (2013)
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename pictures/BesleyPersson0.png
+	scale 35
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Motivating Facts:
+ Besley & Persson (2013)
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename pictures/BesleyPersson1.png
+	scale 35
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Motivating Facts:
+ Besley & Persson (2013)
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename pictures/BesleyPersson2.png
+	scale 35
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Motivating Facts:
+ Besley & Persson (2013)
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename pictures/BesleyPersson3.png
+	scale 45
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator parbreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Motivating Facts:
+ Besley & Persson (2013)
+\end_layout
+
+\end_inset
+
+
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename pictures/BesleyPersson4.png
+	scale 44
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Section
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Theory
+\end_layout
+
+\end_inset
+
+En Economic Model of Tax Evasion
+\end_layout
+
+\begin_layout Subsection
+Allingham & Sandmo 1972 (& Yitzhaki 1974) 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+protect
+\backslash
+textit{
+\end_layout
+
+\end_inset
+
+Income Tax Evasion:
+ A Theoretical Analysis
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+The Canonical Model:
+ Allingham & Sandmo (1972)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Tax evasion:
+ misreporting tax liability in an 
+\emph on
+illegal
+\emph default
+ way
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Tax avoidance:
+ exploiting loopholes to minimize tax liability,
+ 
+\emph on
+without
+\emph default
+ breaking the law
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+A bit of a false taxonomy:
+ Many tax avoidance schemes have never been tested in a court,
+ and may well be illegal...
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Classical model is Allingham & Sandmo (JPubE 1972) extended by Yitzhaki (1974)
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Builds on Becker's (1968) theory of crime
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Takes true income as given,
+ focus only on decision of what to report to the authorities
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Allingham & Sandmo (1972):
+ Setup
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Consider individual with true income 
+\begin_inset Formula $W$
+\end_inset
+
+ facing linear tax 
+\begin_inset Formula $t$
+\end_inset
+
+ on reported income.
+ 
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The individual chooses to evade an amount 
+\begin_inset Formula $E$
+\end_inset
+
+
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+If they are not caught,
+ their net income is
+\begin_inset Formula 
+\[
+Y=W-t\left(W-E\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+If they are caught,
+ they pay a penalty rate 
+\begin_inset Formula $\theta>t$
+\end_inset
+
+ on the evaded amount and have net income
+\begin_inset Formula 
+\[
+Z=\left(1-t\right)W-\left(\theta-t\right)E
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+They are audited with probability 
+\begin_inset Formula $p$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Allingham & Sandmo (1972):
+ Solution
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Individual maximizes expected utility
+\begin_inset Formula 
+\[
+V=\left(1-p\right)U\left(Y\right)+pU\left(Z\right)
+\]
+
+\end_inset
+
+
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+FOCs yield
+\begin_inset Formula 
+\[
+\frac{U^{\prime}\left(Z\right)}{U^{\prime}\left(Y\right)}=\frac{1-p}{p}\frac{t}{\theta-t}
+\]
+
+\end_inset
+
+
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Comparative statics:
+\begin_inset Formula 
+\begin{align*}
+\frac{\partial E}{\partial\theta} & <0\\
+\frac{\partial E}{\partial p} & <0
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Allingham & Sandmo (1972) - Yitzhaki (1974)
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Effect of tax rate in A-S model:
+\begin_inset Formula 
+\[
+\frac{\partial E}{\partial t}=\underbrace{-\frac{W-E}{1-t}\frac{\partial E}{\partial W}}_{\text{Income Effect}<0}+\underbrace{S}_{\text{Substitution Effect}>0}
+\]
+
+\end_inset
+
+
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Substitution effect (consumption cheaper in unaudited state) seems unintuitive,
+ drives ambiguous prediction.
+ 
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Yitzhaki (1974):
+ This is because penalty is on evaded income not evaded tax.
+ If instead penalty is 
+\begin_inset Formula $\theta tE$
+\end_inset
+
+,
+ then
+\begin_inset VSpace medskip
+\end_inset
+
+
+\begin_inset Formula 
+\[
+\frac{U^{\prime}\left(Z\right)}{U^{\prime}\left(Y\right)}=\frac{1-p}{p\left(\theta-1\right)}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+No more substitution effect,
+ only income effect
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Allingham-Sandmo in the Field
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Allingham-Sandmo does not predict actual tax evasion rates very well:
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Alm,
+ McClelland & Schulze calibrate A-S to the US data.
+ With coeff of RRA 
+\begin_inset Formula $\gamma=3$
+\end_inset
+
+,
+ they get 13% compliance (waaaaaay off)
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Slemrod (2007) estimates 43% compliance for self-reported income in the US
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Calibrations require 
+\begin_inset Formula $\gamma=5$
+\end_inset
+
+ to get 44% compliance,
+ 
+\begin_inset Formula $\gamma=10$
+\end_inset
+
+ to get 71% compliance
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Suggests the theory is incomplete!
+\end_layout
+
+\end_deeper
+\begin_layout Section
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Rich Countries
+\end_layout
+
+\end_inset
+
+Tax Evasion:
+ Evidence from Rich Countries
+\end_layout
+
+\begin_layout Subsection
+Boning,
+ Hendren,
+ Sprung-Keyser & Stuart (QJE 2025) 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+protect
+\backslash
+textit{
+\end_layout
+
+\end_inset
+
+A Welfare Analysis of Tax Audits Across the Income Distribution
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Boning et al.
+ (2025):
+ Motivation
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+There is a lot of tax evasion,
+ even in rich countries like the US.
+ How effective are audits at recovering unpaid taxes?
+\end_layout
+
+\begin_layout Itemize
+How do the returns to audit vary along the income distribution?
+\end_layout
+
+\begin_layout Enumerate
+Estimate average costs and revenues of in-person audits
+\end_layout
+
+\begin_layout Enumerate
+Estimate costs and revenues of 
+\emph on
+marginal
+\emph default
+ audits
+\end_layout
+
+\begin_layout Enumerate
+Estimate indirect effects through deterrence
+\end_layout
+
+\begin_layout Enumerate
+Evaluate welfare consequences of tax audits by deriving and estimating an MVPF of audits.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Boning et al.
+ (2025):
+ How do Audits Work?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename pictures/BoningEtAl_01.png
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Boning et al.
+ (2025):
+ Detailed Data
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Audit-level enforcement data covering 2003-2021
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Tax liability assessed at each stage of the process.
+ Separately estimate revenue at exam,
+ appeals,
+ and collection.
+\end_layout
+
+\begin_layout Enumerate
+Log of hours spent on enforcement activity by IRS employees and their pay grade.
+ Using location get hourly wage to get labor costs
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+IRS Accounting data 2011-2020
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+non-direct labor-related costs (training,
+ fringe benefits etc)
+\end_layout
+
+\begin_layout Enumerate
+organization-wide costs (building costs,
+ IT etc)
+\end_layout
+
+\begin_layout Enumerate
+central IRS overhead (HQ costs etc)
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Study 710,000 in-person audits from 2010-2014.
+ Have 7 years of follow-up to observe costs and revenues.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout PlainFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename pictures/BoningEtAl_02.png
+	special height=1.0\textheight
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout PlainFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename pictures/BoningEtAl_03.png
+	special height=1.0\textheight
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout PlainFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename pictures/BoningEtAl_04.png
+	special height=1.0\textheight
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Boning et al.
+ (2025):
+ Marginal Audits
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+So far studied impacts of 
+\emph on
+average
+\emph default
+ audit.
+ But to think about expanding/contracting audit program want to learn about 
+\emph on
+marginal audits
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Diminishing returns?
+ Target high-value evaders first?
+\end_layout
+
+\begin_layout Enumerate
+Economies of scale.
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Study diminishing returns using big decline in audit rates between 2010 and 2014.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Boning et al.
+ (2025):
+ Marginal Audits
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename pictures/BoningEtAl_05.png
+	special height=0.97\textheight
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Boning et al.
+ (2025):
+ Marginal Audits
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename pictures/BoningEtAl_06.png
+	special height=0.97\textheight
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Boning et al.
+ (2025):
+ Marginal Audits
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename pictures/BoningEtAl_07.png
+	special height=0.97\textheight
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Boning et al.
+ (2025):
+ Marginal Audits
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+No evidence of diminishing marginal returns.
+\end_layout
+
+\begin_layout Itemize
+What about economies of scale:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Depends on how much of costs are fixed/variable.
+\end_layout
+
+\begin_layout Itemize
+Baseline is that 27% is fixed and 73% variable based on accounting information
+\end_layout
+
+\begin_layout Itemize
+Total marginal cost is labor/fringe,
+ org-wide costs.
+ -> 3.93:1 ratio of total MC to labor cost.
+ and marginal non-labor costs 25.6% of total labor and fringe costs
+\end_layout
+
+\begin_layout Itemize
+IRS has its own estimates that it is 23.6%.
+\end_layout
+
+\begin_layout Itemize
+Lower bound:
+ 1.93 dollars of MC per dollar of direct wage cost (only benefits,
+ training,
+ travel)
+\end_layout
+
+\begin_layout Itemize
+Upper bound:
+ $4.39 per $ of direct wage costs (all non-direct labor costs are variable)
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Boning et al.
+ (2025):
+ Marginal Audits
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename pictures/BoningEtAl_08.png
+	special height=0.97\textheight
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Boning et al.
+ (2025):
+ Deterrence Effects
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Use NRP audits (as in DeBacker et al.
+ 2021;
+ Guyton et al 2023)
+\end_layout
+
+\begin_layout Itemize
+Compare randomly selected audits to a matched control group.
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+stratify in the same way NRP does (TPI,
+ EITC,
+ Self-employment income)
+\end_layout
+
+\begin_layout Itemize
+Select a nearest neighbor in the same stratum and tax-year using TPI
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Do matched,
+ stacked event study.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Boning et al.
+ (2025):
+ Deterrence Effects
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename pictures/BoningEtAl_09.png
+	special height=0.97\textheight
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Boning et al.
+ (2025):
+ Deterrence Effects
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename pictures/BoningEtAl_10.png
+	special height=0.97\textheight
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Boning et al.
+ (2025):
+ Incorporating Overall Deterrence Effect
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename pictures/BoningEtAl_11.png
+	special height=0.97\textheight
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Boning et al.
+ (2025):
+ Incorporating TPI-specific Deterrence Effect
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename pictures/BoningEtAl_12.png
+	special height=0.97\textheight
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Boning et al.
+ (2025):
+ Welfare Analysis
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Look at welfare effects of 
+\emph on
+marginal
+\emph default
+ audits
+\begin_inset Formula 
+\[
+MVPF^{audit}=\frac{\text{WTP to Avoid Audit}}{\text{Net Govt Revenue Raised}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Willingness to pay:
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Welfare loss of 
+\begin_inset Formula $R$
+\end_inset
+
+ from having to pay money to the IRS.
+ Valued at 1 per $
+\end_layout
+
+\begin_layout Enumerate
+Additional costs from time,
+ representation,
+ hassle etc:
+ 
+\begin_inset Formula $B$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Net Govt Revenue Raised
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Revenue 
+\begin_inset Formula $R$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Enumerate
+Costs 
+\begin_inset Formula $C$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Boning et al.
+ (2025):
+ Welfare Analysis
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Formula 
+\[
+MVPF^{audit}=\frac{\frac{R}{C}+\frac{B}{C}}{\frac{R}{C}-1}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Estimate 
+\begin_inset Formula $B$
+\end_inset
+
+ as in Guyton & Hodge (2014) using survey results.
+ They estimate $3,198 of burden for an in-person audit
+\end_layout
+
+\begin_layout Itemize
+Assume 
+\begin_inset Formula $B/C$
+\end_inset
+
+ is constant across the income distribution (NB not assuming 
+\begin_inset Formula $B$
+\end_inset
+
+ is constant)
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Boning et al.
+ (2025):
+ Welfare Analysis.
+ Low Income Taxpayers
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename pictures/BoningEtAl_13.png
+	special height=0.97\textheight
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Boning et al.
+ (2025):
+ Welfare Analysis.
+ High Income Taxpayers
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename pictures/BoningEtAl_14.png
+	special height=0.97\textheight
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Boning et al.
+ (2025):
+ Welfare Analysis Comparison to Other Policies
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\begin_inset Graphics
+	filename pictures/BoningEtAl_15.png
+	special height=0.97\textheight
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Guyton,
+ Langetieg,
+ Reck,
+ Risch & Zucman (WP 2023) 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+protect
+\backslash
+textit{
+\end_layout
+
+\end_inset
+
+Tax Evasion at the Top of the Income Distribution:
+ Theory and Evidence
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Guyton 
+\emph on
+et al.
+
+\emph default
+ (2023):
+ Motivation
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+How much (personal income) tax evasion is there in the US?
+\end_layout
+
+\begin_layout Itemize
+How is it distributed?
+ Do the rich evade more or less than lower-income households?
+\end_layout
+
+\begin_layout Itemize
+
+\series bold
+This paper:
+ 
+\series default
+Combine multiple data sources to estimate the extent of evasion through the income distribution.
+\end_layout
+
+\begin_layout Itemize
+Find that audits do not detect all evasion,
+ especially at the very top.
+\end_layout
+
+\begin_layout Itemize
+At the very top,
+ evasion through pass-through businesses and offshore sheltering more common
+\end_layout
+
+\begin_layout Itemize
+Theory to explain this;
+ methodology to measure tax gap correctly.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Guyton 
+\emph on
+et al.
+
+\emph default
+ (2023):
+ Noncompliance in Random Audits
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+IRS runs the 
+\emph on
+National Research Program 
+\emph default
+(NRP) that conducts 
+\emph on
+random
+\emph default
+ audits of individual tax returns (form 1040).
+\end_layout
+
+\begin_layout Itemize
+NRP does stratified random sampling,
+ oversampling top earners.
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Auditors go through the 1040 using its schedules,
+ 3rd-party reports,
+ taxpayer's own records,
+ risk measures comparing the return to other filers.
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Audits known not to be able to detect all evasion.
+ IRS has a methodology,
+ 
+\emph on
+detection-controlled estimation
+\emph default
+ (DCE),
+ to estimate 
+\emph on
+undetected
+\emph default
+ evasion.
+ used to estimate aggregate tax gap.
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Pool data from NRP audits 2006–2013:
+ 105,167 audited taxpayers;
+ of whom 12,003 are in top 1%
+\end_layout
+
+\begin_layout Itemize
+On aggregate,
+ NRP finds 4.0% of true income is under-reported;
+ 7.7% of taxes owed are not paid (before DCE correction)
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout PlainFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename pictures/GuytonEtAl_01.png
+	lyxscale 70
+	special height=0.98\paperheight
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout PlainFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename pictures/GuytonEtAl_02.png
+	lyxscale 70
+	special height=0.98\paperheight
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Guyton 
+\emph on
+et al.
+
+\emph default
+ (2023):Applying DCE Correction
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+
+\emph on
+Detection-Controlled Estimation 
+\emph default
+(DCE) correction is used to scale up evasion detected in NRP.
+\end_layout
+
+\begin_layout Itemize
+Based on Feinstein (1991) model fraction of evasion detected depending on return characteristics (types of income,
+ presence of schedules) and examiner (experience,
+ age etc).
+\end_layout
+
+\begin_layout Itemize
+After DCE correction,
+ estimated total evasion is 14.0% of true income is under-reported;
+ 20.0% of owed taxes are not paid.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout PlainFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename pictures/GuytonEtAl_03.png
+	lyxscale 70
+	special height=0.98\paperheight
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout PlainFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename pictures/GuytonEtAl_04.png
+	lyxscale 70
+	special height=0.98\paperheight
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Guyton 
+\emph on
+et al.
+
+\emph default
+ (2023):
+ Can DCE Fully Correct for Undetected Evasion?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Undetected evasion may well rise with income:
+\end_layout
+
+\begin_layout Enumerate
+interest,
+ dividends,
+ capital gains accruing to offshore accounts not extensively reported pre 2014 FATCA
+\end_layout
+
+\begin_layout Enumerate
+Owners of business networks raise challenges:
+ Need to dig one by one into each of the businesses' returns.
+ Not always extensively examined.
+\end_layout
+
+\begin_layout Itemize
+Direct test:
+ Compare weighted total noncompliance according to NRP,
+ NRP with DCE,
+ and detected in operational (targeted,
+ more in-depth) audits.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout PlainFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename pictures/GuytonEtAl_05.png
+	lyxscale 70
+	special height=0.98\paperheight
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Guyton 
+\emph on
+et al.
+
+\emph default
+ (2023):
+ Offshore Evasion
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+After 2007 IRS pursued a series of initiatives to crack down on offshore tax evasion
+\end_layout
+
+\begin_layout Itemize
+From 2008,
+ 
+\emph on
+Offshore Voluntary Disclosure Program 
+\emph default
+(OVD),
+ allowed people to pay penalties but avoid criminal prosecution
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+use data on 50,020 OVD participants matched to their returns
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+2010 passage of Foreign Accounts Tax Compliance Act (FATCA) requires 3rd-party reporting of offshore accounts from 2014
+\end_layout
+
+\begin_layout Itemize
+Voluntarily file Foreign Bank Account Reports (FBAR) if more than $10K in offshore account
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+use data on 31,752 first-time FBAR filers linked to their returns
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout PlainFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename pictures/GuytonEtAl_06.png
+	lyxscale 70
+	special height=0.98\paperheight
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout PlainFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename pictures/GuytonEtAl_07.png
+	lyxscale 66
+	special height=0.98\paperheight
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout PlainFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename pictures/GuytonEtAl_08.png
+	lyxscale 60
+	special height=0.98\paperheight
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout PlainFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename pictures/GuytonEtAl_09.png
+	lyxscale 60
+	special height=0.98\paperheight
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Guyton 
+\emph on
+et al.
+
+\emph default
+ (2023):
+ Pass-through Business Income Evasion
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Pass-through businesses (S-corporations & partnerships) don't pay corporate income tax,
+ their income flows through to their owners.
+\end_layout
+
+\begin_layout Itemize
+Business ownership highly concentrated at the top of the income distribution
+\end_layout
+
+\begin_layout Itemize
+Much harder to audit since need to flow up to the underlying businesses' returns.
+\end_layout
+
+\begin_layout Itemize
+To estimate impact on distribution of evasion follow 2 steps:
+\end_layout
+
+\begin_layout Enumerate
+Make an assumption about overall evasion rate.
+ Benchmark 20% of pass-through income,
+ 5% of pass-through capital gains,
+ 3% of pass-through dividends
+\end_layout
+
+\begin_layout Enumerate
+Assume undetected income is distributed the same way as reported pass-through income.
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout PlainFrame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename pictures/GuytonEtAl_10.png
+	lyxscale 60
+	special height=0.98\paperheight
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Guyton 
+\emph on
+et al.
+
+\emph default
+ (2023):
+ Putting it All Together
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename pictures/GuytonEtAl_11.png
+	lyxscale 60
+	special height=0.99\textheight
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Guyton 
+\emph on
+et al.
+
+\emph default
+ (2023):
+ Putting it All Together
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename pictures/GuytonEtAl_12.png
+	lyxscale 60
+	special height=0.99\textheight
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Section
+\begin_inset Argument 2
+status open
+
+\begin_layout Plain Layout
+Taxation in LMICs
+\end_layout
+
+\end_inset
+
+Taxation in Low- and Middle-Income Countries
+\end_layout
+
+\begin_layout Subsection
+Jensen (AER 2021) 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+protect
+\backslash
+textit{
+\end_layout
+
+\end_inset
+
+Employment Structure and the Rise of the Modern Tax System
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Jensen (2021):
+ Overview
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Why do Low- and Middle- income countries rely so much less on direct (income) taxes?
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Gather household-level data on many countries over many years and show
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+the share of self-employed people falls with development
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+the gradient with income gets flatter with development
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The income tax exemption tax threshold moves down the income distribution as this happens.
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Jensen (2021):
+ Data
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+Household microdata from 90 countries around the world containing
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+information on type of work
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+earnings information (not expenditure proxies)
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Enumerate
+Historical data on the US
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Census microdata 1950–2010
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+1870 & 1935 from historians (Williamson & Lindert)
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+state income tax schedules
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+BLS serveys of employment by industry and type of work 1939–2002
+\begin_inset VSpace smallskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Dates of passage and implementation of IDBs
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Jensen (2021):
+ Stylized Facts
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename pictures/Jensen 1.png
+	lyxscale 40
+	scale 17
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Jensen (2021):
+ Stylized Facts
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename pictures/Jensen 2.png
+	lyxscale 40
+	scale 17
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Jensen (2021):
+ Stylized Facts
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename pictures/Jensen 3.png
+	lyxscale 40
+	scale 19
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Jensen (2021):
+ Stylized Facts
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename pictures/Jensen 4.png
+	lyxscale 40
+	scale 19
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Jensen (2021):
+ Stylized Facts
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename pictures/Jensen 5.png
+	lyxscale 40
+	scale 19
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Jensen (2021):
+ Stylized Facts
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename pictures/Jensen 6.png
+	lyxscale 40
+	scale 29
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Jensen (2021):
+ Stylized Facts
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename pictures/Jensen 7.png
+	lyxscale 40
+	scale 31
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Jensen (2021):
+ Stylized Facts
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename pictures/Jensen 8.png
+	lyxscale 40
+	scale 32
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Subsection
+Naritomi (AER 2019) 
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+protect
+\backslash
+textit{
+\end_layout
+
+\end_inset
+
+Consumers as Tax Auditors
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Naritomi (2019):
+ Overview
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Kleven et al (2011) shows how important third-party information is for suppressing evasion.
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Pomeranz (2015) shows that audit (threats) spill over onto firms connected through paper trails.
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+What happens when there's an increase in the level of third-party information?
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Naritomi (2018) studies the impact of a program in Sao Paulo,
+ Brazil that increases third-party information on firms' sales:
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+When consumers got a receipt for their purchases,
+ the receipt acted as a lottery ticket.
+ 
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Naritomi (2019):
+ Model
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Consider an Allingham-Sandmo style model with only government monitoring
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+When firms evade an amount 
+\begin_inset Formula $E=\overline{Y}-Y$
+\end_inset
+
+,
+ they are audited with probability 
+\begin_inset Formula $a\left(E\right)$
+\end_inset
+
+.
+ If audited,
+ evasion is detected with probability 
+\begin_inset Formula $d$
+\end_inset
+
+
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Argument item:1
+status open
+
+\begin_layout Plain Layout
+\begin_inset Formula $\Rightarrow$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+Caught evading with probability 
+\begin_inset Formula $p=a\left(E\right)d$
+\end_inset
+
+,
+ 
+\begin_inset Formula $p^{\prime}\left(E\right)>0$
+\end_inset
+
+.
+\begin_inset Formula 
+\[
+Y^{*}=\arg\max_{Y}\pi=\left(\overline{Y}-\tau Y\right)\left(1-p\right)+\left[\left(1-\tau\right)\overline{Y}-\theta\tau\left(\overline{Y}-Y\right)\right]p
+\]
+
+\end_inset
+
+with FOC
+\begin_inset Formula 
+\[
+\left[a\left(E\right)+a^{\prime}\left(E\right)\cdot E\right]d\left(1+\theta\right)=1
+\]
+
+\end_inset
+
+(same as in Kleven 
+\emph on
+et al.
+
+\emph default
+ 2011)
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Naritomi (2019):
+ Model
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Now add in consumer monitoring.
+ Consumers receive reward 
+\begin_inset Formula $\alpha\in\left[0,1\right]$
+\end_inset
+
+ share of the tax 
+\begin_inset Formula $\tau$
+\end_inset
+
+ that firms pay on the transaction.
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Consumers value the rewards at 
+\begin_inset Formula $\kappa\left(\alpha\right)\geq0$
+\end_inset
+
+.
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+\begin_inset Formula $\kappa\left(0\right)=0$
+\end_inset
+
+ = government monitoring only.
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+with rewards,
+ why might 
+\begin_inset Formula $\kappa\left(\alpha\right)\neq\alpha$
+\end_inset
+
+?
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Firms and consumers can split the surplus from not issuing a receipt.
+ Assume firms make take it or leave it offer of a discount 
+\begin_inset Formula $\left(\overline{y}-y\right)$
+\end_inset
+
+ to the consumer.
+ Consumer accepts if discount matches the reward 
+\begin_inset Formula $\kappa\left(\alpha\right)\tau\left(\overline{y}-y\right)$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Naritomi (2019):
+ Model
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+With probability 
+\begin_inset Formula $\varepsilon>0$
+\end_inset
+
+ the discount bargaining breaks down and the consumer blows the whistle on the firm,
+ triggering an audit.
+ With 
+\begin_inset Formula $N$
+\end_inset
+
+ consumers probability of detection is now
+\begin_inset Formula 
+\[
+d_{c}\left(N\right)=1-\left(1-d\right)\left(1-\varepsilon\right)^{N}\geq d
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+To attempt to strike a deal with a consumer has a fixed cost of 
+\begin_inset Formula $\rho$
+\end_inset
+
+.
+ Evasion requires colluding with all consumers (can be relaxed)
+\begin_inset Formula 
+\begin{align*}
+Y^{**}=\arg\max_{Y}\pi & =\left(\overline{Y}-\tau Y\right)\left(1-p_{c}\right)+\left[\left(1-\tau\right)\overline{Y}-\theta\tau\left(\overline{Y}-Y\right)\right]p_{c}\\
+ & \qquad-\underbrace{\kappa\left(\alpha\right)\tau\left(\overline{Y}-Y\right)}_{\text{discounts}}-\underbrace{\rho N}_{\text{fixed cost}}
+\end{align*}
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Naritomi (2019):
+ Model
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Now optimal evasion satisfies
+\begin_inset Formula 
+\[
+\left[a+a^{\prime}\left(E\right)\cdot E\right]d_{c}\left(1+\theta\right)=1-\kappa\left(\alpha\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The MC (LHS) is higher:
+ 
+\begin_inset Formula $d_{c}\geq d$
+\end_inset
+
+
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+The MB (RHS) is lower:
+ 
+\begin_inset Formula $\kappa\left(\alpha\right)\geq0$
+\end_inset
+
+.
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Fixed cost 
+\begin_inset Formula $\rho N$
+\end_inset
+
+ affects extensive margin (comply fully vs optimal evasion)
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Revenue effects:
+ 
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Lottery costs 
+\begin_inset Formula $\alpha\tau Y^{**}$
+\end_inset
+
+
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Revenue increase is 
+\begin_inset Formula $\tau(Y^{**}-Y^{*})$
+\end_inset
+
+
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Need 
+\begin_inset Formula $\left(Y^{**}-Y^{*}\right)/Y^{*}>\alpha/\left(1-\alpha\right)$
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Naritomi (2019):
+ Context
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Sao Paulo's 
+\emph on
+Nota Fiscal Paulista
+\emph default
+ (NFP) program
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Created in 2007 to increase VAT compliance
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Introduced targeted incentives for consumers to ensure firms report final sales
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Targets 2 types of evasion
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+not reporting a transaction at all
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+underreporting the transaction value
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Consumers report their SSN at time of purchase.
+ SSN attached to receipt sent to tax authority
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Receipts give consumers
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+30% tax rebate
+\begin_inset VSpace medskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+a lottery ticket for every US$50 spent (prizes from $5 to $500,000)
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Naritomi (2019):
+ Context
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Timeline:
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+NFP rolled out 10/2007–12/2008
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Rebates every 6 months from 4/2009
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Lotteries ~15th of every month from 12/2008
+\end_layout
+
+\end_deeper
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Naritomi (2019):
+ Data
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Admin data on firms' tax returns (sales,
+ costs,
+ taxes etc.)
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Receipts reported through NFP (consumer ID,
+ firm ID,
+ amount)
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Complaints (whistleblowers) issued through NFP
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Lottery results
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Naritomi (2019):
+ Results
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Firm Sales.
+ Compare retailers to wholesalers.
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename pictures/Naritomi 1.png
+	special height=0.85\textheight
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Naritomi (2019):
+ Results
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename pictures/Naritomi 2.png
+	scale 40
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+Aggregate firm data to 7-digit-sector 
+\begin_inset Formula $\times$
+\end_inset
+
+ 6-months.
+ Run
+\begin_inset Formula 
+\[
+\ln R_{st}=\eta_{s}+\gamma_{t}+\sum_{k=-8}^{8}\beta^{k}\left(Treat_{s}\cdot Period_{t}^{k}\right)+u_{st}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Naritomi (2019):
+ Results
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename pictures/Naritomi 3.png
+	lyxscale 60
+	special height=1.0\textheight
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Naritomi (2019):
+ Whistleblower Results
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename pictures/Naritomi 4.png
+	special height=1.0\textheight
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Naritomi (2019):
+ Whistleblower Results
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename pictures/Naritomi 5.png
+	special height=1.0\textheight
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Naritomi (2019):
+ Lottery Salient?
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename pictures/Naritomi 6.png
+	special height=1.0\textheight
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Naritomi (2019):
+ Lottery Event Study Results
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename pictures/Naritomi 7.png
+	scale 54
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Naritomi (2019):
+ Lottery Results
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename pictures/Naritomi 8.png
+	special height=1.0\textheight
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Naritomi (2019):
+ Effects on Government Revenue
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename pictures/Naritomi 9.png
+	special height=1.0\textheight
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Standard
+\begin_inset Separator plain
+\end_inset
+
+
+\end_layout
+
+\begin_layout Frame
+\begin_inset Argument 4
+status open
+
+\begin_layout Plain Layout
+Naritomi (2019):
+ Effects on Government Revenue
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Standard
+\align center
+\begin_inset Graphics
+	filename pictures/Naritomi 10.png
+	lyxscale 50
+	special height=1.0\textheight
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\end_body
+\end_document
